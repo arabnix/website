@@ -1,0 +1,671 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+<title></title>
+<meta name="GENERATOR" content="OpenOffice.org 2.4  (Linux)">
+<meta name="AUTHOR" content="Ali">
+<meta name="CREATED" content="20080916;16120200">
+<meta name="CHANGEDBY" content="Ali">
+<meta name="CHANGED" content="20080916;16333500">
+<style type="text/css">
+	<!--
+		@page { size: 8.5in 11in; margin: 0.79in }
+		P { margin-bottom: 0.08in }
+		TD P { margin-bottom: 0in }
+	-->
+	</style>
+</head>
+<body lang="en-US" dir="LTR">
+<p dir="RTL" align=CENTER style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=CENTER style="margin-bottom: 0in"><strong><font size=4 style="font-size: 16pt">SSH
+</font><font face="DejaVu Sans"><span lang="zxx"><font size=4 style="font-size: 16pt">ماهي؟
+وكيفية إستعمالها؟ وطرق عمل </font></STRONG></span></font><strong><font size=4 style="font-size: 16pt">Harden
+</font><font face="DejaVu Sans"><span lang="zxx"><font size=4 style="font-size: 16pt">لها</font></STRONG></span></font></P>
+<p dir="RTL" align=CENTER style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=CENTER style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=CENTER style="margin-bottom: 0in"><font face="DejaVu Sans"><span lang="zxx"><strong><font color="#ff0000"><font size=4 style="font-size: 16pt"><b>السلام
+عليكم ورحمة الله وبركاته</b></font></font></strong></span></font></p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br><font face="DejaVu Sans"><span lang="zxx">أعلم
+يوجد ربما مواضيع كثيرة تحدثت عن الـ </span></font><b>SSH</b>
+<font face="DejaVu Sans"><span lang="zxx">لكن إن شاء الله
+بعد قراءة الموضوع هذا أنا متأكد ستجدون
+أمور أخرى تضاف لمعلوماتكم حول هذه الخدمة
+الرائعة بكل معنى الكلمة </span></font>...
+<font face="DejaVu Sans"><span lang="zxx">بالبداية لمن لا
+يعرف ما هو الـ </span></font><b>SSH</b> <font face="DejaVu Sans"><span lang="zxx">فهو
+إختصار لكلمة </span></font><font color="#0000ff">Secure
+SHell</font> ... <font face="DejaVu Sans"><span lang="zxx">تم عمل
+هذه الخدمة من أجل إستبدال الخدمة السابقة
+</span></font>telnet <font face="DejaVu Sans"><span lang="zxx">والتي
+يتم إرسال البيانات بين المستخدم والسيرفر
+بشكل مكشوف أي </span></font><i>Clear Text</i> ... <font face="DejaVu Sans"><span lang="zxx">يعني
+الكلمة السرية والبيانات المارة بينك
+وبين الجهة المتصل بها كلها عبارة عن
+كتابة مكشوفة يمكن لأي شخص أن يعمل مراقبة
+على هذه البيانات من خلال برامج الـ
+</span></font><i>SNIFFING</i> <font face="DejaVu Sans"><span lang="zxx">وبرامج
+مراقبة البيانات مثل </span></font><i>Wireshark</i>
+... <font face="DejaVu Sans"><span lang="zxx">خدمة </span></font><b>SSH</b>
+<font face="DejaVu Sans"><span lang="zxx">أستبدلت هذه
+الطريقة بطريقة أكثر قوة من خلال تشفير
+جميع البيانات المارة بينك وبين السيرفر
+وبطرق تشفير قوية للغاية منها</span></font>:
+<i>AES (Advanced Encryption Scheme), Triple DES, Blowfish</i> <font face="DejaVu Sans"><span lang="zxx">وغيرها
+من الطرق القوية </span></font>...<br><br><img src="http://www.binary-zone.com/images/cs-telnet.png" name="graphics1" align=BOTTOM width=305 height=209 border=0><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="DejaVu Sans"><span lang="zxx"><font size=2>أنظر
+الصورة رقم </font></span></font><font size=2>1 (</font><font face="DejaVu Sans"><span lang="zxx"><font size=2>الاتصال
+بالطريقة السابقة، طريقة </font></span></font><font size=2>telnet)</font><br><br><img src="http://www.binary-zone.com/images/cs-ssh.png" name="graphics2" align=BOTTOM width=305 height=209 border=0><br><font face="DejaVu Sans"><span lang="zxx"><font size=2>أنظر
+الصورة رقم </font></span></font><font size=2>2 (</font><font face="DejaVu Sans"><span lang="zxx"><font size=2>الاتصال
+بالطريقة الجديدة المشفرة، طريقة </font></span></font><font size=2>ssh)</font><br><br><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="DejaVu Sans"><span lang="zxx"><font color="#8b0000"><b>خدمة
+</b></font></span></font><font color="#8b0000"><b>SSH </b></font><font face="DejaVu Sans"><span lang="zxx"><font color="#8b0000"><b>تدعم
+طرق توثيق </b></font></span></font><font color="#8b0000"><b>Authentication
+</b></font><font face="DejaVu Sans"><span lang="zxx"><font color="#8b0000"><b>مختلفة</b></font></span></font><font color="#8b0000"><b>:</b></font><br><font face="DejaVu Sans"><span lang="zxx"><b>اولاً</b></span></font><b>:</b>
+<font color="#0000ff">Host-Key Authentication</font><br><font face="DejaVu Sans"><span lang="zxx">وهذه
+هي الطريقة السائدة عند الجميع وتعمل من
+خلال إستخدامك أسم مستخدم وكلمته السرية
+على السيرفر للإتصال بذلك السيرفر</span></font>.
+<font face="DejaVu Sans"><span lang="zxx">أي ستقوم بالإتصال
+من خلال إستعمال أسم مستخدم مثلاً </span></font><i>binary</i>
+<font face="DejaVu Sans"><span lang="zxx">وتستعمل الكلمة
+السرية للمستخدم هذا للدخول الى السيرفر</span></font>.
+<font face="DejaVu Sans"><span lang="zxx">ويقوم المفتاح
+الخاص بجهازك </span></font><i>Host-Key</i> <font face="DejaVu Sans"><span lang="zxx">بتشفير
+الخط بينك وبين السيرفر</span></font>. <font face="DejaVu Sans"><span lang="zxx">طبعاً
+أعلم بإن الكثيرين من أصحاب السيرفرات
+خاصة يستعملون هذه الطريقة رغم إنها طريقة
+عادية ويوجد الأقوى منها </span></font>(<font face="DejaVu Sans"><span lang="zxx">سنرى
+من خلال الشرح</span></font>) <font face="DejaVu Sans"><span lang="zxx">وأيضاً
+المستخدمين يستعملونها ربما لعدم معرفتهم
+بغيرها</span></font>.<br><br><font face="DejaVu Sans"><span lang="zxx"><b>ثانياً</b></span></font><b>:</b>
+<font color="#0000ff">Public-Key Authentication</font><br><font face="DejaVu Sans"><span lang="zxx">بدل
+من إستخدامك لمستخدم وكلمته السرية على
+السيرفر للإتصال به، نقوم بإستعمال مفتاح
+خاص بك للإتصال بالسيرفر من خلال هذا
+المفتاح</span></font>. <font face="DejaVu Sans"><span lang="zxx">ويكون
+للمفتاح كلمة مرور </span></font><i>Passphrase</i>.
+<font face="DejaVu Sans"><span lang="zxx">ستقوم بعمل مفتاحين
+واحد عام </span></font><b>Public</b> <font face="DejaVu Sans"><span lang="zxx">والآخر
+خاص </span></font><b>Private</b> <font face="DejaVu Sans"><span lang="zxx">كل
+ما عليك هو وضع المفتاح العام على السيرفر
+المراد الإتصال به مع الإحتفاظ بالمفتاح
+الخاص وعدم جعل احد يصل له</span></font>. <font face="DejaVu Sans"><span lang="zxx">هذه
+الطريقة هي أفضل طريقة بصراحة ولكن تحتاج
+الى القليل من العمل من طرفك ليتم عملها
+بالشكل الصحيح، على العموم لا تقلق موضوعي
+يستهدف هذه الطريقة بالتحديد فتابع
+القراءة فقط</span></font>. <br><br><font face="DejaVu Sans"><span lang="zxx"><b>ثالثاً</b></span></font><b>:</b>
+<font color="#0000ff">Passphrase-Less Authentication</font><br><font face="DejaVu Sans"><span lang="zxx">هذه
+الطريقة هي نفس الطريقة السابقة ولكن فقط
+لا نقوم بوضع </span></font><i>Passphrase</i> <font face="DejaVu Sans"><span lang="zxx">على
+المفتاح الذي نقوم بعمله والسبب في ذلك
+هو لكي يتم إستخدام في العمليات الأوتوماتيكية
+</span></font><i>Automated</i> <font face="DejaVu Sans"><span lang="zxx">أو
+في السكربتات أو في وظائف الـ </span></font><i>cron</i>.
+<font face="DejaVu Sans"><span lang="zxx">لكن عيب هذه
+الطريقة هي في حالة حصل احدهم على المفتاح
+الخاص بك، يصبح بإمكانه عمل كل ما يريد
+في السيرفر</span></font>.<br><br><font face="DejaVu Sans"><span lang="zxx">الآن
+ربما تتسائل كيف أقوم بتركيب </span></font><b>SSH</b>
+<font face="DejaVu Sans"><span lang="zxx">؟ أقول لا تقلق
+حسب ما قرأة بإنه من بعد عام </span></font>2002
+<font face="DejaVu Sans"><span lang="zxx">أصبحت الخدمة
+تاتي جاهزة مع جميع التوزيعات تقريباً
+خاصة المعروفة منها </span></font><b>CentOS</b><font face="DejaVu Sans"><span lang="zxx">،
+</span></font><b>Fedora</b><font face="DejaVu Sans"><span lang="zxx">،
+</span></font><b>Debian</b><font face="DejaVu Sans"><span lang="zxx">،
+</span></font><b>Ubuntu</b><font face="DejaVu Sans"><span lang="zxx">،
+</span></font><b>Slackware</b> <font face="DejaVu Sans"><span lang="zxx">الى
+آخره</span></font>. <br><br><font face="DejaVu Sans"><span lang="zxx"><font color="#8b0000"><b>طيب
+لنقوم بتشغيل الخدمة في البداية</b></font></span></font><font color="#8b0000"><b>:</b></font><br><font face="DejaVu Sans"><span lang="zxx">على
+توزيعات مثل </span></font>CentOS <font face="DejaVu Sans"><span lang="zxx">و
+</span></font>Fedora <font face="DejaVu Sans"><span lang="zxx">وأعجوبة
+طبعاً </span></font>:) <font face="DejaVu Sans"><span lang="zxx">نفذ</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/etc/init.d/sshd start</pre><p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">الخيارات
+المتاحة لك هي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/etc/init.d/sshd {start|stop|restart|reload|condrestart|status}</pre><p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">أما بخصوص
+توزيعات الدبيان وأوبنتو نفذ</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/etc/init.d/ssh start</pre><p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx">والخيارات المتاحة
+مختلفة بعض الشيء</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/etc/init.d/ssh {start|stop|reload|force-reload|restart|try-restart}</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">ذكرت الخيارات
+لكم لاننا سنحتاج في الكثير من الأحيان
+في هذا الموضوع الى عمل إما </span></font><i>restart</i>
+<font face="DejaVu Sans"><span lang="zxx">أو الطريقة المفضلة
+لي هي </span></font><i>reload</i> <font face="DejaVu Sans"><span lang="zxx">وسنرى
+الفرق قريباً</span></font>. <font face="DejaVu Sans"><span lang="zxx">تابع
+معي الله يسعدك عزيزي القاريء </span></font><br><br><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx">الآن الخدمة تم
+تشغيلها والأمور كلها تمام على السيرفر
+</span></font>... <font face="DejaVu Sans"><span lang="zxx">الحين
+من جهاز آخر قم بعمل إتصال على السيرفر</span></font>.
+<font face="DejaVu Sans"><span lang="zxx">الطريقة العامة
+هي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh <a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="acd9dfc9dec2cdc1c9ecc5dc">[email&#160;protected]</a>/domain</pre><p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">لنعمل تجربة</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh <a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="05676c6b64777c45302b302b302b30">[email&#160;protected]</a></pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">سيقوم بسؤالك
+هل تريد إضافة هذا السيرفر الى قائمة
+الاجهزة المسموحة؟ قم بالإجابة حيث سيتم
+تسجيل المفتاح للسيرفر هذا في الملف</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">~/.ssh/known_hosts</pre><p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx">بعد ذلك سيطلب
+مني الكلمة السرية للمستخدم </span></font><i>binary</i><font face="DejaVu Sans"><span lang="zxx">،
+نقوم بإدخالها وبعد أن تتحقق الخدمة من
+صحتها ستسمح لي بدخول السيرفر</span></font>.
+<font face="DejaVu Sans"><span lang="zxx">طبعاً ظروري يا
+شباب تركزون على المستخدم الذي أنت تستعمله
+على جهازك حين تريد تتصل</span></font>. <font face="DejaVu Sans"><span lang="zxx">مثلاً
+لو كان المستخدم على الجهاز الأول هو
+</span></font><i>binary</i> <font face="DejaVu Sans"><span lang="zxx">ولك
+مستخدم على السيرفر أيضاً أسمه </span></font>binary
+<font face="DejaVu Sans"><span lang="zxx">وكنت داخل في
+النظام الذي عندك بالمستخدم </span></font><i>binary</i>
+<font face="DejaVu Sans"><span lang="zxx">لا ضرر من الإتصال
+بهذه الطريقة</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh 5.5.5.5</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">لانه سيعرف
+بإنك تريد تتصل من خلال المستخدم المستعمل
+نفسه والذي هو </span></font><i>binary</i>. <font face="DejaVu Sans"><span lang="zxx">طيب
+لو كنت بمستخدم آخر وحاولت الإتصال
+بالسيرفر بهذه الطريقة؟ مثلا كنت تعمل
+بمستخدم </span></font><i>mohamed</i> <font face="DejaVu Sans"><span lang="zxx">وقمت
+بعمل إتصال على السيرفر من خلال الأمر</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh 5.5.5.5</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">في حالة لم يكن
+على السيرفر مستخدم إسمه </span></font><i>mohamed</i>
+<font face="DejaVu Sans"><span lang="zxx">؟ سيقول لك المستخدم
+غير موجود ويمنعك من الدخول</span></font>. <font face="DejaVu Sans"><span lang="zxx">ولهذا
+التركيز الله يرضى عليكم حين يتم التطبيق
+ظروري جداً</span></font>.<br><br><font face="DejaVu Sans"><span lang="zxx"><font color="#006400"><b>ملاحظة
+مهمة جداً جداً</b></font></span></font><font color="#006400"><b>:</b></font>
+<font face="DejaVu Sans"><span lang="zxx">الى الآن ما قمنا
+بشرحه هو الطريقة البسيطة والمعروفة
+</span></font><font color="#0000ff">Host-Key Authentication</font>.
+<font face="DejaVu Sans"><span lang="zxx">جميع الإعدادات
+الإفتراضية للخدمة تسمح بهذه الطريقة
+ولا حاجة لك للتعديل على ملف الخدمة</span></font>.
+<br><br><br><font face="DejaVu Sans"><span lang="zxx">الآن لنقم
+بعمل إعداد للخدمة لكي تعمل على الطريقة
+الثانية والتي هي محل إهتمامي في هذا
+الموضوع، أي </span></font><font color="#0000ff">Public-Key
+Authentication</font>. <font face="DejaVu Sans"><span lang="zxx">سنحتاج
+الى التعديل على الملف الخاص بالخدمة،
+ولكن قبل ذلك لنقوم بعمل إنشاء للمفتاح
+الذي سنقوم بإستعماله ومن ثم نسخه وبعد
+ذلك نرجع للتعديل</span></font>.<br><br><font face="DejaVu Sans"><span lang="zxx">الآن
+قم بالدخول بالمستخدم الذي ستقوم بإستعماله
+</span></font>(<font face="DejaVu Sans"><span lang="zxx">في الغالب
+هو المستخدم الذي أعتدت على إستعماله</span></font>)
+<font face="DejaVu Sans"><span lang="zxx">لكي نقوم بعمل
+المفتاح، مثلاً بالنسبة لي سأقوم بإستعمال
+الأسم </span></font><i>binary</i>. <font face="DejaVu Sans"><span lang="zxx">أفتح
+الطرفية على جهازك </span></font><i>CLIENT</i> <font face="DejaVu Sans"><span lang="zxx">ومن
+ثم نفذ عليه الأمر</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh-keygen -t rsa</pre><p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx">أو</span></font></p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh-keygen -t dsa</pre><p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx">ملاحظة</span></font>:
+<font face="DejaVu Sans"><span lang="zxx">بإمكانك إستعمال
+اي طريقة تشاء من هذه الطرق، كلاهما يعمل
+مفاتيح قوية جداً لكن الفرق بينهما هو
+الأول يعمل المفاتيح الى حد أقصاه </span></font><i>2048bit</i>
+<font face="DejaVu Sans"><span lang="zxx">والثاني الى حد
+أقصاه </span></font><i>1024bit</i>.<br><br><font face="DejaVu Sans"><span lang="zxx">أنا
+سأكمل مع المفتاح الأول أو النوع الأول
+</span></font><i>RSA</i>. <font face="DejaVu Sans"><span lang="zxx">أضغط
+على </span></font><i>ENTER</i> <font face="DejaVu Sans"><span lang="zxx">وأكمل
+سيظهر لك كلام يشبه التالي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">Generating public/private rsa key pair.
+Enter file in which to save the key (/home/binary/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/binary/.ssh/id_rsa.
+Your public key has been saved in /home/binary/.ssh/id_rsa.
+The key fingerprint is:
+02:09:09:09:ee:cc:dd:4d:3d:3a:66:ff:ab:df:34:11 <a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b6d4dfd8d7c4cff6d4dfd8d7c4cf9bccd9d8d398d5d9db">[email&#160;protected]</a></pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">طبعاً الـ
+</span></font><i>fingerprint</i> <font face="DejaVu Sans"><span lang="zxx">بدون
+شك لك سيكون أرقام مختلفة، ومكان التخزين
+للمفتاح سيختلف في حالة كان المستخدم
+المستعمل عندك غير </span></font><i>binary</i> <font face="DejaVu Sans"><span lang="zxx">سيكون
+مثلا بالنسبة لـ </span></font><i>mohamed</i> <font face="DejaVu Sans"><span lang="zxx">التالي</span></font></p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/home/mohamed/.ssh/id_rsa</pre><p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx">وهكذا</span></font>.
+<font face="DejaVu Sans"><span lang="zxx">عند وصولك الى
+طلب إدخال الـ </span></font><i>passphrase</i> <font face="DejaVu Sans"><span lang="zxx">قم
+بوضع عبارة مرور للمفتاح هذا ولا تنسى
+ولا أريد أن أوصيك بأن تستعمل عبارة معقدة
+<img src="http://www.linuxac.org/forum/images/smiley/computer_man.gif" name="graphics4" align=BOTTOM width=49 height=28 border=0></span></font><br><br><font face="DejaVu Sans"><span lang="zxx">هكذا
+قمنا بعمل المفتاحين العام والخاص للمستخدم
+</span></font><i>binary</i> <font face="DejaVu Sans"><span lang="zxx">طيب
+ماذا علينا عمل الحين؟ الأمر بسيط جداً
+قم بتنفيذ التالي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">scp ~/.ssh/id_rsa.pub <a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3d5f54535c4f447d08130813081308">[email&#160;protected]</a>:.ssh/authorized_keys</pre><p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx">هذا سيقوم بعمل
+نسخ للمفتاح العام الخاص بك الى السيرفر
+في الملف </span></font><i>authorized_keys</i> <font face="DejaVu Sans"><span lang="zxx">الموجود
+في المجلد</span></font></p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/home/binary/.ssh/</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">الآن قم بتنفيذ
+الأمر التالي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">chmod 600 /home/binary/.ssh/id_rsa.pub</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx">وهذا</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">chmod 400 /home/binary/.ssh/id_rsa</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><font face="DejaVu Sans"><span lang="zxx">هكذا منعنا أي
+شخص غير المستخدم </span></font><i>binary</i> <font face="DejaVu Sans"><span lang="zxx">من
+قراءة الملف </span></font><i>id_rsa.pub</i> <font face="DejaVu Sans"><span lang="zxx">والذي
+هو المفتاح العام والملف </span></font><i>id_rsa</i>
+<font face="DejaVu Sans"><span lang="zxx">الذي هو المفتاح
+الخاص</span></font>.<br><br><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<font face="DejaVu Sans"><span lang="zxx">الآن تم عمل
+المفتاح وتم نسخه ماذا تبقى يا </span></font><b><a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7b395a153b0902">[email&#160;protected]</a></b><font face="DejaVu Sans"><span lang="zxx">؟
+لم يبقى الكثير</span></font>. <font face="DejaVu Sans"><span lang="zxx">الآن
+هل أنت جاهز للتعديل على ملف إعدادات
+الخدمة؟ أذن توكل على الله وأبدأ معي
+<img src="http://www.linuxac.org/forum/images/smiley/reading.gif" name="graphics5" align=BOTTOM width=63 height=25 border=0></span></font></p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">vim /etc/ssh/sshd_config</pre><p style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx">أذهب الى السطر
+الموجود فيه العبارة هذه </span></font><b>PasswordAuthentication</b>
+<font face="DejaVu Sans"><span lang="zxx">وقم بتعديلها الى
+التالي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">PasswordAuthentication no</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">الآن ما قمنا
+به هو منعنا الدخول الى السيرفر من خلال
+إستعمال اسم المستخدم وكلمته السرية
+الموجودة على السيرفر وسمحنا بإستعمال
+الطريقة الثانية </span></font><font color="#0000ff">Public-Key
+Authentication</font>. <font face="DejaVu Sans"><span lang="zxx">الآن
+أضغط على </span></font><i>Escape</i> <font face="DejaVu Sans"><span lang="zxx">ومن
+ثم </span></font><font size=5><i>:</i></font> <font face="DejaVu Sans"><span lang="zxx">ومن
+ثم </span></font><font size=5><i>x</i></font><br><br><font face="DejaVu Sans"><span lang="zxx">هكذا
+خرجنا من المحرر </span></font><i>vim</i> <font face="DejaVu Sans"><span lang="zxx">مع
+تخزين التغييرات وعدنا الى الطرفية، الآن
+نأتي الى سبب ذكري للخيارات المتاحة في
+طريقة التشغيل</span></font>/<font face="DejaVu Sans"><span lang="zxx">أعادة
+التشغيل</span></font>/<font face="DejaVu Sans"><span lang="zxx">إيقاف
+الخدمة</span></font>. <font face="DejaVu Sans"><span lang="zxx">حيث
+الآن بإمكانك عمل إعادة تشغيل للخدمة</span></font>.
+<font face="DejaVu Sans"><span lang="zxx">على توزيعات
+</span></font>CentOS <font face="DejaVu Sans"><span lang="zxx">و
+</span></font>Fedora <font face="DejaVu Sans"><span lang="zxx">وأعجوبة
+طبعاً </span></font>:) <font face="DejaVu Sans"><span lang="zxx">نفذ</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/etc/init.d/sshd restart</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">أما على توزيعات
+الدبيان وأوبنتو نفذ</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/etc/init.d/ssh restart</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">لكن بالنسبة
+لي أفضل طريقة الـ </span></font><i>reload</i> <font face="DejaVu Sans"><span lang="zxx">وذلك
+لاني لا أحتاج الى عمل إيقاف للخدمة بشكل
+كامل وإنما أقوم بإخبارها بإني أريدها
+أن تعيد قراءة ملف الإعدادات الخاص بها،
+وتحميله الى الذاكرة بدل الاعدادات التي
+تم تحميلها وقت تشغيل الخدمة</span></font>.
+<font face="DejaVu Sans"><span lang="zxx">ولهذا سيكون حلي
+دائماً بعد التعديل على الإعدادات هو
+</span></font><i>reload</i>. <font face="DejaVu Sans"><span lang="zxx">على
+توزيعات </span></font>CentOS <font face="DejaVu Sans"><span lang="zxx">و
+</span></font>Fedora <font face="DejaVu Sans"><span lang="zxx">وأعجوبة
+طبعاً </span></font>:) <font face="DejaVu Sans"><span lang="zxx">نفذ</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/etc/init.d/sshd reload</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">أما على توزيعات
+الدبيان وأوبنتو نفذ</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/etc/init.d/ssh reload</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">الآن أنتهينا
+من عمل المفاتيح، نسخ المفتاح العام الى
+السيرفر الثاني وقمنا بعمل إعدادات الخدمة
+وتشغيلها، الآن لنقوم بالتجربة في الدخول
+بالطريقة الجديدة</span></font>. <font face="DejaVu Sans"><span lang="zxx">نفذ
+ما يلي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh <a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="23414a4d42515a63160d160d160d16">[email&#160;protected]</a></pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">ستظهر لك عبارة
+شبيهة بالتالي</span></font>:</p>
+<dl>
+<dd>
+<table width=100% border=0 cellpadding=6 cellspacing=0>
+<col width=256*>
+<tr>
+<td width=100%>
+<p style="border: 1px solid #000000; padding: 0.02in">Enter
+passphrase for key 'id_rsa':
+</p>
+</td>
+</tr>
+</table>
+</dl>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">هنا ما يحصل
+بالحقيقة، هو جهازك يقوم بطلب معرفة هوية
+مستخدم هذا المفتاح وذلك من خلال طلب
+عبارة المرور التي أدخلتها حين قمت بعمل
+المفتاح</span></font>. <font face="DejaVu Sans"><span lang="zxx">قم
+بإدخال هذه العبارة ومن ثم أضغط على </span></font><i>enter</i>
+<font face="DejaVu Sans"><span lang="zxx">وهكذا تكون قد
+وصلت الى السيرفر ولكن من خلال المفتاح
+العام الخاص بك</span></font>.<br><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx"><b>سؤال</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">الآن ربما يسأل
+سائل كيف اعمل الطريقة الثالثة
+</span></font><font color="#0000ff">Passphrase-Less
+Authentication</font><font face="DejaVu Sans"><span lang="zxx">؟</span></font><br><font face="DejaVu Sans"><span lang="zxx"><b>الجواب</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">اعمل نفس الطريقة
+الثانية فقط لا تضع كلمة مرور على المفتاح
+حين تقوم بعملهم وانتهى الموضوع باقي
+الأمور جميعها نفس الشيء</span></font>.<br><br><br><font face="DejaVu Sans"><span lang="zxx"><b>سؤال</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">طيب يا </span></font><b><a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="195b3877596b60">[email&#160;protected]</a></b>
+<font face="DejaVu Sans"><span lang="zxx">ماذا لديك أكثر
+حول الخدمة هذه؟ </span></font><br><font face="DejaVu Sans"><span lang="zxx"><b>الجواب</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">بالحقيقة يوجد
+الكثير، لكن أحب أن أضيف أمر أخر وهو
+إستعمال مفاتيح متعددة</span></font>. <br><font face="DejaVu Sans"><span lang="zxx">ربما
+هنا يتفاجيء أحدكم ويتسائل كيف يعني
+مفاتيح متعددة؟ </span></font><br><font face="DejaVu Sans"><span lang="zxx"><b>الجواب</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">هو أن أستعمل
+مفتاح معيين للوصول الى السيرفر الأول
+ومفتاح آخر للوصول الى السيرفر الثاني
+وهكذا</span></font>. <br><font face="DejaVu Sans"><span lang="zxx"><b>سؤال</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">وهل هذا ممكن يا
+</span></font><b><a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f2b0d39cb2808b">[email&#160;protected]</a></b><font face="DejaVu Sans"><span lang="zxx">؟</span></font><br><font face="DejaVu Sans"><span lang="zxx"><b>الجواب</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">نعم ممكن تابع
+معي
+<img src="http://www.linuxac.org/forum/images/smiley/coffee.gif" name="graphics6" align=BOTTOM width=51 height=24 border=0></span></font><br><br><font face="DejaVu Sans"><span lang="zxx">الآن
+لنقم بعمل مفتاح جديد لنفرض للإتصال
+بسيرفر ثاني لك وعلى سبيل المثال يحمل
+رقم </span></font><i>IP</i> <font face="DejaVu Sans"><span lang="zxx">هو
+</span></font><i>6.6.6.6</i> <font face="DejaVu Sans"><span lang="zxx">ولكن
+هذه المرة بالطريقة التالية</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh-keygen -t rsa -f id_server2</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">وأكمل باقي
+خطوات عمل المفتاح من وضع عبارة المرور
+الى آخره</span></font>.<br><br><font face="DejaVu Sans"><span lang="zxx"><b>سؤال</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">طيب الحين صار
+عندنا في المجلد</span></font></p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left"> /home/binary/.ssh</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">مفاتيح أثنين،
+كيف أقوم بإخبار السيرفر الثاني أنا أريد
+أتصل عليك من خلال المفتاح </span></font><i>id_server2</i>
+<font face="DejaVu Sans"><span lang="zxx">وليس المفتاح
+</span></font><i>id_rsa</i> <font face="DejaVu Sans"><span lang="zxx">؟</span></font><br><font face="DejaVu Sans"><span lang="zxx"><b>الجواب</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">قم بتنفيذ الأمر
+التالي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh -i id_server2 <a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3f5d56515e4d467f09110911091109">[email&#160;protected]</a></pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">هكذا قمت
+بإستعمال المفتاح الثاني للوصول الى
+سيرفرك الثاني </span></font><i>6.6.6.6</i> <font face="DejaVu Sans"><span lang="zxx">وسيطلب
+منك عبارة المرور </span></font><i>passphrase</i>
+<font face="DejaVu Sans"><span lang="zxx">للمفتاح الثاني
+التي أدخلتها حين عملت المفتاح</span></font>.<br><br><font face="DejaVu Sans"><span lang="zxx"><b>سؤال</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">طيب </span></font><b><a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6527440b25171c">[email&#160;protected]</a></b>
+<font face="DejaVu Sans"><span lang="zxx">أريد تغيير عبارة
+المرور للمفتاح شلون؟</span></font><br><font face="DejaVu Sans"><span lang="zxx"><b>الجواب</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">بسيط يا عزيزي،
+لو كنت تريد تغيير العبارة للمفتاح </span></font><i>id_rsa</i>
+<font face="DejaVu Sans"><span lang="zxx">نفذ التالي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh-keygen -p -f /home/binary/.ssh/id_rsa</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">أما لو كانت
+للمفتاح الجديد </span></font><i>id_server2 </i><font face="DejaVu Sans"><span lang="zxx">نفذ
+التالي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ssh-keygen -p -f /home/binary/.ssh/id_server2</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><font face="DejaVu Sans"><span lang="zxx">سيطلب منك وضع
+عبارة المرور القديمة ومن ثم وضع عبارة
+جديدة للمفتاح</span></font>.<br><br><font face="DejaVu Sans"><span lang="zxx">شايفين
+شلون الأمر بغاية البساطة ؟؟؟ </span></font>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br><font face="DejaVu Sans"><span lang="zxx"><font color="#8b0000"><b>الآن
+لا اريد أن أقوم بذكر جميع التفاصيل هناك
+أمرين سأتركهما لكما للتفكير وربما لكي
+يقوم أحدكم بإضافتهم الى الموضوع</b></font></span></font><font color="#8b0000"><b>.
+</b></font><br><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<font face="DejaVu Sans"><span lang="zxx"><b>الأول</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">كيف أستطيع أن
+أعرف ما هو الـ </span></font><i>fingerprint</i> <font face="DejaVu Sans"><span lang="zxx">الخاص
+بالمفتاح الذي عندك؟</span></font><br><font face="DejaVu Sans"><span lang="zxx"><b>الثاني</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">كيف أستطيع تنفيذ
+أمر معيين على السيرفر من دون الحاجة الى
+تسجيل الدخول على السيرفر؟</span></font><br><br><font face="DejaVu Sans"><span lang="zxx"><b>الجواب</b></span></font><b>:</b>
+<img src="http://www.linuxac.org/forum/images/smiley/reading.gif" name="graphics8" align=BOTTOM width=75 height=38 border=0>
+<font size=5><b>+</b></font>
+<img src="http://www.linuxac.org/forum/images/smiley/computer_man.gif" name="graphics9" align=BOTTOM width=75 height=38 border=0>
+<br><br><br><font face="DejaVu Sans"><span lang="zxx">آخر حاجة
+في موضوعي هذا</span></font>. <font face="DejaVu Sans"><span lang="zxx">الآن
+نأتي الى أمور أخرى أحب أضيفها لعمل لنقول
+</span></font><b>Hardening</b> <font face="DejaVu Sans"><span lang="zxx">لخدمة
+الـ </span></font><b>SSH</b> <font face="DejaVu Sans"><span lang="zxx">بصورة
+أكثر وتعقيد أكثر </span></font>(<font face="DejaVu Sans"><span lang="zxx">حال
+المخترق
+<img src="http://www.linuxac.org/forum/images/smiley/frustrated.gif" name="graphics10" align=BOTTOM width=44 height=22 border=0></span></font>)
+<font face="DejaVu Sans"><span lang="zxx">ما سأقوم به هو
+السماح لجهاز معيين بالدخول الى الخدمة
+سواءاً من خلال </span></font><i>iptables</i> <font face="DejaVu Sans"><span lang="zxx">أو
+من خلال </span></font><i>xinetd</i>. <br><font face="DejaVu Sans"><span lang="zxx"><font color="#8b0000">طريقة
+</font></span></font><font color="#8b0000">iptables:</font></p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">/sbin/iptables -A INPUT -p tcp -s 5.5.5.5 --dport 22 -j ACCEPT;</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">هكذا سمحت لمن
+معه المفتاح ويعمل من جهاز رقم الـ </span></font><i>IP</i>
+<font face="DejaVu Sans"><span lang="zxx">له هو </span></font><i>5.5.5.5</i>
+<font face="DejaVu Sans"><span lang="zxx">بالوصول الى خدمة
+</span></font><b>ssh</b> <font face="DejaVu Sans"><span lang="zxx">التي
+على سيرفري</span></font>.<br><br><font face="DejaVu Sans"><span lang="zxx"><font color="#8b0000">طريقة
+</font></span></font><font color="#8b0000">xinetd:</font></p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">vim /etc/hosts.allow</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">بعد ذلك ضع
+التالي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">sshd: 5.5.5.5: ALLOW</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">بعد ذلك أعمل</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">vim /etc/hosts.deny</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">وضع بداخله
+التالي</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">sshd: ALL : DENY</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">هكذا سمحنا فقط
+للشخص الذي يتصل من الـ </span></font><i>IP</i> <font face="DejaVu Sans"><span lang="zxx">رقم
+</span></font><i>5.5.5.5</i> <font face="DejaVu Sans"><span lang="zxx">بالإتصال
+بالخدمة وبما إننا نستعمل المفاتيح
+للإتصال، يجب أن يكون معه المفتاح للإتصال</span></font>.
+<font face="DejaVu Sans"><span lang="zxx">بهذا عقدنا الأمور
+أكثر على المخترق </span></font>(<font face="DejaVu Sans"><span lang="zxx">مع
+العلم بالحقيقة يمكنك عمل </span></font><i>spoof</i>
+<font face="DejaVu Sans"><span lang="zxx">للـ </span></font><i>IP</i>
+<font face="DejaVu Sans"><span lang="zxx">لكن مع هذا التعقيد
+جيد</span></font>).<br><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx"><font color="#8b0000">الآن
+لزيادة الحماية أكثر لنقم بتحرير ملف
+الخدمة </font></span></font>
+</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">vim /etc/ssh/sshd_config</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx">وتستطيع وضع
+الخيارات التالية</span></font>:</p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">ListenAddress 5.5.5.5
+PermitRootLogin no
+Protocol 2
+AllowUsers binary mohamed
+AllowGroups admins
+Port 5858</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<br><font face="DejaVu Sans"><span lang="zxx"><b>ما عملنا
+هو</b></span></font><b>:</b><br>- <font face="DejaVu Sans"><span lang="zxx">في
+<font color="#006400">السطر الأول</font> حددنا بإن
+الخدمة تستمع للطلبات القادمة من العنوان
+</span></font>5.5.5.5 <font face="DejaVu Sans"><span lang="zxx">فقط</span></font>.<br>-
+<font face="DejaVu Sans"><span lang="zxx">في <font color="#006400">السطر
+الثاني</font> منعنا الدخول مباشرة الى
+الحساب </span></font>root<font face="DejaVu Sans"><span lang="zxx">،
+إذا كنت تريد تستعمل </span></font>root <font face="DejaVu Sans"><span lang="zxx">على
+السيرفر؟ أدخل بالمستخدم العادي ثم حول
+الى المستخدم </span></font>root. <font face="DejaVu Sans"><span lang="zxx">أكيد
+تعرفون كيف؟ </span></font>:)<br>- <font face="DejaVu Sans"><span lang="zxx"><font color="#006400">السطر
+الثالث</font> بالغالب هو الأساسي أحببت
+تأكيده وهو إستعمال الخدمة </span></font>SSH-2
+<font face="DejaVu Sans"><span lang="zxx">وليس </span></font>SSH-1.<br>-
+<font face="DejaVu Sans"><span lang="zxx"><font color="#006400">السطر
+الرابع</font> سمحنا للمستخدمين </span></font>binary
+<font face="DejaVu Sans"><span lang="zxx">و </span></font>mohamed
+<font face="DejaVu Sans"><span lang="zxx">فقط بالدخول الى
+الخدمة</span></font>.<br>- <font face="DejaVu Sans"><span lang="zxx"><font color="#006400">السطر
+الخامس</font> سمحنا فقط للمستخدمين الذين
+يقعون في مجموعة إسمها </span></font>admins <font face="DejaVu Sans"><span lang="zxx">من
+إستعمال الخدمة</span></font>.<br>- <font face="DejaVu Sans"><span lang="zxx">في
+<font color="#006400">السطر السادس</font> زيادة خير
+أننا قمنا بتغيير المنفذ الأصلي للخدمة
+ولكن لو وضعت هذا الرقم </span></font>5858<font face="DejaVu Sans"><span lang="zxx">؟
+لا تنسى تقوم بتغييره في الأمر الذي كتبناه
+بالاعلى الخاص بـ </span></font>iptables <font face="DejaVu Sans"><span lang="zxx">من
+</span></font>22 <font face="DejaVu Sans"><span lang="zxx">الى
+</span></font>5858 <font face="DejaVu Sans"><span lang="zxx">أوك؟</span></font><br><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in; margin-bottom: 0in">
+<font face="DejaVu Sans"><span lang="zxx"><font color="#8b0000">الآن
+لكي تتأكد من عدم وجود مشاكل لديك في ملف
+الإعدادات؟ قم بتنفيذ التالي</font></span></font><font color="#8b0000">:</font></p>
+<pre style="margin-left: 0.21in; margin-right: 0.21in; border: 1px solid #000000; padding: 0.06in; text-align: left">`which sshd` -t</pre><p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><font face="DejaVu Sans"><span lang="zxx">حيث سيقوم بفحصل
+الاعدادات، وإذا كانت لديك مشاكل فيه،
+سيقوم بكتابتها لك على الطرفية، وإن لم
+يكن لن يظهر لك شيء</span></font>.<br><br><font face="DejaVu Sans"><span lang="zxx">بهذه
+الحماية للخدمة؟ أنت مش بس عملت </span></font><b>Harden</b>
+<font face="DejaVu Sans"><span lang="zxx">للخدمة لديك وإنما
+كرهت المخترق بحياته وكرهته بنفسه لو
+يفكر يصل اليك</span></font>. <br><br><font face="DejaVu Sans"><span lang="zxx"><b>سؤال</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">طبعاً تريد أكثر
+من هذه الحماية؟ </span></font><br><font face="DejaVu Sans"><span lang="zxx"><b>الجواب</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">موجود يا عزيزي
+، في شي إسمه </span></font><b>Port-Knocking</b> <font face="DejaVu Sans"><span lang="zxx">وفي
+شيء إسمه </span></font><b>SPA</b> <font face="DejaVu Sans"><span lang="zxx">وفي
+شي سأشرحه قريباً </span></font>(<font face="DejaVu Sans"><span lang="zxx">أو
+أي متبرع </span></font>) <font face="DejaVu Sans"><span lang="zxx">وهو
+</span></font><b>DenyHosts</b>.<br><br><font face="DejaVu Sans"><span lang="zxx"><b>سؤال</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">تريد أكثر؟ خبرني؟
+</span></font><br><font face="DejaVu Sans"><span lang="zxx"><b>الجواب</b></span></font><b>:</b>
+<font face="DejaVu Sans"><span lang="zxx">أيضاً موجود ولكن
+هنا أقول لك اسئل </span></font>Google :)<br><br><br><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<font face="DejaVu Sans"><span lang="zxx"><font color="#8b0000">ما
+سأكمله حول خدمة </font></span></font><font color="#8b0000">SSH
+<font face="DejaVu Sans"><span lang="zxx">هو</font></SPAN></font><font color="#8b0000">:</font><br>-
+<font face="DejaVu Sans"><span lang="zxx">تمرير </span></font>X-Windows
+<font face="DejaVu Sans"><span lang="zxx">بطريقة آمنة من
+خلال </span></font>SSH.<br>- <font face="DejaVu Sans"><span lang="zxx">إستعمال
+</span></font>DenyHosts.<br>- <font face="DejaVu Sans"><span lang="zxx">وربما
+في القريب العاجل إستعمال </span></font>SPA.<br><br><font face="DejaVu Sans"><span lang="zxx">أتمنى
+تكونوا أستفدتم من الموضوع، وأن يكف الناس
+عن إستعمال طريقة </span></font><font color="#0000ff">Host-Key
+Authentication</font> <font face="DejaVu Sans"><span lang="zxx">ويقوم
+بإستعمال طريقة </span></font><font color="#0000ff">Public-Key
+Authentication</font> <font face="DejaVu Sans"><span lang="zxx">الرائعة
+والممتازة</span></font>. <font face="DejaVu Sans"><span lang="zxx">ورمضان
+مبارك وإفطار شهي إن شاء الله </span></font>...<br><br><font face="DejaVu Sans"><span lang="zxx">دمتم
+بود جميعاً </span></font>...</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.21in; margin-right: 0.21in">
+<font face="DejaVu Sans"><span lang="zxx">أخوكم </span></font><a href="http://www.binary-zone.com/"><span class="__cf_email__" data-cfemail="8bc9aae5cbf9f2">[email&#160;protected]</span></a>
+...</p>
+<script data-cfasync="false" src="https://arabnix.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

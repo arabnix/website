@@ -1,0 +1,590 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+<title></title>
+<meta name="GENERATOR" content="OpenOffice.org 2.1  (Linux)">
+<meta name="AUTHOR" content="B!n@ry">
+<meta name="CREATED" content="20080616;21223700">
+<meta name="CHANGEDBY" content="B!n@ry">
+<meta name="CHANGED" content="20080617;6175600">
+<style type="text/css">
+	<!--
+		@page { size: 8.5in 11in; margin: 0.79in }
+		P { margin-bottom: 0.08in }
+	-->
+	</style>
+</head>
+<body lang="en-US" dir="LTR">
+<p align=CENTER style="margin-bottom: 0in"><b><font size=4>Advanced
+Intrusion Detection Environment</font></b><br><br><font face="Tahoma"><span lang="ar-EG"><b><font size=5><font color="#ff0000">السلام
+عليكم ورحمة الله وبركاته</font></font></b></span></font></p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br><font face="Tahoma"><span lang="ar-EG">كيف
+أحوال الشباب إن شاء الله الجميع بخير
+وعافية </span></font>... <font face="Tahoma"><span lang="ar-EG">اليوم
+قلت أكتب عن </span></font><b>AIDE</b> <font face="Tahoma"><span lang="ar-EG">والذي
+هو إختصار لـ </span></font>&quot;<b>Advanced Intrusion
+Detection Environment</b>&quot; <font face="Tahoma"><span lang="ar-EG">وظيفته
+هي التحقق من سلامة الملفات </span></font><b>File
+Integrity</b> Checker <font face="Tahoma"><span lang="ar-EG">الموجودة
+على النظام، طبعاً هنا أتكلم عن جنو</span></font>/<font face="Tahoma"><span lang="ar-EG">لينوكس
+</span></font>:) <font face="Tahoma"><span lang="ar-EG">يتم ذلك
+من خلال أخذ صورة </span></font><b>snapshot</b> <font face="Tahoma"><span lang="ar-EG">للنظام
+في بداية تشغيلك له ومن ثم تصبح هي النقطة
+التي يتم بناء المقارنة عليها، أي في
+المستقبل عندما تشك بوجود حاجة غريبة أو
+تشك بإنه ربما قام أحد المخترقين بتنفيذ
+</span></font><b>exploit</b> <font face="Tahoma"><span lang="ar-EG">على
+أو قام بتنصيب </span></font><b>RootKit</b> <font face="Tahoma"><span lang="ar-EG">أو
+</span></font><b>Trojan</b> <font face="Tahoma"><span lang="ar-EG">داخل
+النظام فإنك تستطيع مقارنة الملفات التي
+كنت قد أخذت لها </span></font><b>snapshot</b> <font face="Tahoma"><span lang="ar-EG">مع
+الملفات الحالية وبالتالي تعرف إذا كانت
+هذه الملفات قد تغييرت أم لا </span></font>...<br><br><font face="Tahoma"><span lang="ar-EG">أول
+حاجة لنقم بتحميله من موقع </span></font><b>sourceforge</b>:<br>-
+<font face="Tahoma"><span lang="ar-EG"><a href="https://sourceforge.net/projects/aide" target="_blank">تحميل
+</a></span></font><a href="https://sourceforge.net/projects/aide" target="_blank">aide</a><br><br><font face="Tahoma"><span lang="ar-EG">أيضاً
+سنحتاج الى مكتبة إسمها </span></font><b>mhash</b><font face="Tahoma"><span lang="ar-EG"><b>،</b>
+أيضاً قم بتحميلها من موقع </span></font><b>sourceforge</b>:<br>-
+<font face="Tahoma"><span lang="ar-EG"><a href="https://sourceforge.net/projects/mhash" target="_blank">تحميل
+</a></span></font><a href="https://sourceforge.net/projects/mhash" target="_blank">mhash</a><br><br><br><font face="Tahoma"><span lang="ar-EG">الآن
+لنقم بتركيب </span></font><font color="#0000ff">mhash</font>
+<font face="Tahoma"><span lang="ar-EG">على نظامنا</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">tar xzvf mhash-version.tar.gz
+cd mhash-version
+./configure
+make
+su -
+cd /path2/mhash-version
+make install</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">السبب في تنصيبنا
+لمكتبة </span></font><font color="#0000ff">mhash</font> <font face="Tahoma"><span lang="ar-EG">في
+البداية هي كما ذكرت لكم بالأعلى بإنها
+أحد متطلبات تنصيب </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">على النظام </span></font>...
+<font face="Tahoma"><span lang="ar-EG">لنقم الآن بتنصيب
+</span></font><b><font color="#8b0000">aide</font></b> <font face="Tahoma"><span lang="ar-EG">على
+النظام من خلال أتباع نفس الخطوات السابقة</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">tar xzvf aide-version.tar.gz
+cd aide-version
+./configure
+make
+su -
+cd /path2/aide-version
+make install</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">الآن بما إننا
+سنقوم بإستعمال برنامج له علاقة بسلامة
+الملفات والتحقق منها </span></font><font color="#006400">File
+Integrity Checker</font><font face="Tahoma"><span lang="ar-EG">، من
+الظرورة أن نقوم بأخذ الـ </span></font><b>md5</b>
+<font face="Tahoma"><span lang="ar-EG">للبرنامج نفسه،
+فمن يدري ربما يتم عمل تبديل للبرنامج
+نفسه وبالتالي يتم التغطية عن جميع
+التغييرات التي قد تكون حصلت على الملفات
+الموجودة </span></font>... <font face="Tahoma"><span lang="ar-EG">لعمل
+ذلك عليك أن تعرف أين يوجد برنامج </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">أي أين تم تنصيب
+البرنامج التنفيذه حقه </span></font>... <font face="Tahoma"><span lang="ar-EG">تستطيع
+معرفة ذلك من خلال قراءة البيانات التي
+ظهرت على الشاشة لديك حين قمت بعمل </span></font><b>make
+install</b> <font face="Tahoma"><span lang="ar-EG">أو من خلال
+تنفيذ الأمر</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">which aide</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">على كل حال المسار
+عندي هو</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">/usr/bin/aide</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">الآن لنقوم بأخذ
+الـ </span></font>md5 <font face="Tahoma"><span lang="ar-EG">له
+من خلال تنفيذ الأمر التالي</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">md5sum /usr/bin/aide</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">قم بحفظ الناتج
+في ملف وفي مكان لا يستطيع أحد الوصول
+أليه مثلا في جيبك </span></font>:) <font face="Tahoma"><span lang="ar-EG">أي
+ما أقصده أن تحتفظ به مثلا على </span></font><b>USB</b>
+<font face="Tahoma"><span lang="ar-EG">أو </span></font><b>CD</b>
+<font face="Tahoma"><span lang="ar-EG">وبالتالي هو بعيد
+المنال عن الناس </span></font>... <font face="Tahoma"><span lang="ar-EG">طبعاً
+هناك ملاحظات أخرى سأذكرها في وقتها وهي
+مهمة جداً </span></font>... <font face="Tahoma"><span lang="ar-EG">بعد
+عمل الكومبايل للبرنامج وتنصيبه ستجد في
+المجلد الأساسي الذي عملت منه الـ </span></font><b>compile</b>
+<font face="Tahoma"><span lang="ar-EG">مجلد الـ </span></font><b>src</b>
+<font face="Tahoma"><span lang="ar-EG">فيه ملف أسمه </span></font><b><font color="#8b0000">aide</font></b>
+... <font face="Tahoma"><span lang="ar-EG">من خلاله أيضاً
+تستطيع أن تتأكد أكثر من سلامة الملف الذي
+قمت بتركيبه وذلك من خلال مقارنة الـ </span></font><b>md5</b>
+<font face="Tahoma"><span lang="ar-EG">له مع الـ </span></font><b>md5</b>
+<font face="Tahoma"><span lang="ar-EG">الخاصة بالملف الذي
+قمت بتركيبه في الخطوات السابقة </span></font>...<br><br><font face="Tahoma"><span lang="ar-EG">الآن
+لنفتح الملف الخاص بإعدادات </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">ونلقي نظرة عليه
+</span></font>... <font face="Tahoma"><span lang="ar-EG">أذهب
+الى</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">vi /etc/aide.conf</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>- <font face="Tahoma"><span lang="ar-EG">يوجد في الملف
+هذا متغييرات، </span></font><b>macros</b><font face="Tahoma"><span lang="ar-EG">،
+و الملفات</span></font>/<font face="Tahoma"><span lang="ar-EG">المجلدات
+التي نريد مراقبتها</span></font>.<br><font face="Tahoma"><span lang="ar-EG"><b><font color="#006400">أولاً</font></b></span></font>:
+<font face="Tahoma"><span lang="ar-EG">المتغيير مثل</span></font>:
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">@@define TOPDIR /home/user/</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG"><font color="#006400"><b>ثانياً</b></font></span></font><font color="#006400"><b>:</b></font>
+<font face="Tahoma"><span lang="ar-EG">الـ </span></font><b>macro</b>
+<font face="Tahoma"><span lang="ar-EG">مثل</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">@@ifndef TOPDIR
+@@define TOPDIR /
+@@endif</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">حيث هنا قمنا
+بتعريف المجلد الذي سيكون المجلد الأب
+أو العلوي لباقي المجلدات</span></font>.<br><font face="Tahoma"><span lang="ar-EG">ثالثاً</span></font>:
+<font face="Tahoma"><span lang="ar-EG">الملفات</span></font>/<font face="Tahoma"><span lang="ar-EG">المجلدات
+التي نريد مراقبتها مثل</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">/etc R</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>- <font face="Tahoma"><span lang="ar-EG">قاعدة البيانات
+الخاصة به هي</span></font>: <b><font color="#8b0000">aide.db.new</font></b>
+<font face="Tahoma"><span lang="ar-EG">ويختلف مكان تخزينها
+من توزيعة الى أخرى وأيضاً لا ننسى بإنك
+تستطيع تغيير المسار الخاص بها وأيضاً
+إسم هذه القاعدة</span></font>.<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>- <font face="Tahoma"><span lang="ar-EG">تستطيع ان تحدد
+ما هي الـ </span></font><b>attributes</b> <font face="Tahoma"><span lang="ar-EG">التي
+تريد </span></font><b><font color="#8b0000">aide</font></b> <font face="Tahoma"><span lang="ar-EG">أن
+يقوم بمراقبتها، مثل</span></font>: permissions,
+atime, ctime, size, , user, group, md5hashes, mtime, inodes
+<font face="Tahoma"><span lang="ar-EG">وغيرها</span></font>.<br><br>-
+<font face="Tahoma"><span lang="ar-EG">الجميل بالأمر إن
+</span></font><b><font color="#8b0000">aide</font></b> <font face="Tahoma"><span lang="ar-EG">لا
+يدعم </span></font><b>md5 hashes</b> <font face="Tahoma"><span lang="ar-EG">فقط،
+وإنما يدعم </span></font><b>sha1</b> <font face="Tahoma"><span lang="ar-EG">و
+</span></font><b>rmd160</b> <font face="Tahoma"><span lang="ar-EG">و
+</span></font><b>tiger</b> <font face="Tahoma"><span lang="ar-EG">و
+</span></font><b>crc32</b> <font face="Tahoma"><span lang="ar-EG">وغيرها</span></font>.<br><br>-
+<font face="Tahoma"><span lang="ar-EG">أيضاً تستطيع أن
+تقوم بإستعمال أكثر من خيار للمراقبة
+وذلك من خلال إستعمال الخيارات التي تدل
+على خيارات متعددة مثل </span></font><b>R</b> <font face="Tahoma"><span lang="ar-EG">حيث
+إنها تدل على إنك تريد مراقبة كل من</span></font>:
+<b>p+i+n+u+g+s+m+c+md5</b> <font face="Tahoma"><span lang="ar-EG">وكل
+واحدة موجود في ملف الـ </span></font><b>conf.</b>
+<font face="Tahoma"><span lang="ar-EG">ماذا تعني</span></font>.
+<font face="Tahoma"><span lang="ar-EG">إستخدام هذه الطريقة
+</span></font><b>R</b> <font face="Tahoma"><span lang="ar-EG">سيسهل
+علينا الكثير من الأمور سنراها في
+الشرح</span></font>.<br><br><font face="Tahoma"><span lang="ar-EG">على
+الرغم من إنك تستطيع من خلال الخيارات
+التي يوفرها </span></font><b><font color="#8b0000">AIDE</font></b>
+<font face="Tahoma"><span lang="ar-EG">أن تقوم بعملية
+مراقبة للملفات التي تتغيير بشكل مستمر
+مثل ملفات السجلات </span></font><b>Log Files</b> <font face="Tahoma"><span lang="ar-EG">إلا
+إنه يفضل إستعمال البرنامج </span></font><b><font color="#8b0000">AIDE</font></b>
+<font face="Tahoma"><span lang="ar-EG">لمراقبة الملفات
+التي لا تتغيير بشكل مستمر مثل ملفات
+الإعدادات الخاصة بالخدمات والملفات
+التشغيلية والأدوات </span></font>... <font face="Tahoma"><span lang="ar-EG">وذلك
+لأنه مراقبة السجلات </span></font><b>Log</b> <font face="Tahoma"><span lang="ar-EG">يجب
+أن تكون من وظائفك أنت مدير النظام أو
+وظيفة البرامج المعنية التي تهتم بقراءة
+السجلات </span></font><b>Log</b> <font face="Tahoma"><span lang="ar-EG">مثل
+</span></font><b>IDS</b> <font face="Tahoma"><span lang="ar-EG">وغيرها</span></font>.<br><br><font face="Tahoma"><span lang="ar-EG"><font color="#0000ff"><b>سؤال</b></font></span></font><font color="#0000ff"><b>:</b></font>
+<font face="Tahoma"><span lang="ar-EG">لماذا لا يفضل
+إستعمال أو مراقبة الـ </span></font>atime <font face="Tahoma"><span lang="ar-EG">والذي
+هو </span></font>Access Time <font face="Tahoma"><span lang="ar-EG">بالرجوع
+لـ </span></font><b><font color="#8b0000">aide</font></b> <font face="Tahoma"><span lang="ar-EG">؟</span></font><br><font face="Tahoma"><span lang="ar-EG"><font color="#0000ff"><b>الجواب</b></font></span></font><font color="#0000ff"><b>:</b></font>
+<font face="Tahoma"><span lang="ar-EG">سأتركه لكم للتفكير
+أو للتجربة ومعرفة السبب </span></font>!!!<br><br><font face="Tahoma"><span lang="ar-EG">صراحة
+هناك خيارات كثيرة جداً للبرنامج لا أريد
+أن أقوم بشرحها كلها ويمكنك ان تتعرف
+عليها بمجرد قراءتها وقراءة ملفات المساعدة
+الخاصة بالبرنامج ولهذا سأدخل مباشرة
+الى بعض الخيارات التي سأقوم بإستعمالها
+في هذا الشرح</span></font>.<br><br><font face="Tahoma"><span lang="ar-EG">الآن
+لو نفرض تريد أن تقوم بمراقبة المجلد </span></font><b>etc/</b>
+<font face="Tahoma"><span lang="ar-EG">وكل ما هو في داخله،
+قم بوضع السطر التالي</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">/etc R</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">بعد الجملة
+</span></font><b>Selection regexp rule</b>.<br><br><font face="Tahoma"><span lang="ar-EG">أول
+حاجة سنقوم بها بعد أن قمنا بعمل الاعدادات
+المطلوبة هي بناء قاعدة البيانات، ويمكننا
+عمل ذلك من خلال</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">aide --init</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">إذا كنت تريد أن
+تقوم ببناء قاعدة البيانات بناءاً على
+إعدادات غير التي في المجلد الخاص بالبرنامج
+</span></font><b><font color="#8b0000">aide</font></b><font face="Tahoma"><span lang="ar-EG">،
+وهذا الملف الخاص بالإعدادات موجود في
+مجلد آخر لنفرض في المجلد الرئيسي للمستخدم
+الذي تستعمله، ولنفرض هو </span></font><b>user</b>
+<font face="Tahoma"><span lang="ar-EG">نقوم ببناء قاعدة
+البيانات بهذا الشكل</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">aide -c /home/user/aide.conf --init</pre><p style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">بعد أن تنتهي من
+تنفيذ هذا الأمر سيخبرك </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">بإنه تم تهيئة
+القاعدة</span></font>. <font face="Tahoma"><span lang="ar-EG">للتأكد
+سترى بإنه تم خلق ملف إسمه </span></font><b>aide.db.new</b>.
+<font face="Tahoma"><span lang="ar-EG">طبعاً هذه العملية
+ستأخذ بعض الوقت وذلك لأنه سيقوم ببناء
+القاعدة بناءاً على جميع المحتويات للمجلد
+</span></font><b>etc/</b> <font face="Tahoma"><span lang="ar-EG">ولهذا
+قد تأخذ بعض الوقت للإنتهاء، ليس الكثير
+جداً</span></font>. <font face="Tahoma"><span lang="ar-EG">بعد
+أن قمت بتنفيذ الامر بالأعلى الأن تستطيع
+أن تقوم مثلا بقراءة محتوى الملف </span></font><b>aide.db.new</b>
+<font face="Tahoma"><span lang="ar-EG">وذلك لأنه عبارة
+عن ملف نصي </span></font><b>Text File</b>. <font face="Tahoma"><span lang="ar-EG">أفتح
+الملف أو قم مثلاً بالبحث عن السطور الخاصة
+بالملف </span></font><b>etc/resolv.conf/</b> <font face="Tahoma"><span lang="ar-EG">وقارنها
+مع ناتج أمر الـ </span></font><b>stat</b> <font face="Tahoma"><span lang="ar-EG">للملف
+نفسه</span></font>. <font face="Tahoma"><span lang="ar-EG">مثلاً</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">stat /etc/resolv.conf</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">الناتج</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left"><a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="34565d5a55464d74464158074e">[email&#160;protected]</a>:~&gt; stat /etc/resolv.conf
+  File: `/etc/resolv.conf'
+  Size: 68              Blocks: 8          IO Block: 4096   regular file
+Device: 802h/2050d      Inode: 1452487     Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2008-06-15 23:55:45.000000000 +0300
+Modify: 2008-06-07 17:00:22.000000000 +0300
+Change: 2008-06-07 17:00:22.000000000 +0300</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">الآن قارن هذه
+المعلومات مع التي قام بتسجيلها </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">في قاعدة البيانات
+الخاصة به، مثلاً بالنسبة للملف هذا كما
+نره حجمه </span></font>68 <font face="Tahoma"><span lang="ar-EG">أنظر
+الى ما قام تسجيله </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">ستجده قام بتسجيل
+هذه القيمة أيضاً، أيضاً مثلا أنظر الى
+رقم الـ </span></font><b>Inode</b> <font face="Tahoma"><span lang="ar-EG">للملف
+هي </span></font><b>1452487</b> <font face="Tahoma"><span lang="ar-EG">وأنظر
+لما سجله </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">ستجده نفس الشي
+وهكذا</span></font>. <font face="Tahoma"><span lang="ar-EG">طبعاً
+</span></font><b><font color="#8b0000">aide</font></b> <font face="Tahoma"><span lang="ar-EG">سيسجل
+وفقاً للخيارات التي قمنا بإعطاءها له
+في السطر الذي كتبناه كما تذكرون </span></font>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">/etc R</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">في ملف الإعدادات
+حق </span></font><b><font color="#8b0000">aide</font></b> <font face="Tahoma"><span lang="ar-EG">ولا
+تنسو بإن </span></font><b>R</b> <font face="Tahoma"><span lang="ar-EG">تعني
+</span></font><b>p+i+n+u+g+s+m+c+md5</b>. <font face="Tahoma"><span lang="ar-EG">إذن
+نستطيع القول بإن أغلب ما قام بستجيله
+</span></font><b><font color="#8b0000">aide</font></b> <font face="Tahoma"><span lang="ar-EG">أتت
+من ناتج الأمر </span></font><b>stat</b> <font face="Tahoma"><span lang="ar-EG">بإستثناء
+الـ </span></font><b>Hashes</b> <font face="Tahoma"><span lang="ar-EG">والتي
+ستكون ناتج الأمر </span></font><b>md5sum</b>.<br><br><font face="Tahoma"><span lang="ar-EG">الآن
+لا تقم بأي تغيير أو شيء على الملفات
+الموجودة داخل المجلد </span></font><b>etc/</b> <font face="Tahoma"><span lang="ar-EG">وذلك
+لكي نقوم بعمل أول تجربة لنا بإستعمال
+</span></font><b><font color="#8b0000">aide</font></b>. <font face="Tahoma"><span lang="ar-EG">الآن
+قم بتشغيل </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">ولكن هذه المرة
+بإستخدام خاصية الفخص </span></font><b>check</b>
+<font face="Tahoma"><span lang="ar-EG">ولنرى هل سيتعرف
+</span></font><b><font color="#8b0000">aide</font></b> <font face="Tahoma"><span lang="ar-EG">على
+التغييرات التي قمنا بها </span></font>(<font face="Tahoma"><span lang="ar-EG">والتي
+بالحقيقة هنا لم نقم بعمل أية تغييرات</span></font>)<font face="Tahoma"><span lang="ar-EG">،
+المهم لنجرب ونرى ماذا سيحصل</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">aide --check</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">إن كنت تستعمل
+ملف إعدادات موجود في مكان آخر لا تنسى
+أن تمرره لـ </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">من خلال الخيار </span></font>c
+<font face="Tahoma"><span lang="ar-EG">كما عملنا في السابق</span></font>.
+<font face="Tahoma"><span lang="ar-EG">بعد أن ينتهي من
+عملية الفحص سيخبرنا بإنه</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in">All files match
+AIDE database. Looks okay</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br><font face="Tahoma"><span lang="ar-EG">أي
+إن جميع الملفات </span></font>(<font face="Tahoma"><span lang="ar-EG">التي
+بداخل المجلد </span></font><b>etc/</b> <font face="Tahoma"><span lang="ar-EG">في
+مثالنا هذا</span></font>) <font face="Tahoma"><span lang="ar-EG">مطابقة
+لقاعدة البيانات وبهذا نعرف بإنه لا يوجد
+أو لم تحصل أي تغييرات على الملفات</span></font>.
+<font face="Tahoma"><span lang="ar-EG">طبعا في حالة كان
+هذا الجهاز هو خادم معيين سيكون شي ممتاز
+ومريح للأعصاب بإنك عرفت بإنه للحين لم
+يتم التلاعب في ملفات النظام لديك</span></font>.<br><br><font face="Tahoma"><span lang="ar-EG">طيب
+الآن لنقوم بعمل تغيير بسيط على أي من
+الملفات الموجودة داخل المجلد </span></font><b>etc/</b>
+<font face="Tahoma"><span lang="ar-EG">لنفرض قم بإضافة
+</span></font><b>nameserver</b> <font face="Tahoma"><span lang="ar-EG">جديد
+الى الملف </span></font><b>resolv.conf</b>. <font face="Tahoma"><span lang="ar-EG">نفذ
+الأمر التالي لكي نقوم بتجربة </span></font>aide
+<font face="Tahoma"><span lang="ar-EG">مرة أخرى ولكن هذه
+المرة بوجود ملف تم التعديل عليه</span></font>.
+<font face="Tahoma"><span lang="ar-EG">نفذ التالي</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">echo &quot;nameserver 192.168.0.22&quot; &gt;&gt; /etc/resolv.conf</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">أو قم بتفعيل</span></font>/<font face="Tahoma"><span lang="ar-EG">إيقاف
+خاصية التمرير أو الـ </span></font><b>routing</b> <font face="Tahoma"><span lang="ar-EG">من
+خلال التعديل على ملف </span></font><b>sysctl.conf</b><font face="Tahoma"><span lang="ar-EG">،
+إن كانت فعالة </span></font>&quot;<b>1</b>&quot; <font face="Tahoma"><span lang="ar-EG">أعملها
+غير فعالة </span></font>&quot;<b>0</b>&quot; <font face="Tahoma"><span lang="ar-EG">أو
+العكس، نحن فقط نريد أن نعمل أي تغيير لكي
+نرى النتائج التي سيعطينا إياها </span></font>aide.
+<font face="Tahoma"><span lang="ar-EG">بعد أن قمت بأي
+تعديلات تريدها، قم بتشغيل </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">مرة أخرى بإستعمال
+خاصية الفحص </span></font><b>check</b> <font face="Tahoma"><span lang="ar-EG">كالتالي</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">aide --check</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">الآن سيخبرنا
+بإنه يوجد ملفات تم التعديل عليها وسيعطينا
+مقارنة بين الخصائص الحالية للملف بعد
+التعديل وبين الخصائص للملف قبل التعديل
+والتي هي مسجلة في قاعدة البيانات الخاصة
+بـ </span></font><b><font color="#8b0000">aide</font></b>. <font face="Tahoma"><span lang="ar-EG">من
+ظمن هذه التغييرات هنا ستكون الـ </span></font><b>md5</b>
+<font face="Tahoma"><span lang="ar-EG">للملف وذلك لأنه
+نحن قمنا بمراقبة هذه الخاصية في الملفات،
+وأيضاً أي تغيير ولو بحرف واحد على الملف
+سيعرض الـ </span></font><b>md5 hash</b> <font face="Tahoma"><span lang="ar-EG">للتغيير</span></font>.
+<font face="Tahoma"><span lang="ar-EG">طبعاً كل شي سيتم
+عرضه لك على شكل إحصائيات ومقارنات جداً
+سهلة قراءتها </span></font>...<br><br><font face="Tahoma"><span lang="ar-EG"><font color="#0000ff"><b>سؤال</b></font></span></font><font color="#0000ff"><b>:</b></font>
+<font face="Tahoma"><span lang="ar-EG">لو قمت بعمل تعديل
+على ملف </span></font><b>etc/hosts/</b> <font face="Tahoma"><span lang="ar-EG">فقط،
+وقمت بعدها بعمل فحص من خلال </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">لماذا سيقول لك
+بإنك قمت بالتعديل على ملفين وليس
+واحد؟</span></font><br><font face="Tahoma"><span lang="ar-EG"><font color="#0000ff"><b>الجواب</b></font></span></font><font color="#0000ff"><b>:</b></font>
+<font face="Tahoma"><span lang="ar-EG">أكتشفه بنفسك</span></font>.<br><br><font face="Tahoma"><span lang="ar-EG"><font color="#0000ff"><b>سؤال</b></font></span></font><font color="#0000ff"><b>:</b></font>
+<font face="Tahoma"><span lang="ar-EG">ماذا لو تم إضافة
+ملف الى المجلد </span></font>etc <font face="Tahoma"><span lang="ar-EG">؟
+</span></font><br><font face="Tahoma"><span lang="ar-EG"><font color="#0000ff"><b>الجواب</b></font></span></font><font color="#0000ff"><b>:</b></font>
+<font face="Tahoma"><span lang="ar-EG">أكتشفه بنفسك</span></font>.<br><br><font face="Tahoma"><span lang="ar-EG">الآن
+لنفرض الحالة الطبيعية وهي أن تقوم أنت
+بعمل مثل التغييرات التي عملناها بالاعلى،
+ما سيحصل عند قيامك بالفحص بـ </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">هو إنه سيخبرك بإنه
+الفحص وجد التغييرات الفلانية </span></font>1
+2 3 4<font face="Tahoma"><span lang="ar-EG">، والتي هي
+تغييرات أنت قمت بها</span></font>. <font face="Tahoma"><span lang="ar-EG">هنا
+نقوم بإخبار او تبليغ </span></font>(<font face="Tahoma"><span lang="ar-EG">أو
+أختر أي كلمة مناسبة ليتم وضعها هنا</span></font>)
+<b><font color="#8b0000">aide</font></b> <font face="Tahoma"><span lang="ar-EG">بإنه
+هذه الخيارات طبيعية قم بإضافتها الى
+القاعدة، أي قم بتعديل القاعدة الخاصة
+بك على ضوء التغييرات التي هي موجودة
+حالياً</span></font>. <font face="Tahoma"><span lang="ar-EG">للقيام
+بذلك لنقم بعملية تأكد من إن التعديلات
+حصلت على الملفات التي قمنا نحن بالتعديل
+عليها فقط، ولهذا ننفذ الأمر</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">aide --check</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">وبعد أن نتأكد
+بإن فعلا هذه التعديلات هي ما قمنا به
+نحن، نقوم بعمل التالي للتحديث</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">aide --update</pre><p style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<font face="Tahoma"><span lang="ar-EG">هنا سيقوم </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">بتحديث قاعدة
+البيانات التي لديه وبالتالي في المرات
+القادمة سيتم المقارنة بناءاً على القاعدة
+الجديدة التي قمنا بتحديثها الحين</span></font>.<br><br><font face="Tahoma"><span lang="ar-EG">الآن
+هناك مشكلة، وهي بوجود بعض الملفات بداخل
+المجلد </span></font><b>etc</b> <font face="Tahoma"><span lang="ar-EG">تتغيير
+بعد عمل إعادة تشغيل، طبعاً هذه الملفات
+تختلف من نظام الى آخر</span></font>. <font face="Tahoma"><span lang="ar-EG">كيف
+سنقوم بمراقبة هذه الملفات إذن؟ الجواب
+هو إنني ذكرت بإنه يفضل مراقبة الملفات
+التي لا تتغيير بإستمرار أو ربما لا تتغيير
+نهائياً وهنا لا أقصد فقط الملفات التي
+بداخل المجلد </span></font>etc <font face="Tahoma"><span lang="ar-EG">لا،
+وإنما يفضل مراقبة الملفات التي بداخل
+المجلدات التالية أيضاً</span></font>: <b>bin</b>
+<font face="Tahoma"><span lang="ar-EG">و </span></font><b>sbin</b> <font face="Tahoma"><span lang="ar-EG">و
+</span></font><b>usr</b> <font face="Tahoma"><span lang="ar-EG">و
+</span></font><b>lib</b> <font face="Tahoma"><span lang="ar-EG">و
+</span></font><b>boot</b> <font face="Tahoma"><span lang="ar-EG">الذي
+يحتوي على النواة </span></font><b>Kernel</b> <font face="Tahoma"><span lang="ar-EG">ولا
+يجب أن يتغيير بإستمرار وبالإضافة الى
+بعض الملفات الموجودة في المجلد </span></font><b>etc</b>
+<font face="Tahoma"><span lang="ar-EG">أو كلها، حسب ما
+تحتاجه</span></font>.<br><br><font face="Tahoma"><span lang="ar-EG">لهذا
+لنقم بإضافة السطور التالية، أسفل السطر
+الذي قمنا بإضافته سابقاً ليصبح لدينا
+كالتالي</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">/etc R
+/boot R
+/bin R
+/sbin R
+/lib R
+/usr R</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">هكذا نكون قد
+حددنا مراقبة هذه المجلدات وجميع
+الملفات</span></font>/<font face="Tahoma"><span lang="ar-EG">المجلدات
+التي بداخلها بشكل </span></font><b>Recursive</b> ...
+<font face="Tahoma"><span lang="ar-EG">إن كنت تريد أن تقوم
+بتحديد جزء من مجلد هنا سنحتاج الى إستعمال
+إمكانيات الـ </span></font><b>regex</b>. <font face="Tahoma"><span lang="ar-EG">مثلاً
+تريد أن يقوم </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">بمراقبة الملفات
+التي بداخل المجلد </span></font><b>bin</b> <font face="Tahoma"><span lang="ar-EG">مباشرة
+فقط وليست التي بداخل مجلدات بداخل هذا
+المجلد تستطيع أن تقوم بعمل ذلك من خلال
+تعديل السطر الخاص بالمجلد </span></font><b>bin</b>
+<font face="Tahoma"><span lang="ar-EG">ليصبح هكذا</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">/bin$ R</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">ولو كنت تريد أن
+تقوم بتحديد ملفات معينة للمراقبة ولنفرض
+تنتهي بالحروف </span></font><b>co</b> <font face="Tahoma"><span lang="ar-EG">نستطيع
+عمل ذلك من خلال التالي</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">/lib/*.co</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br><font face="Tahoma"><span lang="ar-EG">أيضاً تستطيع أن
+تقوم بتحديد المجلد العام للمراقبة وتقوم
+بعد ذلك بإختيار المجلدات التي لا تريد
+مراقبتها والتي تقع أسفل هذا المجلد،
+مثلا لو نفرض تريد مراقبة المجلد </span></font>/
+<font face="Tahoma"><span lang="ar-EG">كله ومن ثم تقوم
+بعمل </span></font><b>exclude</b> <font face="Tahoma"><span lang="ar-EG">استخراج
+لمجلدات معينة من هذه المراقبة يتم عمل
+ذلك من خلال السطور التالية</span></font>:</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0.02in">
+<font face="Tahoma"><span lang="ar-EG">كود</span></font>:</p>
+<pre style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">/ R
+!/var
+!/tmp
+!/home</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in">
+<br><font face="Tahoma"><span lang="ar-EG">وهكذا قمنا
+بمراقبة جميع ملفات النظام بإستثناء
+المجلدات التي قمنا بوضع الاشارة </span></font>!
+<font face="Tahoma"><span lang="ar-EG">قبلها</span></font>. <font face="Tahoma"><span lang="ar-EG">إذن
+من هذا نفهم بإن أي مجلد لا نريد مراقبة
+محتواه نضع العلامة </span></font>! <font face="Tahoma"><span lang="ar-EG">قبله</span></font>.<br><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in">
+<br><font face="Tahoma"><span lang="ar-EG"><font color="#0000ff"><b>سؤال</b></font></span></font><font color="#0000ff"><b>:</b></font>
+<font face="Tahoma"><span lang="ar-EG">عندما نقوم بتغييرات
+معينة أو نغيير ملف الإعدادات، هل نستطيع
+أن نقوم بحذف القاعدة </span></font>rm <font face="Tahoma"><span lang="ar-EG">لها
+ومن ثم تشغيل </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">وكأننا نقوم بتشغيله
+لأول مرة وذلك لبناء قاعدة جديدة؟ أم
+نستطيع أن نقوم بعمل </span></font><b>update</b> <font face="Tahoma"><span lang="ar-EG">لها
+فقط؟</span></font><br><font face="Tahoma"><span lang="ar-EG"><font color="#0000ff"><b>الجواب</b></font></span></font><font color="#0000ff"><b>:</b></font>
+<font face="Tahoma"><span lang="ar-EG">قم بالتجربة أنت
+</span></font>!!!<br><br><br><font face="Tahoma"><span lang="ar-EG">الآن
+بعد أن قمت بأخذ </span></font><b>snapshot</b> <font face="Tahoma"><span lang="ar-EG">من
+النظام الذي لديك، تستطيع أن تقوم بنقل
+</span></font>(<font face="Tahoma"><span lang="ar-EG">حذف</span></font>)
+<font face="Tahoma"><span lang="ar-EG">البرنامج </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">وملف الأعداد له
+والقاعدة التي قمت ببناءها الى مكان أمين
+ويكون قابل للقراءة فقط </span></font><b>Read Only</b>.
+<font face="Tahoma"><span lang="ar-EG">أفضل طريقة لعمل
+ذلك هي نقل الملفات الى قرص </span></font><b>CD</b>
+<font face="Tahoma"><span lang="ar-EG">العادي مثلا وذلك
+لانك تستطيع الكتابة عليه لمرة واحدة
+وبالتالي لن يستطيع أحد أن يقوم بتغيير
+البيانات التي عليه </span></font>... <font face="Tahoma"><span lang="ar-EG">بهذه
+الطريقة قمنا بإخفاء الآثار لوجود البرنامج
+</span></font><b><font color="#8b0000">aide</font></b>. <br><br><font face="Tahoma"><span lang="ar-EG">في
+حالة أردت عمل فحص للنظام مرة أخرى بناءاً
+على القاعدة التي قمت بالإحتفاظ بها عليك
+أن تقوم بنسخ ملف الأعدادات الى مجلد
+معيين وعليك أن تعدل قيمة المتغيير في
+الملف نفسه ليشير الى المسار الصحيح لوجود
+ملف الإعدادات، لا تنسى ذلك</span></font>.<br><br><font face="Tahoma"><span lang="ar-EG">بعد
+أن أنتهينا من كل تنصيب ومن ثم تشغيل </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">وأخذ ملف القاعدة
+وباقي الملفات المهمة، عندما تشعر بإن
+النظام لديك قد يكون تعرض الى إختراق أو
+تم التلاعب به، أدخل القرص </span></font><b>CD</b>
+<font face="Tahoma"><span lang="ar-EG">وقم بتشغيل </span></font><b><font color="#8b0000">aide</font></b>
+<font face="Tahoma"><span lang="ar-EG">مرة أخرى مع تمرير
+ملف الإعداد الذي وضعناه على الـ </span></font><b>CD</b>
+<font face="Tahoma"><span lang="ar-EG">وذلك ليقوم بالفحص
+والتأكد من سلامة جميع الملفات التي على
+النظام</span></font>. <font face="Tahoma"><span lang="ar-EG">إن
+كنت تريد أن تعقد المسألة أكثر على
+المخترقين في إمكانية إخفاء آثارهم
+وإمكانية إكتشافك لهذا التلاعب تستطيع
+أن تقوم بإستعمال أو الإعتماد على أكثر
+من </span></font><b>hash</b> <font face="Tahoma"><span lang="ar-EG">في
+نفس الوقت مثلاً </span></font><b>md5</b> <font face="Tahoma"><span lang="ar-EG">و
+</span></font><b>sha1</b> <font face="Tahoma"><span lang="ar-EG">وهكذا</span></font>.
+<font face="Tahoma"><span lang="ar-EG">بالنهاية حتى أشطر
+المخترقين سيقعون في قبضة </span></font><b><font color="#8b0000">aide.</font></b><br><br><font face="Tahoma"><span lang="ar-EG"><font color="#000080"><b>ملاحظة</b></font></span></font><font color="#000080"><b>:</b></font><br>-
+<font face="Tahoma"><span lang="ar-EG">الإختصار </span></font><b>FIC</b>
+<font face="Tahoma"><span lang="ar-EG">تعني </span></font><b>File
+Integrity Checker</b>.<br><br><font face="Tahoma"><span lang="ar-EG"><a href="https://www.cs.tut.fi/%7Erammer/aide.html" target="_blank"><b>الموقع
+الرسمي للبرنامج</b></a></span></font><br><br><font face="Tahoma"><span lang="ar-EG"><font size=4>تقبلوا
+تحياتي الحارة </font></span></font><font size=4>...<br></font><font face="Tahoma"><span lang="ar-EG"><font size=4>ودمتم
+بود جميعاً </font></span></font><font size=4>...</font></p>
+<script data-cfasync="false" src="https://arabnix.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

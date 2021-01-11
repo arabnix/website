@@ -1,0 +1,548 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+<title></title>
+<meta name="GENERATOR" content="OpenOffice.org 2.4  (Linux)">
+<meta name="AUTHOR" content="Ali">
+<meta name="CREATED" content="20080923;16065700">
+<meta name="CHANGEDBY" content="Ali">
+<meta name="CHANGED" content="20080923;16262600">
+<style type="text/css">
+	<!--
+		@page { size: 8.5in 11in; margin: 0.79in }
+		P { margin-bottom: 0.08in }
+	-->
+	</style>
+</head>
+<body lang="en-US" dir="LTR">
+<p align=CENTER style="margin-bottom: 0in"><font size=4 style="font-size: 16pt"><b>ModSecurity2
+Installation, and Configuration</b></font></p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Hi,
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">I actually searched a lot of times
+through Mr. Google looking for a ModSecurity2 HOWTO, but
+unfortunately I didn't find any. So I decided to write this simple
+HOWTO to help Sys Admin's to install and implement the ModSecurity2
+Apache Module.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">For those whom are now wondering by now
+!!!, what is this ModSecurity???, Well let's use the official
+definition:
+</p>
+<p style="margin-bottom: 0in"><b>ModSecurity™ </b>is an open
+source, free web application firewall (WAF) Apache module. With over
+70% of all attacks now carried out over the web application level,
+organizations need all the help they can get in making their systems
+secure. WAFs are deployed to establish an external security layer
+that increases security, detects and prevents attacks before they
+reach web applications. It provides protection from a range of
+attacks against web applications and allows for HTTP traffic
+monitoring and real-time analysis with little or no changes to
+existing infrastructure.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Great now that you know what it is, for
+sure you know if you really need it or not. Before we start, please
+note that this HOWTO is for ModSecurity2 with Apache2. I shall not be
+discussing ModSecurity Version1 and Apache Version1. And by the way
+they are completely different in configuration and other issues.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Okay before we start the installation,
+first of all we need to install the Apache2 and all the other
+software needed to install ModSecurity2. In case you don't have
+already an Apache2 server up and running, please do the following:
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">On an RPM Based Distro:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"># yum install
+httpd system-config-httpd httpd-devel mod_ssl</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">On a DEB Based Distro:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"># apt-get install
+apache2 apache2-utils</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Okay, now Apache is ready, lets move on
+to install other ModSecurity2 prerequisites. We need mod_unique_id
+which comes by default with the Apache2 main package, and we need to
+other libraries:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">libxml2</font>
+---&gt; http://xmlsoft.org/downloads.html
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">liblua5</font>
+---&gt; http://www.lua.org/download.html
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Make sure they don't currently exists
+by:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">$ ls -l /usr/lib/</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">If you find them there? well great
+let's move on. If not? then please download them from the sites
+supplied above.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Before we start the installation
+process, let's just stop Apache from running.
+</p>
+<p style="margin-bottom: 0in">On an RPM Based Distro:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">/etc/init.d/httpd
+stop</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">On a DEB Based Distro:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">/etc/init.d/apache2
+stop</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Now the great part, Installing the
+ModSecurity2. I shall be using the packages provided from the main
+developers (BreachSecurity), which you can find here --&gt; <a href="https://www.modsecurity.org/download/direct.html">DOWNLOAD</a>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">I used <i>modsecurity-apache_2.5.6</i>
+the time I was writing this HOWTO, so please make sure to choose the
+latest, because there always is updates and other cool stuff added to
+the new releases. Okay let's start downloading:</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">$ wget -c
+http://www.modsecurity.org/download/modsecurity-apache_2.5.6.tar.gz</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Now let's extract the files:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">$ tar xvfz
+modsecurity-apache_2.5.6.tar.gz</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Change into the directory:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">$ cd
+modsecurity-apache_2.5.6/apache2/</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Now we shall start with the
+configuration part, I always like to use the <i>--with-apxs</i>
+option (it is optional), now do:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">$ ./configure
+--with-apxs=/usr/sbin/apxs</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">After that lets compile the package:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">$ make</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">A test is always good to go for:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">$ make test</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">And if everything went well, a clean
+install is done (as root user):
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"># make install</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Okay, now we have ModSecurity2
+installed this doesn't mean that it is activated. To make it active
+we need to add some lines into the Apache main configuration files
+which tell Apache to load the ModSecurity Modules. So let's edit the
+main Apache configuration file (please use any editor that you
+prefer, for me I stick with vim):
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"># vim
+/etc/httpd/conf/httpd.conf</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Now go to the end of the LoadModule
+lines, and add the following:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">## Load Mod
+Security Modules and Required Libraries </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">LoadFile
+/usr/lib/libxml2.so </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">LoadFile
+/usr/lib/liblua5.1.so </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">LoadModule
+security2_module modules/mod_security2.so </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">Include
+conf.d/modsecurity2/*.conf </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">Include
+conf.d/modsecurity2/optional_rules/*.conf </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">LoadModule
+unique_id_module modules/mod_unique_id.so </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"> </font>
+</p>
+<p style="margin-bottom: 0in">Save the file and exit.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Now I assume that you are still in the
+directory <i>modsecurity-apache_2.5.6/apache2/</i> ? If you are then
+let's copy the rules to the <i>modsecurity2/</i> directory in the
+Apache configuration directory. This is done like this:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"># mv
+../modsecurity-apache_2.5.6/rules/* /etc/httpd/conf.d/modsecurity2/</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">If you are not in the
+modsecurity-apache_2.5.6/apache2/ directory then please switch to the
+following:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"># cp
+/path2/modsecurity-apache_2.5.6/rules/*
+/etc/httpd/conf.d/modsecurity2/</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">I always like to make checks as long as
+there is a syntax checker available, so lets check our Apache syntax:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">apachectl
+configtest</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">If an error is shown please check the
+line number where the error exists, and solve it, if not? Then lets
+continue.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Now let's start the Apache server:
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">On an RPM Based Distro:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">/etc/init.d/httpd
+start</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">On a DEB Based Distro:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">/etc/init.d/apache2
+start</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Okay, now how can we know if
+ModSecurity2 is running or not? Well let's make a test and see. First
+of all create a PHP file name it anything (for me I chose
+<i>checkmd.php</i>) and add the following code to it:
+</p>
+<p style="margin-bottom: 0in"><font color="#008000">&lt;? </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#008000"> file
+$text=$_GET['file']; </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#008000"> echo &quot;Content
+of File $text&quot;; </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#008000"> echo `cat
+$text`; </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#008000">?&gt; </font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Then goto your favorite web browser and
+try to browse the to the following link:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">http://localhost/checkmd.php?file=/etc/passwd
+</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Aha, you shall now have got a White
+Empty page saying in its title &quot;<font color="#008000">501 Method
+Not Implemented</font>&quot;, and its context is:
+</p>
+<p style="margin-bottom: 0in"><font color="#008000">Method Not
+Implemented </font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><font color="#008000">GET to
+/checkmd.php not supported. </font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Well done, this insures that
+ModSecurity2 is working and it blocked the try we are making to
+access the <i>/etc/passwd</i> file.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p align=CENTER style="margin-bottom: 0in">--== CONGRATULATIONS
+INSTALLATION COMPLETE ==--
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p align=CENTER style="margin-bottom: 0in">--== Some questions that
+you might be woundering of ==--
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><b>Question1:</b> If for a reason or
+another I want to stop the ModSecurity2 from working, how is that
+Done?
+</p>
+<p style="margin-bottom: 0in"><b>Answer1:</b> Simply edit the
+following file:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"># vim
+/etc/httpd/conf.d/modsecurity2/modsecurity_crs_10_config.conf</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">And switch the <i>SecRuleEngine</i>
+variable from <i>On</i> to <i>Off</i>:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">SecRuleEngine Off</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Save the file and a quick reload is
+needed to tell Apache to reread its configuration files:
+</p>
+<p style="margin-bottom: 0in">On an RPM Based Distro:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">#
+/etc/init.d/httpd reload</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">On a DEB Based Distro:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">#
+/etc/init.d/apache2 force-reload</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">You can also switch the <i>SecRuleEngine</i>
+to <i>DetectionOnly</i> in case you need to monitor you web
+application.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><b>Question2:</b> I am hosting my own
+Blog, and every time I add a post I keep getting a not implemented
+error. Why is this happening? And how can I disable it for my posts?
+(I.e: disabling ModSecurity2 for a specific file).</p>
+<p style="margin-bottom: 0in"><b>Answer2:</b> This is happening
+because ModSecurity thinks that you are trying to inject some code to
+the PHP files of your Blog based on the pretested rules
+BreachSecurity provides with the ModSecurity2 package. It is called
+&quot;<i>False Positives</i>&quot;, because it is a false alert (you
+are only posting a new post) and it's positive because it matched one
+of the rules that ModSecurity2 depends on.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Disabling it shall need some work from
+your side, because as I told in the beginning, ModSecurity2 does not
+work like ModSecurity Version1, and disabling it in version 1 was
+much easier, but here in ModSecurity2 it is really much more
+powerful. First you need to monitor your Apache error log files. So
+let us start the following:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"># tail -f
+/var/log/httpd/error_log</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">I shall assume that we have the Blog
+parked on the domain <i>www.example.com</i>. Open your favorite
+browser and goto:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">http://www.example.com/wp-admin/post-new.php</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">And write the same post you got an
+error from. Now you shall get the same error, right? Great, now lets
+go and check what our error log has reported us. We shall see
+something like this:
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">[Mon Sep 22 11:01:12 2008] [error]
+[client <font color="#0000ff">211.158.21.152</font>] ModSecurity:
+Access denied with code 501 (phase 2). Pattern match &quot;^(?:ht|f)tp:/&quot;
+at ARGS:referredby. [file
+&quot;/etc/httpd/conf.d/modsecurity2/optional_rules/<font color="#0000ff">modsecurity_crs_42_tight_security.conf</font>&quot;]
+[line &quot;32&quot;] [id &quot;<font color="#0000ff">950117</font>&quot;]
+[msg &quot;<font color="#0000ff">Remote File Inclusion Attack</font>&quot;]
+[severity &quot;CRITICAL&quot;] [hostname &quot;<font color="#0000ff">www.example.com</font>&quot;]
+[uri &quot;<font color="#0000ff">/wp-admin/post-new.php</font>&quot;]
+[unique_id &quot;dGP7GXAAA8AAAPQC4AAEAAFZ&quot;]
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Hey, wait a minute, What are these????
+</p>
+<p style="margin-bottom: 0in">This is actually a single line of
+error. Let me explain the important parts of it, and what we shall
+need to disable this alert from happening in the future. I am
+interested now in:</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><b>1st:</b> <font color="#0000ff">211.158.21.152</font>
+this is the IP of the host who because of him the alert was raised.
+</p>
+<p style="margin-bottom: 0in"><b>2nd:</b>
+<font color="#0000ff">modsecurity_crs_42_tight_security.conf</font>
+is the file that includes the rule.
+</p>
+<p style="margin-bottom: 0in"><b>3rd:</b> ModSecurity classified this
+as a <font color="#0000ff">Remote File Inclusion Attack</font>.
+</p>
+<p style="margin-bottom: 0in"><b>4th:</b> <font color="#0000ff">www.example.com</font>
+is the domain where the problem came from (in case you are hosting
+more domains on the same server).
+</p>
+<p style="margin-bottom: 0in"><b>5th:</b> The file that made the
+alert is <font color="#0000ff">/wp-admin/post-new.php</font>.
+</p>
+<p style="margin-bottom: 0in"><b>Finally:</b> <font color="#0000ff">id</font>,
+This is the important thing for us here, because we shall be using
+this number which is actually a rule number from the ModSecurity rule
+set.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Great we have the id let us disable
+this error from happening again. Goto Apache's main config file and
+edit it:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff"># vim
+/etc/httpd/conf/httpd.conf</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Add the following lines to disable the
+error above:
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">&lt;LocationMatch
+&quot;/wp-admin/post-new.php&quot;&gt; </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">SecRuleRemoveById
+950117 </font>
+</p>
+<p style="margin-bottom: 0in"><font color="#0000ff">&lt;/LocationMatch&gt;
+</font>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Now save, close the file and reload
+Apache.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">Try making the same post again. If
+everything went well then great, if you get another error? then go
+back to the log files and get the id and add it to the
+<i>SecRuleRemoveById</i> we wrote above.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><b>Notes:</b>
+</p>
+<p style="margin-bottom: 0in">1- If you are hosting more than one
+domain on the server (<i>VirtualHosting</i>), then it is better to
+add the lines above to the configuration file of that domain.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">2- You can also solve this error by
+witting your own rules, but it is not quite easy and you need some
+knowledge in writing Regex codes, and to be more precise you need to
+know how to write Perl-Compatible Regular Expression (PCRE), which
+ModSecurity rules are written with.
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">If you are looking for further
+documentation, then the main site is always a good place to look in:
+</p>
+<p style="margin-bottom: 0in">http://www.modsecurity.org/documentation/modsecurity-apache/2.5.6/html-multipage/installation.html
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in">So that's it :)</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><br>
+</p>
+<p style="margin-bottom: 0in"><b>Written by:</b>
+</p>
+<p style="margin-bottom: 0in"> Ali Al-Shemery (<a href="http://www.binary-zone.com/"><span class="__cf_email__" data-cfemail="9cdebdf2dceee5">[email&#160;protected]</span></a>)</p>
+<p style="margin-bottom: 0in"> <a href="http://www.linuxac.org/">Linux
+Arab Community</a></p>
+<script data-cfasync="false" src="https://arabnix.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

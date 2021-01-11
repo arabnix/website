@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+<title></title>
+<meta name="GENERATOR" content="OpenOffice.org 2.1  (Linux)">
+<meta name="AUTHOR" content="Ali Al-Shemery">
+<meta name="CREATED" content="20080127;11554100">
+<meta name="CHANGEDBY" content="Ali Al-Shemery">
+<meta name="CHANGED" content="20080127;12103800">
+<style type="text/css">
+	<!--
+		@page { size: 8.5in 11in; margin: 0.79in }
+		P { margin-bottom: 0.08in }
+	-->
+	</style>
+</head>
+<body lang="en-US" dir="LTR">
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="Tahoma"><span lang="zxx"><strong>أوامر
+حرق </strong></span></font><strong>CD <font face="Tahoma"><span lang="zxx">أو
+</STRONG></span></font><strong>DVD <font face="Tahoma"><span lang="zxx">أو
+تحويل الملفات من </STRONG></span></font><strong>wav <font face="Tahoma"><span lang="zxx">الى
+</STRONG></span></font><strong>mp3</strong>
+</P>
+<hr size=1>
+<div id="post_message_5726" dir="LTR">
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="Tahoma"><span lang="zxx">السلام
+عليكم ورحمة الله وبركاته </span></font>.</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br><font face="Tahoma"><span lang="zxx">من
+خلال تصفحي للنت جمعت بعض الأوامر التي
+تفيد في التحويل وحرق الأقراص الليزرية
+</span></font>CD <font face="Tahoma"><span lang="zxx">كانت أو
+</span></font>DVD <font face="Tahoma"><span lang="zxx">من خلال
+سطر الأوامر طبعا </span></font>... <font face="Tahoma"><span lang="zxx">نبدأ
+على بركة الله</span></font>:<br><br>1- <font face="Tahoma"><span lang="zxx">تحويل
+من </span></font>wav <font face="Tahoma"><span lang="zxx">الى
+</span></font>mp3 <font face="Tahoma"><span lang="zxx">من خلال
+برنامج أسمه </span></font>lame</p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">lame -h input.wav output.mp3</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+2- <font face="Tahoma"><span lang="zxx">نزع الصوت من ملف
+فيديو</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">mplayer -ao pcm &lt;file.mpg&gt;</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+3- <font face="Tahoma"><span lang="zxx">حرق ملف </span></font>iso
+<font face="Tahoma"><span lang="zxx">على قرص ليزري ويخرجه
+بعد الإنتهاء</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">cdrecord -v speed=&lt;burning speed&gt; dev=&lt;your device&gt; /path/to/file.iso ; eject</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+4- <font face="Tahoma"><span lang="zxx">أمر آخر لمن يستعمل
+الكيرنل </span></font>2.6 <font face="Tahoma"><span lang="zxx">لحرق
+أيضا ملف </span></font>iso <font face="Tahoma"><span lang="zxx">على
+قرص ليزري ويخرجه بعد الإنتهاء</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">cdrecord -v speed=8 dev=ATAPI:1,1,0 /home/ali/file.iso ; eject</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+5- <font face="Tahoma"><span lang="zxx">النسخ من قرص الى
+قرص مباشرة</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">cdrecord -v dev=&lt;your device&gt; speed=&lt;burning speed&gt; -isosize /dev/cdrom ; eject</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+6- <font face="Tahoma"><span lang="zxx">الحصول على معلومات
+من القرص </span></font>
+</p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">isoinfo -i -d /dev/cdrom</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+7- <font face="Tahoma"><span lang="zxx">عمل ملف </span></font>iso
+<font face="Tahoma"><span lang="zxx">من مجلد على جهازك</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">mkisofs -vrTJUV &quot;Label&quot; -o myDownloads.iso /path/to/directory</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+8- <font face="Tahoma"><span lang="zxx">عمل ملف </span></font>iso
+<font face="Tahoma"><span lang="zxx">من القرص الليزري
+</span></font>CD <font face="Tahoma"><span lang="zxx">أو </span></font>DVD
+<font face="Tahoma"><span lang="zxx">نفس الشيء</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">dd if=/dev/&lt;your device&gt; of=cd.iso</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+9- <font face="Tahoma"><span lang="zxx">عمل فرط </span></font>extract
+<font face="Tahoma"><span lang="zxx">لملفات صوتية على
+قرص ليزري من خلال البرنامج</span></font>cdparanoia
+<font face="Tahoma"><span lang="zxx">وإخراج القرص بعد
+الإنتهاء</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">cdparanoia -B &quot;1-&quot;;eject</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+10- <font face="Tahoma"><span lang="zxx">تحويل ملفات من
+نوع </span></font>wav <font face="Tahoma"><span lang="zxx">الى
+ملفات من نوع </span></font>ogg</p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">oggenc file.wav</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+11- <font face="Tahoma"><span lang="zxx">حرق قرص ليزري
+ووضع عليه ملفات </span></font>wav <font face="Tahoma"><span lang="zxx">ومن
+ثم إخراج القرص</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">cdrecord -v -audio -pad speed=&lt;burning speed&gt; dev=&lt;your device&gt; /path/to/*.wav;eject</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+12- <font face="Tahoma"><span lang="zxx">نسخ قرص بواسطة
+برنامج </span></font>cdrdao</p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">cdrdao read-cd --device &lt;your device&gt; --read-raw --datafile mydata.bin -v 99 mydata.cue</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+<font face="Tahoma"><span lang="zxx">مثال آخر</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">cdrdao write --device &lt;your device&gt; --overburn -v 99 --speed &lt;burning speed&gt; mydata.cue</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+13- <font face="Tahoma"><span lang="zxx">عمل مسح لقرص
+ليزري </span></font>... <font face="Tahoma"><span lang="zxx">طبعا
+يجب أن يكون القرص قابل لمثل هذه العملية
+</span></font>... <font face="Tahoma"><span lang="zxx">أي قرص
+قابل للمسح</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">cdrecord -v dev=&lt;your device&gt; speed=&lt;burning speed&gt; blank=fast</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+14- <font face="Tahoma"><span lang="zxx">لعمل ماونت </span></font>mount
+<font face="Tahoma"><span lang="zxx">لملف من نوع </span></font>iso
+<font face="Tahoma"><span lang="zxx">على شكل </span></font>CD
+<font face="Tahoma"><span lang="zxx">أي يصبح يعمل مثل
+برامج ال </span></font>Virtual CD <font face="Tahoma"><span lang="zxx">اليك
+التالي</span></font>:</p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">mount /path/to/file.iso /mnt/&lt;directory&gt; -t iso9660 -o ro,loop=/dev/loop0</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+<font face="Tahoma"><span lang="zxx">مثال آخر</span></font>:</p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">mount file.iso /mnt/cdrom -t iso9660 -o ro,loop=/dev/loop0</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+<font face="Tahoma"><span lang="zxx">مثال آخر</span></font>:</p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">mount -t iso9660 -o ro,loop /path/to/file.iso /mnt/mount_point</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in; margin-bottom: 0in">
+<br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in; margin-bottom: 0in">
+15- <font face="Tahoma"><span lang="zxx">حرق </span></font>DVD <font face="Tahoma"><span lang="zxx">من
+ملف </span></font>iso <font face="Tahoma"><span lang="zxx">مباشرة</span></font></p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">growisofs -Z /dev/&lt;your device&gt;=&lt;file.iso&gt;</pre><p dir="RTL" align=RIGHT style="margin-right: 0.22in">
+<br><font face="Tahoma"><span lang="zxx">نسيت اذكر شويه
+على برنامج ال </span></font>mkisofs <font face="Tahoma"><span lang="zxx">فله
+إمكانيات كثيرة جدا </span></font>... <font face="Tahoma"><span lang="zxx">وأيضا
+مفيد لو تريد تعمل </span></font>Backup <font face="Tahoma"><span lang="zxx">منه
+ﻷنه يحافظ على صلاحيات الملفات كما هي
+</span></font>...<br><br><br>
+</p>
+<pre dir="RTL" style="margin-left: 0.22in; margin-right: 0.22in; border: 1px solid #000000; padding: 0.07in; text-align: left">mkisofs -o file.iso -x /home/ali/myfiles -J -R -A -V -v /home/ali/</pre><p dir="RTL" align=RIGHT style="margin-left: 0.22in; margin-right: 0.22in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-right: 0.22in"><font face="Tahoma"><span lang="zxx">ولمعرفة
+كل من هذه الخيارات </span></font>man mkisofs <font face="Tahoma"><span lang="zxx">تمام
+؟</span></font><br><br><font face="Tahoma"><span lang="zxx">أتمنى
+تعجبكم </span></font>;) <font face="Tahoma"><span lang="zxx">وتنال
+رضاكم </span></font>...<br><font face="Tahoma"><span lang="zxx">أخوكم
+</span></font><a href="https://arabnix.com/cdn-cgi/l/email-protection#ce8cefa08ebcb7"><span class="__cf_email__" data-cfemail="fbb9da95bb8982">[email&#160;protected]</span></a> ...</p>
+</div>
+<script data-cfasync="false" src="https://arabnix.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

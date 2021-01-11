@@ -1,0 +1,516 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+<title>تنصيب سيرفر Nis لإعطاء الصلاحيات من البداية الى النهاية</title>
+<meta name="GENERATOR" content="OpenOffice.org 2.3  (Linux)">
+<meta name="AUTHOR" content="Ali">
+<meta name="CREATED" content="20080325;23230000">
+<meta name="CHANGEDBY" content="Ali">
+<meta name="CHANGED" content="20080325;23380000">
+<style type="text/css">
+	<!--
+		@page { size: 8.27in 11.69in; margin-right: 1.25in; margin-top: 1in; margin-bottom: 1in }
+		P { margin-bottom: 0.08in; direction: rtl; color: #000000; text-align: right; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	-->
+	</style>
+</head>
+<body lang="en-US" text="#000000" dir="RTL">
+<p class="western" align=CENTER style="margin-bottom: 0in"><font color="#0000ff"><font size=4 style="font-size: 16pt"><span lang="ar-SA"><b>السلام
+عليكم ورحمة الله وبركاته</b></span></font></font></p>
+<p class="western" align=CENTER style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=CENTER style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=CENTER style="margin-bottom: 0in"><span lang="ar-SA"><font size=4><b>تنصيب
+سيرفر </b></font></span><font size=4><b>NIS </b></font><span lang="ar-SA"><font size=4><b>لإعطاء
+الصلاحيات من البداية الى النهاية</b></font></span></p>
+<p class="western" align=CENTER style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">أخوتي
+بالله كما وعدتكم بكل جديد ها أنا اليوم
+اضع لكم الشرح المفصل لتنصيب سيرفر ال
+</font></span><font face="Arial, sans-serif">NIS </font><span lang="ar-SA"><font face="Arial, sans-serif">والتي
+هي </font></span><font face="Arial, sans-serif">Name Information
+Server </font><span lang="ar-SA"><font face="Arial, sans-serif">أو
+</font></span><font face="Arial, sans-serif">Service </font><span lang="ar-SA"><font face="Arial, sans-serif">التي
+تعني سيرفر دعم المعلومات والتي تقوم
+بإعطاء المعلومات الكاملة للأعضاء من
+خلالها وتحدد صلاحيات كل عضو على الشبكة
+ماذا يمكن أن يعمل</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعاً
+تعتبر هذه السيرفر هي رديفة أو المشابهة
+لخدمة ال </font></span><font face="Arial, sans-serif">Active
+Directory </font><span lang="ar-SA"><font face="Arial, sans-serif">بالنسبة
+لمستعملي الوندوز وكما ذكرت لكم هي التي
+تعطي وتحدد صلاحيات المستخدمين</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعاً
+طريقة تنصيب هذه السيرفر هو جابنين</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الأول
+تنصيب السيرفر والثاني تنصيب المستخدم
+للسيرفر</font></span><font face="Arial, sans-serif">. </font><span lang="ar-SA"><font face="Arial, sans-serif">لهذا
+أخوتي سأبدأ بتنصيب السيرفر أولاً ثم
+ندخل مباشرتاً الى تنصيب المستخدم بعد
+ذلك في رد منفصل</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">على بركة
+الله نبدأ</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">أول
+شيء عليك القيام به لكي لا تحصل عندنا
+مشاكل كبيرة لاحقاً قم بإغلاق ال </font></span><font face="Arial, sans-serif">iptables
+</font><span lang="ar-SA"><font face="Arial, sans-serif">التي هي
+تابعة للجدار الناري من خلال الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">service iptables stop</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+قم بفتح الملف </font></span><font face="Arial, sans-serif">network
+</font><span lang="ar-SA"><font face="Arial, sans-serif">من خلال
+تنفيذ الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">vi /etc/sysconfig/network</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">ومن
+ثم قم بإضافة أسم الدومين </font></span><font face="Arial, sans-serif">domain
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الخاص
+بك في السطر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">NISDOMAIN=arabnix.net</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">أنا
+هنا الدومين عندي هو </font></span><font face="Arial, sans-serif">arabnix.net
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أنت قم
+بوضع أسم الدومين الذي تريد والموجود
+عندك</font></span><font face="Arial, sans-serif">. </font><span lang="ar-SA"><font face="Arial, sans-serif">طبعا
+بعد الإنتهاء من هذا الملف وحفظه سيتم
+تفعيل هذا الدومين بعد عمل إعادة تشغيل
+للجهاز أو يمكنك عمل ذلك من خلال الأمر
+التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">domainname arabnix.net</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+الأمر لا يتطلب إعادة تشغيل لتفعيل الدومين
+ولكن يعمل بشكل مؤقت أي بمجرد إعادة
+التشغيل سيتم مسح أسم الدومين الذي وضعته
+ولهذا قمنا بتثبيته لكي يتم تثبيت القيمة
+حتى بعد إعادة التشغيل</font></span><font face="Arial, sans-serif">.<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+عليك أن تحدد الشبكات التي ممكن تعمل
+إتصال </font></span><font face="Arial, sans-serif">access </font><span lang="ar-SA"><font face="Arial, sans-serif">على
+سيرفر ال </font></span><font face="Arial, sans-serif">NIS </font><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+من خلال تحرير الملف </font></span><font face="Arial, sans-serif">securenets
+</font><span lang="ar-SA"><font face="Arial, sans-serif">من خلال
+الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">vi /var/yp/securenets</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">وتضع
+فيه أرقام الأي بي الخاص بالشبكات المسموحة
+مثل ما يلي</font></span><font face="Arial, sans-serif">:</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br>127.0.0.1
+255.255.255.255<br>172.16.0.0 255.255.0.0</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font color="#ff0000"><font face="Arial, sans-serif"><b>ملاحظة</b></font></font></span><font color="#ff0000"><font face="Arial, sans-serif"><b>:-</b></font></font><font face="Arial, sans-serif"><b><br></b></font><span lang="ar-SA"><font face="Arial, sans-serif">نظام
+ال </font></span><font face="Arial, sans-serif">nis </font><span lang="ar-SA"><font face="Arial, sans-serif">مثله
+مثل نظام ال </font></span><font face="Arial, sans-serif">nfs
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والذي
+هو </font></span><font face="Arial, sans-serif">Network File Server
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والذي
+سأشرح تنصيبه لكم لاحقاً إن شاء الله</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يعتمد
+بشكل كلي على خدمة أسمها </font></span><font face="Arial, sans-serif">portmap.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وظيفة
+هذه الخدمة هي فتح بورت معين لكي يتم
+الإتصال بين السيرفر والمستخدم لخدمة ال
+</font></span><font face="Arial, sans-serif">nis </font><span lang="ar-SA"><font face="Arial, sans-serif">مثلاً
+طبعاً يقوم بها من خلال تحديد رقم </font></span><font face="Arial, sans-serif">port
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أعلى من
+الأرقام المحجوزة والمتعارف عليها مثل
+بورت </font></span><font face="Arial, sans-serif">80 </font><span lang="ar-SA"><font face="Arial, sans-serif">للبروتوكول
+</font></span><font face="Arial, sans-serif">http </font><span lang="ar-SA"><font face="Arial, sans-serif">وهكذا</font></span><font face="Arial, sans-serif">.</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">للتأكد
+من عمل هذه الخدمة نفذ الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">service portmap status</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">أذا
+وجدتها تعمل ممتاز</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">إذا لا
+قم بتنفيذ الأوامر التالية</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">service portmap start</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">chkconfig portmap start</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">السطر
+الأول يشغلها والسطر الثاني يضيفها الى
+ال </font></span><font face="Arial, sans-serif">run levels </font><span lang="ar-SA"><font face="Arial, sans-serif">لكي
+تعمل حتى بعد عمل إعادة تشغيل أو الدخول
+الى مستوى تشغيلي آخر</font></span><font face="Arial, sans-serif">.</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+يجب أن نشغل برنامج أو خدمة ال </font></span><font face="Arial, sans-serif">nis
+</font><span lang="ar-SA"><font face="Arial, sans-serif">من خلال
+تنفيذ الاوامر التالية</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">service ypserv start</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">chkconfig ypserv on</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">السطر
+الأول يشغلها والسطر الثاني يضيفها الى
+ال </font></span><font face="Arial, sans-serif">run levels </font><span lang="ar-SA"><font face="Arial, sans-serif">لكي
+تعمل حتى بعد عمل إعادة تشغيل أو الدخول
+الى مستوى تشغيلي آخر</font></span><font face="Arial, sans-serif">.</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font color="#ff0000"><font face="Arial, sans-serif"><b>ملاحظة</b></font></font></span><font color="#ff0000"><font face="Arial, sans-serif"><b>:-</b></font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">أكيد
+سيخطر على بال بعضكم لماذا </font></span><font face="Arial, sans-serif">yp
+:flabbergasted: : </font><span lang="ar-SA"><font face="Arial, sans-serif">؟
+صح أكيد ؟ طبعاً </font></span><font face="Arial, sans-serif">yp
+</font><span lang="ar-SA"><font face="Arial, sans-serif">هي عبارة
+عن </font></span><font face="Arial, sans-serif">Yellow Pages </font><span lang="ar-SA"><font face="Arial, sans-serif">التي
+كان ولا يزال أنظمة اليونكس يستعملونها
+والتي جاءت فكرتها من الصفحات الصفراء
+الخاصة بدليل الهاتف التي تعطي المعلومات
+عن الأشخاص</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لهذا
+بقيت كما هي </font></span><font face="Arial, sans-serif">yp
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بدل من
+كلمة </font></span><font face="Arial, sans-serif">nis </font><span lang="ar-SA"><font face="Arial, sans-serif">مثلاً</font></span><font face="Arial, sans-serif">.<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+قم بتحرير ملف </font></span><font face="Arial, sans-serif">Makefile
+</font><span lang="ar-SA"><font face="Arial, sans-serif">من خلال
+الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">vi /var/yp/Makefile</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">وأبحص
+عن العبارة </font></span><font face="Arial, sans-serif">:all
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وأجعلها
+كالتالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br>all:
+passwd group hosts netid</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+قربنا من الإنتهاء من تنصيب السيرفر سهل
+صح ؟ أشربلك فنجان قهوة لكي تكم</font><font face="Arial, sans-serif"><span lang="ar-JO">ل</span></font></span><font face="Arial, sans-serif">.</font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لبناء
+قاعدة البيانات الخاصة بالسيرفر </font></span><font face="Arial, sans-serif">NIS
+</font><span lang="ar-SA"><font face="Arial, sans-serif">نقوم
+بتنفيذ الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">/usr/lib/yp/ypinit -m</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+قم بتشغيل خدمة ال </font></span><font face="Arial, sans-serif">rc.yppasswdd
+</font><span lang="ar-SA"><font face="Arial, sans-serif">التي
+تسمح للمستخدم بتغيير كلمة السر له من
+خلال جهازه</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ويتم
+التغيير على السيرفر ال </font></span><font face="Arial, sans-serif">NIS.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">نفذ الأمر
+التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">service yppasswdd start</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">chkconfig yppasswdd on</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">كما
+ذكرت سابقاً</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">السطر
+الأول يشغلها والسطر الثاني يضيفها الى
+ال </font></span><font face="Arial, sans-serif">run levels </font><span lang="ar-SA"><font face="Arial, sans-serif">لكي
+تعمل حتى بعد عمل إعادة تشغيل أو الدخول
+الى مستوى تشغيلي آخر</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الحين
+أقول لك ألف مبروك تم تنصيب سيرفر ال </font></span><font face="Arial, sans-serif">NIS
+</font><span lang="ar-SA"><font face="Arial, sans-serif">على جهازك
+السيرفر ولكي تتأكد من ذلك نفذ الأوامر
+التالية</font></span><font face="Arial, sans-serif">:<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الأمر
+الأول لفحص إن جميع خدمات ال </font></span><font face="Arial, sans-serif">yp
+</font><span lang="ar-SA"><font face="Arial, sans-serif">تعمل</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">ps auxf | grep yp</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الأمر
+الثاني للتأكد من ربط خدمة ال </font></span><font face="Arial, sans-serif">NIS
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مع البورت
+ماب </font></span><font face="Arial, sans-serif">portmap:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">rpcinfo -p localhost</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الأمر
+الثالث والأخير للتأكد من خلوا جميع
+العملية من أخطاء أفتح ملف </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">vi /var/log/messages</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">وتأكد
+أنه لا يوجد في آخره أي مشكلة عن السيرفر
+الذي عملته من خلال ملاحظتك للنتائج التي
+كتبت في هذا الملف</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعاً
+قلت لكم أبحثوا في الآخير وذلك على إعتبار
+إنه آخر ما قمتم به هو تنصيب ال </font></span><font face="Arial, sans-serif">NIS.
+<img src="https://arabnix.com/papers/ar/NIS_html_1c189c08.png" name="graphics1" align=BOTTOM width=19 height=43 border=0><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+أقدر أرجع وأقول لكم ألف مبروك التنصيب
+ولكي تتمكنوا من العمل عليها عليكم إتباع
+الدرس القادم والذي يخص تنصيب المستخدم
+</font></span><font face="Arial, sans-serif">client </font><span lang="ar-SA"><font face="Arial, sans-serif">لهذا
+اليوم عليكم أن تقرءوا كثيراً
+<img src="https://arabnix.com/papers/ar/NIS_html_m60403814.png" name="graphics2" align=BOTTOM width=48 height=26 border=0></font></span></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=CENTER style="margin-bottom: 0in; page-break-before: always">
+<span lang="ar-SA"><font color="#0000ff"><font face="Arial, sans-serif"><font size=4><b>السلام
+عليكم ورحمة الله وبركاته</b></font></font></font></span><font color="#0000ff"><font face="Arial, sans-serif"><font size=4><b><br></b></font></font></font><br>
+</p>
+<p class="western" align=CENTER style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><font size=4><b>الدرس
+الثاني هو تنصيب الـــ </b></font></font></span><font face="Arial, sans-serif"><font size=4><b>NIS
+Client</b></font></font><font face="Arial, sans-serif"><font size=4><b>
+:</b></font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size=4><b><br></b></font></font><span lang="ar-SA"><font face="Arial, sans-serif">أولا
+يجب أن تكون منصب البرامج التالية</font></span><font face="Arial, sans-serif">:</font></p>
+<ul>
+<li><p class="western" align=RIGHT style="margin-top: 0.19in; margin-bottom: 0in">
+<font face="Arial, sans-serif">portmap</font></p>
+<li><p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">ypbind</font></p>
+<li><p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">yptools</font></p>
+<li><p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">authconfig</font></p>
+<li><p class="western" align=RIGHT style="margin-bottom: 0.19in"><font face="Arial, sans-serif">authconfig-gtk</font></p>
+</ul>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">ثانياً
+نقوم بتشغيل برنامج التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">system-config-authentication</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">قم
+بإختيار </font></span><font face="Arial, sans-serif">Enable
+NIS Support </font><span lang="ar-SA"><font face="Arial, sans-serif">على
+صفحة معلومات المستخدم </font></span><font face="Arial, sans-serif">User
+Information. </font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+قم بالضغط على </font></span><font face="Arial, sans-serif">Configure
+NIS </font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+في شاشة اعدادات ال </font></span><font face="Arial, sans-serif">NIS
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ضع الدومين
+الذي تريده أن يعمل لل </font></span><font face="Arial, sans-serif">NIS
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والذي
+عملته في الدرس السابق وضع أسم السيرفر
+الذي موجود عليه ال </font></span><font face="Arial, sans-serif">NIS
+Server </font><span lang="ar-SA"><font face="Arial, sans-serif">بعد
+ذلك قم بالضغط على </font></span><font face="Arial, sans-serif">OK.<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+المفروض تم تشغيل خدمة ال </font></span><font face="Arial, sans-serif">ypbind
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الخاصة
+بال </font></span><font face="Arial, sans-serif">NIS </font><span lang="ar-SA"><font face="Arial, sans-serif">بنجاح</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أذا لم
+يتم ذلك ممكن التأكد من ذلك من خلال النظر
+الى المجلد التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">/var/log/messages</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+عليك أن تعمل إعادة تشغيل للخدمة </font></span><font face="Arial, sans-serif">sshd
+</font><span lang="ar-SA"><font face="Arial, sans-serif">من خلال
+الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">service sshd restart</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+نأتي الى فحص ال </font></span><font face="Arial, sans-serif">NIS
+Client </font><span lang="ar-SA"><font face="Arial, sans-serif">مستخدم
+ال </font></span><font face="Arial, sans-serif">NIS </font><span lang="ar-SA"><font face="Arial, sans-serif">يعني
+من خلال التالي</font></span><font face="Arial, sans-serif">:<br></font><span lang="ar-SA"><font face="Arial, sans-serif">أولاً
+نفذ الأمر الذي بالأسفل يجب أن يرجع لك
+أسم ال </font></span><font face="Arial, sans-serif">NIS Server:</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">ypwhich</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+قم بتنفيذ الأمر الذي بالأسفل المفروض
+يرجع لك جميع الأعضاء المسجلين على السيرفر
+والذي رقمه يتجاوز ال </font></span><font face="Arial, sans-serif">500:</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">ypcat passwd</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+نفذ الأمر الذي بالأسفل لكي تحصل على جميع
+المستخدمين الموجودين عندك محلياً
+والمسجلين في ملف </font></span>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">/etc/passwd</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">وأيضا
+تحصل على معلومات من خدمة ال </font></span><font face="Arial, sans-serif">NIS
+map </font><span lang="ar-SA"><font face="Arial, sans-serif">الخاصة
+بكلمات السر</font></span><font face="Arial, sans-serif">.<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+قم بعمل مستخدم على جهاز المحطة ومستخدم
+على جهاز الخادم وعلى أن يكون كلاهما
+مختلف عن الآخر واعطي لكل واحد كلمة سر</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">نفذ
+التالي على المحطة</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">useradd -u 1024 luser</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">passwd luser</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">نفذ
+التالي على الخادم</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">useradd -u 1025 suser</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">passwd suser</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الأول
+هو المستخدم الذي ستستعمله على المحطة
+والثاني سنستعمله على الخادم</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بعد ذلك
+تأكد من إمكانيتك للدخول على النظام
+بإستعمال هذين المستخدمين</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعا
+الأول تتأكد من على المحطة والثاني على
+الخادم</font></span><font face="Arial, sans-serif">. </font><span lang="ar-SA"><font face="Arial, sans-serif">بعد
+ذلك حاول أن تدخل على المحطة من خلال
+المستخدم </font></span><font face="Arial, sans-serif">suser
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الي هو
+المستخدم الموجود على الخادم</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعاً
+لن يسمح لك بذلك لأنه لم يتم إضافة المعلومات
+الخاصة بهذا العضو على </font></span><font face="Arial, sans-serif">NIS
+map </font><span lang="ar-SA"><font face="Arial, sans-serif">الخاصة
+بكلمات السر</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">للتأكد
+من ذلك نفذ الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">ypcat passwd</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">بعد
+ذلك أذهب الى المجلد </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">cd /var/yp</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">ونفذ
+الأمر </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">make</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+أرجع على المحطة وحاول الدخول من خلال
+المستخدم </font></span><font face="Arial, sans-serif">suser
+</font><span lang="ar-SA"><font face="Arial, sans-serif">من جديد
+ستتمكن من الدخول على النظام وذلك لأنه
+قاعدة البيانات الخاصة بالكلمات السرية
+تم إعادة بناءها وتم إضافة المستخدم
+الجديد أليها</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وللتأكد
+من ذلك نفذ الأمر </font></span>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">ypcat passwd</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الى
+هنا نأتي الى نهاية تنصيب سيرفر ال </font></span><font face="Arial, sans-serif">NIS
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وأتمنى
+أن أكون قد وفقت في شرحها لكم </font></span><font face="Arial, sans-serif">:o
+<br></font><span lang="ar-SA"><font face="Arial, sans-serif">وأنتظروني
+في تكلمة على هذا الدرس وهو كيفية عمل
+مجلد </font></span><font face="Arial, sans-serif">Home </font><span lang="ar-SA"><font face="Arial, sans-serif">لكل
+مستخدم يدخل من الــ </font></span><font face="Arial, sans-serif">NIS</font><font face="Arial, sans-serif">
+...</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font size=4><span lang="ar-JO"><b>أخوكم
+</b></span></font></span><font size=4><b><a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7634571836040f">[email&#160;protected]</a> ...</b></font></p>
+<script data-cfasync="false" src="https://arabnix.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

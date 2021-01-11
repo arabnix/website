@@ -1,0 +1,666 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+<title>كتابة الشل السكربت Shell Scripts في الـ لينوكس</title>
+<meta name="GENERATOR" content="OpenOffice.org 2.3  (Linux)">
+<meta name="AUTHOR" content="Ali">
+<meta name="CREATED" content="20071222;12450000">
+<meta name="CHANGEDBY" content="B!n@ry">
+<meta name="CHANGED" content="20071222;12592200">
+<style type="text/css">
+	<!--
+		@page { size: 8.27in 11.69in; margin-left: 1.25in; margin-right: 1.25in; margin-top: 1in; margin-bottom: 1in }
+		P { margin-bottom: 0.08in; direction: rtl; color: #000000; text-align: right; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	-->
+	</style>
+</head>
+<body lang="en-US" text="#000000" dir="RTL">
+<p class="western" align=CENTER style="margin-bottom: 0in"><font color="#ff0000"><font size=5><span lang="ar-SA"><b>كتابة
+الشل السكربت </b></span></font><font size=5><b>Shell
+Scripts </b></font><font size=5><span lang="ar-SA"><b>في الـ
+لينوكس</b></span></font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br><span lang="ar-SA"><b>مقدمة</b></span><b>:</b><br><span lang="ar-SA">يعتبر
+الـ </span>shell <span lang="ar-SA">أحد أهم مميزات
+النظام لينوكس ويعتبر قوة كبيرة بالنسبة
+له، وذلك لإمكانياته العالية جداً</span>.
+<span lang="ar-SA">حيث يمكنك من خلاله عمل الكثير
+من العمليات والتطبيقات على الملفات،
+والتحكم الكامل بالنظام من خلاله</span>.
+<span lang="ar-SA">يعتمد الـ </span>shell <span lang="ar-SA">على
+سطر الأوامر، أي إنه يستقبل الأوامر على
+شكل سطور تكتب عليه ويقوم هو بتفسيرها
+ومن ثم تنفيذها</span>. <span lang="ar-SA">في كتابي
+هذا سيكون الشرح مخصص للـ </span>shell <span lang="ar-SA">التي
+نوعها </span>BASH. <span lang="ar-SA">هذه الـ </span>shell
+<span lang="ar-SA">لها ميزات كثيرة وقوية جداً
+منها، إنك تستطيع أن تضع مجموعة سطور من
+الأوامر داخل ملف وتحفظه ومن ثم تقوم
+بتشغيل هذا الملف سيعمل وكأنه برنامج</span>.
+<span lang="ar-SA">هذا الملف هو ما يسمى بـ </span>shell
+script.<br><br><span lang="ar-SA"><b>هناك عدة دوافع لتعلم
+الـ </b></span><b>shell scripting </b><span lang="ar-SA"><b>أي
+كتابة السكربتات</b></span><b>:</b><br>1- <span lang="ar-SA">تستطيع
+من خلاله أتمتت العديد من العمليات اليومية
+التي تقوم بها مثل أخذ نسخ إحتياطية
+للقاعدة بيانات</span>. <span lang="ar-SA">ولهذا
+ستسهل عليك عملك وتجعل عملك أكثر راحة
+بدل من القيام بهذه المهمات بشكل يدوي
+يومياً</span>.<br>2- <span lang="ar-SA">الكثير من
+العمليات التي يقوم بها النظام وعمليات
+الإقلاع </span>Booting <span lang="ar-SA">للنظام يتم
+التحكم بها من خلال </span>Shell Scripts. <span lang="ar-SA">فإن
+كنت تريد أن تعرف كيف تعمل أو تعدل عليها
+وعلى بعض من ما فيها، فعليك أن تفهم كيف
+تعمل هذه السكربتات وماذا يعني محتواها
+اوﻻً</span>.<br>3- <span lang="ar-SA">تعلم كتابة الـ
+</span>Shell Scripts <span lang="ar-SA">أسهل بكثير من تعلم
+أي لغة برمجة أخرى</span>.<br>4- <span lang="ar-SA">الـ
+</span>Shell Scripts <span lang="ar-SA">بإمكانك تطبيقها
+تقريباً على أي نظام </span>nixWare.<br><br><span lang="ar-SA"><b>النقاط
+السلبية الوحيدة في هذه اللغة هي</b></span><b>:</b><br>1-
+<span lang="ar-SA">الـ </span>Shell Scripts <span lang="ar-SA">نوعا
+ما بطيئة مقارنة مع لغات البرمجة الأخرى</span>.
+<span lang="ar-SA">يرجع هذا الى إنها تقوم ﻻ تقوم
+بتحويل النصوص المدخلة في السكربت الى
+</span>Binary Code <span lang="ar-SA">جاهز للتنفيذ</span>.<br>2-
+<span lang="ar-SA">الـ </span>Shell Scripts <span lang="ar-SA">ممكن
+تستهلك من المعالج </span>CPU <span lang="ar-SA">الكثير
+من قدرته أثناء تنفيذها</span>.<br><br><span lang="ar-SA">كما
+هو معروف لينوكس يقدم العديد من الـ </span>Shell
+<span lang="ar-SA">ولهذا السكربت الذي تعمله لـ
+</span>shell <span lang="ar-SA">معيين يمكن تشغيله على
+</span>shell <span lang="ar-SA">آخر ولكن ليس مظموناً
+دائماً</span>. <span lang="ar-SA">هذا الكتييب الصغير
+يهدف الى شرح كيفية تعلم كتابة السكربتات
+على الـ </span>shell <span lang="ar-SA">الذي نوعه
+</span>BASH. <span lang="ar-SA">سيتظمن الكتاب هذا
+أمثلة على كل خطوة تتعلمها في عالم كتابة
+السكربتات، ولهذا ما عليك سوى تطبيقها
+ومن ثم تحاول أن تقوم أنت بممراسة هذه
+المسألة وبأفكار جديدة</span>. <br><br><span lang="ar-SA"><b>طريقة
+التعلم لكتابة السكربتات</b></span><b>:</b><br><span lang="ar-SA">سأقوم
+بالبدأ بمثال بسيط جداً يتظمن سطر واحد
+من الكود ومع إزدياد كمية المعلومات
+المأخوذة في كيفية كتابة السكربتات سنطور
+السكربت لتلبيت وفهم هذه المعلومات</span>.
+<span lang="ar-SA">سأقوم بأخذ مشروع بسيط طلب
+مننا لعمله من خلال سكربت</span>. <span lang="ar-SA">هذا
+المشروع هو نظام متابعة الطلبات الذي
+يمكن أن يستعمله الأدمن لمتابعة هذه
+الطلبات</span>. <span lang="ar-SA">حيث سيكون لدي في
+الأخير أداة أقوم بتشغيلها من سطر الأوامر،
+وتقوم بفتح الميل الخاص بالأدمن الذي
+إسمه </span>&quot;binary&quot; <span lang="ar-SA">وتقوم بعرض
+هذه الطلبات وأيضاً يمكن حذف ما تشاء
+منها</span>.<br><br><span lang="ar-SA"><b>طريقة تعلم
+كتابة السكربتات</b></span><b>:</b><br><span lang="ar-SA">لتعلم
+كتابة السكربتات هناك عدة طرق وتختلف من
+كتاب وكاتب الى آخر، ولكن ما سأقوم بذكره
+هنا هي نفس الطريقة التي تعلمت فيها
+البرمجة في لغة البرمجة باسكال </span>PASCAL
+<span lang="ar-SA">في سنة أولى جامعة </span>(<span lang="ar-SA">العراق
+</span>- <span lang="ar-SA">بغداد</span>). <span lang="ar-SA">الطريقة
+التي أراها فعلاً مناسبة للتعلم هي من
+خلال معرفة المخطط الإنسيابي لتنفيذ
+السكربت وكيف سينفذه</span>. <span lang="ar-SA">هذه
+تتمثل بمعرفة الـ </span>Flow Chart <span lang="ar-SA">الخاص
+بالسكربت وأيضاً نتعلم كيف يمكن رسمه</span>.<br><br><span lang="ar-SA"><b>فوائد
+إستعمال </b></span><b>Flow Chart </b><span lang="ar-SA"><b>في
+كتابة السكربتات</b></span><b>:</b><br>1- <span lang="ar-SA">تجبر
+الكاتب على وضع الخطوات التي يجب أن تقوم
+السكربت بإتباعها لكي تصل الى الهدف
+المطلوب</span>. <span lang="ar-SA">حيث ستسهل هذه
+الطريقة ال</span><br>2- <span lang="ar-SA">توضح بشكل
+ممتاز الخوارزمية </span>Algorithm <span lang="ar-SA">المستعملة
+في سير عملية تنفيذ هذه السكربت</span>.<br><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><b>أليك
+الرموز الأساسية في كتابة المخطط الإنسيابي
+</b></span><b>Flow Charts </b><br><img src="https://arabnix.com/papers/ar/shellscript-book_html_6ba46d94.jpg" name="graphics1" align=BOTTOM width=305 height=385 border=0><br><br><span lang="ar-SA"><b>القواعد
+الأساسية في كتابة الـ </b></span><b>Shell
+Scripts:</b><br><span lang="ar-SA">قبل أن ندخل في كتابة
+أول سكربت، هناك قواعد أساسية يجب أن نقوم
+بتذكرها دائماً</span>. <span lang="ar-SA">وهي</span>:<br>1-
+<span lang="ar-SA">الـ </span>Shell Script <span lang="ar-SA">هي
+عبارة عن ملف نصوص من نوع </span>ASCII <span lang="ar-SA">يحتوي
+على أوامر لتنفيذها بشكل متسلسل</span>.<br>2-
+<span lang="ar-SA">لتنفيذ هذه السكربت يجب أن
+يكون للمستخدم الذي سيقوم بتنفيذها له
+صلاحيات </span>r <span lang="ar-SA">قراءة و </span>x
+<span lang="ar-SA">تنفيذ عليها</span>. <span lang="ar-SA">يجب
+أن تقوم بإعطاء هذه الصلاحية للمستخدم
+لأنه النظام لا يسمح بتنفيذها عادة بشكل
+أساسي</span>. <span lang="ar-SA">لعمل ذلك قم بما يلي
+</span>: chmod +x script.sh<br>3- <span lang="ar-SA">بإمكانك
+تشغيل السكربت من </span>shell <span lang="ar-SA">آخر
+مثل</span>: sh script.sh. <span lang="ar-SA">هنا ليس شرط
+أن يكون السكربت له صلاحيات </span>x <span lang="ar-SA">تنفيذ
+عليه</span>.<br>4- <span lang="ar-SA">إذا كنت تريد
+تنفيذ هذه السكربت بغض النظر عن المجلد
+الذي أنت فيه حالياً </span>current working directory<span lang="ar-SA">،
+كل ما عليك فعله هو أن تضيف مسار المجلد
+الى المتغيير </span>PATH <span lang="ar-SA">الذي فيه
+المسار لجميع الملفات التنفيذية</span>. <span lang="ar-SA">في
+</span>SuSE <span lang="ar-SA">يقومون بعمل مجلد إسمه
+</span>bin <span lang="ar-SA">بداخل المجلد الرئيسي
+للمستخدم ويقومون بإضافة هذا المجلد الى
+المتغيير </span>PATH <span lang="ar-SA">كمايلي</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>export
+PATH=$PATH:~/bin</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">إن
+لم تقم بعمل هذه الخطوة فإذن في كل مرة
+تريد تنفيذ هذه السكربت يجب عليك أن تنفذها
+من مسارها الأصلي</span>.<br>5- <span lang="ar-SA">عندما
+تقوم بتسمية السكربتات، ستكون فكرة جيدة
+لك أن تضع الـ </span>sh. <span lang="ar-SA">بعد الأسم
+لهذا الملف لكي تستطيع أن تمييزه على إنه
+شل سكربت</span>. <span lang="ar-SA">إن لم تقم بذلك
+مثلاً وكنت تريد أن تعمل سكربت إسمها </span>less
+<span lang="ar-SA">فهنا كيف ستعرف أي ملف تقوم
+بتنفيذه ؟ خاصة إن كنت قد أضفته الى مسار
+الملفات التنفيذية</span>. <span lang="ar-SA">ولهذا
+يفضل إنك تعمله </span>less.sh <span lang="ar-SA">لكي
+تميزه عن الأمر </span>less <span lang="ar-SA">الأصلي</span>.<br><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in; page-break-before: always">
+<span lang="ar-SA"><b>أول وأبسط سكربت</b></span><b>:</b><br><span lang="ar-SA">أبسط
+سكربت هو الذي يقوم بطباعة </span>Hello World. <span lang="ar-SA">لم
+أرى كتاب لتعليم لغة البرمجة إلا وبدأ
+بهذا السكربت على إنه أول مراحل التعلم
+للبرمجة في تلك اللغة</span>.<br><img src="https://arabnix.com/papers/ar/shellscript-book_html_m110541e9.jpg" name="graphics2" align=BOTTOM width=208 height=279 border=0><br><br><span lang="ar-SA">حيث
+تتظمن هذه السكرب على</span>:<br>1- <span lang="ar-SA">بداية
+السكربت</span>.<br>2- <span lang="ar-SA">الأمر الذي
+يقوم بطباعة جملة </span>Hello World.<br>3- <span lang="ar-SA">نهاية
+السكربت</span>.<br><br><span lang="ar-SA">الكود</span>:</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#!/bin/bash</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#<a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="86c4a7e8c6f4ff">[email&#160;protected]</a> 1st Script</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo &quot;Hello
+World&quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>exit 0</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br><img src="https://arabnix.com/papers/ar/shellscript-book_html_12d5bc2c.jpg" name="graphics3" align=BOTTOM width=429 height=279 border=0><br><br><span lang="ar-SA">مسألة
+مهمة هي إنه هذه الخطوات يمكن تطبيقها
+على أي سكربت بغض النظر عن حجمها وعملها</span>.
+<span lang="ar-SA">كلهم لهم بداية ولهم نهاية
+وبالوسط أو بينهما يوجد الأوامر المطلوب
+تنفيذها وهو الأمر المختلف من واحدة الى
+آخرى</span>. <span lang="ar-SA">الآن لنحلل السكربت
+الأخير</span>. <span lang="ar-SA">السكربت يتظمن
+التالي</span>:<br>- <span lang="ar-SA">البداية</span>:
+<span lang="ar-SA">أول سطر يجب دائماً أن يكون ما
+يسمى بالـ </span>shebang <span lang="ar-SA">مثل</span>:
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#!/bin/bash</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">حيث
+يقوم هذا السطر بتحديد الشل الذي ستعمل
+عليه هذه السكربت</span>. <span lang="ar-SA">طبعاً
+كأي برنامج آخر سيقوم بتنفيذ هذه السكربت
+في </span>Sub Shell. <span lang="ar-SA">أيضاً يفضل أن
+تضع في بداية السكربت وصف لما تقوم به هذه
+السكربت</span>. <span lang="ar-SA">لكي تقوم بذلك
+فقط ضع قبل الوصف الإشارة </span>#. <span lang="ar-SA">أيضاً
+يعتبر من الأمور المهمة أو المرغوب بها
+بشدة في عالم البرمجة هي أن تذكر إسم كاتب
+السكربت، تاريخ كتابتها، ورقم النسخة</span>.
+<span lang="ar-SA">أيضاً إن كانت ستحتوي على
+متغييرات أو دوال </span>Functions <span lang="ar-SA">يفضل
+أن تقوم بكتابتهم في البداية</span>.<br><br>-
+<span lang="ar-SA">الأوامر</span>: <span lang="ar-SA">المثال
+في الأعلى كان يتظمن الأمر </span>echo <span lang="ar-SA">فقط
+والذي كان مسؤولاً عن طباعة الجملة </span>Hello
+World. <span lang="ar-SA">الأمر </span>echo <span lang="ar-SA">سترى
+إنه مستعمل بكثرة في عالم الشل سكربت وذلك
+لغرض عرض معلومات على الشاشة</span>.<br><br>-
+<span lang="ar-SA">النهاية</span>: <span lang="ar-SA">قبل
+أن تنتهي السكربت، يفضل أن تقوم بتحديد
+القيمة التي ستقوم بإرجاعها السكربت على
+إنها أنتهت</span>. <span lang="ar-SA">هذه القيمة
+تعرف الـ </span>process <span lang="ar-SA">الأب بأي
+حالة أنتهت السكربت</span>. <span lang="ar-SA">لمعرفة
+قيمة الحالة التي أنتهت عليها السكربت
+قم بعمل ما يلي</span>:
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo $?</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">أي
+سكربت تقوم بكتابته يجب أن يستعمل هذه
+الهيكلية البسيطة</span>.<br><br><span lang="ar-SA">الآن
+لنقم بإضافة بعض الإمكانيات التي تتيحها
+لنا الأمر </span>echo:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#!/bin/bash</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#<a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="296b0847695b50">[email&#160;protected]</a> 1st Script</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo -e
+&quot;\aHello\nWorld&quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>exit 0</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">سيقوم
+هذا السكربت بتفعيل خاصية الـ </span>Backslash
+<span lang="ar-SA">بوساطة الخيار </span>e- <span lang="ar-SA">والـ
+</span>a\ <span lang="ar-SA">سيقوم بإصدار صوت </span>Beep
+<span lang="ar-SA">من جهازك أي </span>alert <span lang="ar-SA">والـ
+</span>n\ <span lang="ar-SA">سيقوم بالنزول الى سطر
+جديد ومن ثم إكمال عميلة الكتابة</span>. <span lang="ar-SA">إذن
+الناتج النهائي سيكون كالتالي</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>rul3z:~ # ./shell.sh</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>Hello</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>World</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">بالطبع
+مع إصدار صوت </span>beep <span lang="ar-SA">من
+جهازك</span>.<br><br><br><span lang="ar-SA"><b>كيفية كتابة
+سكربت قابلة للقراءة من المستخدم</b></span><b>:<br></b><span lang="ar-SA">لعمل
+ذلك نستعمل الأمر </span>read <span lang="ar-SA">داخل
+السكربت</span>. <span lang="ar-SA">هذا الأمر يتعامل
+مع متغيير </span>Variable <span lang="ar-SA">ويقوم
+بتخزين القيمة المدخلة في هذا المتغيير</span>.
+<span lang="ar-SA">بعد ذلك بإمكانك إستعمال هذا
+المتغيير للقيام بالعمليات المطلوبة على
+مدخلات المستخدم</span>. <span lang="ar-SA">مثال على
+ذلك</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>read VARIABLE</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><span lang="ar-SA">هذا
+الأمر يقوم بقراءة المدخلات من المستخدم
+وتخزينها في متغيير إسمه </span>VARIABLE. <span lang="ar-SA">عندما
+يصل السكربت الى هذا السطر، يقف عن العمل
+بإنتظار المستخدم بالقيام بإدخال البيانات
+ومن ثم الضفط على </span>Enter. <span lang="ar-SA">طبعاً
+يفضل أن تطبع للمستخدم جملة معينة تعرفه
+ماذا يفعل، ﻷنه السكربت ستبقى هكذا متوقفة
+إن لم يقم المستخدم بإدخال بيانات</span>.
+<span lang="ar-SA">لهذا عادةً نقوم بطباعة جملة
+له مثلاً</span>:</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo &quot;Please
+enter a value for the variable:&quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>read VARIABLE</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><span lang="ar-SA">المخطط
+البياني بالأسفل يوضح كيفية سير سكربت
+يطلب من المستخدم بإدخال بيانات</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><br><img src="https://arabnix.com/papers/ar/shellscript-book_html_4ab46b5a.jpg" name="graphics4" align=BOTTOM width=384 height=394 border=0><br><br><span lang="ar-SA">بالبداية
+يقوم السكربت بطباعة جملة معينة من خلال
+الأمر </span>echo <span lang="ar-SA">لإخبار المستخدم
+إن عليه إدخال بيانات معينة، ومن ثم يتوقف
+السكربت الى حين يقوم المستخدم بإدخال
+البيانات والضغط على </span>Enter <span lang="ar-SA">وبعد
+ذلك حسب المخطط الإنسيابي يقوم بطباعة
+هذه المدخلات التي تم تخزينها داخل
+المتغيير </span>VARIABLE <span lang="ar-SA">على الشاشة
+مرة أخرى بوساطة نفس الأمر </span>echo.<br><br><span lang="ar-SA"><b>تمرين</b></span><b>:</b>
+<span lang="ar-SA">قم بكتابة سكربت يطلب من
+المستخدم إدخال إسمه الأول والأخير وبعد
+ذلك يقوم بالترحيب به بإستخدام إسمه
+الكامل</span>.<br><br><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in; page-break-before: always">
+<span lang="ar-SA"><b>كيفية إستخدام المتغيرات في
+السكربتات</b></span><b>:</b><br><span lang="ar-SA">في هذا
+الجزء سنقوم بالتعرف على كيفية إستعمال
+المتغييرات داخل السكربت الذي سنقوم
+بكتابته</span>. <span lang="ar-SA">المخطط الإنسيابي
+الذي بالأسفل يوضح كيف يمكن إعطاء متغيير
+قيمة معينة</span>. <br><img src="https://arabnix.com/papers/ar/shellscript-book_html_m6e77e4be.jpg" name="graphics5" align=BOTTOM width=528 height=722 border=0></p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><br><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#!/bin/bash</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#<a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="682a4906281a11">[email&#160;protected]</a> 2nd Script</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo &quot;Please
+enter your first name : &quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>read FIRSTNAME</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo &quot;Please
+enter your last name : &quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>read LASTNAME</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>NAME=&quot;$FIRST
+$LAST&quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo Your Name is:
+$NAME</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>exit 0</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br><span lang="ar-SA">المثال
+الذي بالأعلى يقوم بقراءة الأسم الأول
+ويضعه في المتغيير </span>FIRSTNAME <span lang="ar-SA">ومن
+ثم يخبرك بإدخال الإسم الثاني ويضعه في
+المتغيير </span>LASTNAME<span lang="ar-SA">، وبعد ذلك
+يقوم بإعطاء المتغيير الذي إسمه </span>NAME
+<span lang="ar-SA">قيمة كل من المتغيير </span>FIRSTNAME
+<span lang="ar-SA">و </span>LASTNAME <span lang="ar-SA">ويقوم
+بطباعتها لك</span>. <span lang="ar-SA">الآن لو نظرنا
+الى هذا السطر</span>:<br>NAME=$FIRSTNAME $LASTNAME<br><span lang="ar-SA">حيث
+يوضح هذا السطر كيف أستطعنا من دمج القيمة
+التي في متغييرين في متغيير واحد هنا هو
+</span>NAME. <span lang="ar-SA">أيضاً ما أستفدنا من
+هذا المثال الذي بالأعلى هو إنه لتعيين
+قيمة الى متغيير معيين كل ما عليك فعله
+هو</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>VARIABLE=Value</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">هذه
+في حالة التعيين</span>. <span lang="ar-SA">أما في
+حالة كنت تريد إسترجاع هذه القيمة فيمكنك
+إسترجاع هذه القيمة من خلال وضع علامة </span>$
+<span lang="ar-SA">قبل المتغيير</span>. <span lang="ar-SA">مثلاً</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>$VARIABLE</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">بعض
+المرات يفضل تعيين قيمة إفتراضية للمتغيير
+خاصة عندما يكون السكربت يتطلب إدخال
+قيمة معيينة</span>. <span lang="ar-SA">حيث هناك
+إحتمال المستخدم يدخل معلومة غلط أو قيم
+غلط تسبب في خروج السكربت عن تنفيذ المطلوب
+بصورة صحيحة</span>. <span lang="ar-SA">مثالاً</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>NAME=${FIRSTNAME:=BINARY}</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">الآن
+لو حصل أي خطأ في إدخال قيمة المتغيير
+</span>NAME <span lang="ar-SA">فإنه سيأخذ القيمة
+الإفتراضية والتي هي هنا</span>: BINARY.</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#!/bin/bash</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#<a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eaa8cb84aa9893">[email&#160;protected]</a> 2nd Script</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo &quot;Please
+enter your first name : &quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>read FIRSTNAME</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo &quot;Please
+enter your last name : &quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>read LASTNAME</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>NAME=&quot;$FIRST
+$LAST&quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo Your Name is:
+$NAME</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>NAME=${FIRSTNAME:=BINARY}</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo $NAME</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>exit 0</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in; page-break-before: always">
+<span lang="ar-SA"><b>كيفية إستعمال </b></span><b>Command
+Substitution </b><span lang="ar-SA"><b>في السكربتات</b></span><b>:</b><br><span lang="ar-SA">في
+هذا الجزء سنرى كيف يمكننا أن نستعمل
+نواتج الأوامر </span>Command Substitution <span lang="ar-SA">في
+السكربتات وكيفية الإستفادة من هذه
+الخاصية</span>. <span lang="ar-SA">لنأخذ مثلاً
+التالي</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#!/bin/bash</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#<a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4507642b05373c">[email&#160;protected]</a> 3rd Script</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo &quot;Today is:
+`date +%m/%d/%Y`&quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>exit 0</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">حيث
+هذا الأمر يقوم بإرجاع قيمة التاريخ
+الحالي</span>. <span lang="ar-SA">أهم نقطة تنتبه
+لها، هي إن الأمر </span>date <span lang="ar-SA">والخيارات
+الخاصة به </span>+%m/%d/%Y <span lang="ar-SA">يجب أن
+توضع في ما يسمى </span>backticks <span lang="ar-SA">وهي
+الرمز </span>`. <span lang="ar-SA">الآن بدل من طباعة
+الناتج الخاص بالأمر </span>date <span lang="ar-SA">مباشرة
+على الشاشة ممكن تخزينه في متغيير ومن ثم
+عرضه على الشاشة، ليصبح السكربت كالتالي</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#!/bin/bash</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#<a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6d2f4c032d1f14">[email&#160;protected]</a> 4th Script</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>TODAY=`date
++%m/%d/%Y`</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo &quot;Today is:
+$TODAY&quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>exit 0</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><span lang="ar-SA">في
+هذه الحالة تم تخزين ناتج الأمر </span>date
+<span lang="ar-SA">في متغيير إسمه </span>TODAY <span lang="ar-SA">ومن
+ثم قمنا بعرضه من بواسطة الأمر </span>echo.
+<span lang="ar-SA">نقطة ظرورية الإنتباه لها،
+وهي يجب أن ﻻ يكون هناك فراغ بين المتغيير
+وعلامة الـ </span>= <span lang="ar-SA">والقيمة، أي
+ﻻ يوجد فراغات بينهم نهائياً</span>.<br><br><br><span lang="ar-SA"><b>تمرين</b></span><b>:</b>
+<span lang="ar-SA">قم بكتابة سكربت تطبع لك إسم
+المستخدم الذي تستخدمه في تلك اللحظة
+والمجلد الذي تعمل بداخله </span>Current Working
+Directory. <span lang="ar-SA">لحل هذا السؤال قم
+بإستعمال الأمر </span>whoami <span lang="ar-SA">والأمر
+</span>pwd.</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#!/bin/bash</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>#<a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afed8ec1efddd6">[email&#160;protected]</a> 6th Script</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>USERNAME=`whoami`</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>WORKINGDIR=`pwd`</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo &quot;You are
+currently logged in with user: &quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo $USERNAME</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo &quot;Your
+currently working directory is: &quot;</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>echo $WORKINGDIR</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>exit 0</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br><span lang="ar-SA"><b>كيفية
+إستعمال المعادلات الرياضية في السكربتات</b></span>:<br><span lang="ar-SA">في
+هذا الجزء سنقوم بتوضيح كيفية يمكن إستعمال
+العمليات الرياضية وكيفية الإستفادة
+منها داخل السكربتات</span>. <span lang="ar-SA">عادةً
+تستعمل السكربتات القيم المخزنة في
+المتغييرات للعمليات الحسابية</span>/<span lang="ar-SA">الرياضية</span>.
+<span lang="ar-SA">لكن الـ </span>BASH <span lang="ar-SA">ليس
+مجهز بالكثير من الإمكانيات الحسابية</span>/<span lang="ar-SA">الرياضية
+ليقوم بهذه العمليات ولهذا يعتمد في تنفيذ
+هذه العمليات الحسابية الى أوامر خارجية
+مثل</span>: expr <span lang="ar-SA">وغيرها</span>. <span lang="ar-SA">الإمكنيات
+الوحيدة التي يستطيع عملها الـ </span>BASH
+<span lang="ar-SA">على مستوى العمليات الحسابية
+هي</span>:<br>1- <span lang="ar-SA">التعامل مع الأرقام
+الصحيحة </span>Integers <span lang="ar-SA">فقط</span>.<br>2-
+<span lang="ar-SA">جميع القيم يتم حجز </span>64 <span lang="ar-SA">بت
+لها</span>. <span lang="ar-SA">ولهذا لن تتجاوز هذه
+القيم سالب </span>2 <span lang="ar-SA">قوة </span>63 <span lang="ar-SA">الى
+موجب </span>2 <span lang="ar-SA">قوة </span>63-1.<br><span lang="ar-SA">لهذا
+عند الحاجة للتعامل مع الأرقم العشرية
+ستضطر الى إستعمال الأمر </span>bc. <br><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in; page-break-before: always">
+<span lang="ar-SA"><b>طرق إستعمال الـ </b></span><b>BASH
+</b><span lang="ar-SA"><b>في المعادلات الحسابية</b></span><b>:</b><br>-
+<span lang="ar-SA">إستعمال الأمر الخارجي </span>expr:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>A=`expr $B + 10`</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">بما
+إنه الشل سكربت يسمح لنا بإستعمال الأوامر
+الخارجية إذن نستطيع ان نستعمل هذه
+الطريقة</span>. <span lang="ar-SA">نقطة مهمة هي
+السكربتات التي تستعمل الأوامر الخارجية
+ستكون أبطأ من تلك التي تستعمل الأوامر
+المبنية في الشل نفسه</span>. <br><br>- <span lang="ar-SA">إستعمال
+الأمر المبني في الشل </span>let:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>let A=&quot;$B + 10&quot;</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">يمكننا
+الأمر </span>let <span lang="ar-SA">المبني في الـ
+</span>BASH <span lang="ar-SA">من إجراء العمليات
+الحسابية</span>.<br><br>- <span lang="ar-SA">إجراء
+العمليات الحسابية من خلال وضعها داخل
+أقواس مغلقة، هناك طريقتان</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>A=$((B + 10))</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">أو</span></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>A=$[B + 10]</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">حيث
+يمكن للشل </span>BASH <span lang="ar-SA">أن يقوم بترجمة
+ما بين الأقواس وبالتالي حساب القيمة
+النهائية</span>.<br><br>- <span lang="ar-SA">إستعمال
+الأمر المبني في الشل والذي هو </span>declare:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>declare -i A</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>declare -i B</font></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>A=B+10</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><span lang="ar-SA">حيث
+قامت الأمر </span>declare -i <span lang="ar-SA">بتعريف
+كل من </span>A <span lang="ar-SA">و </span>B <span lang="ar-SA">على
+إنهم أرقام من نوع </span>Integer <span lang="ar-SA">أي
+رقم صحيح</span>. <span lang="ar-SA">قيامك بتعريف
+المتغييرات بهذه الطريقة سيهرف الشل على
+طريقة حسابهم بصورة آلية </span>automatically <span lang="ar-SA">ولا
+حاجة للمبرمج بوضع الإشارة </span>$ <span lang="ar-SA">قبل
+المتغيير حين يريد إستعماله</span>. <br><br><span lang="ar-SA"><b>ملاحظة
+مهمة</b></span><b>:</b>: <span lang="ar-SA">عند إستعمالك
+للأمر </span>expr <span lang="ar-SA">فإنها تتعرف على
+العمليات الحسابية التالية فقط</span>:<br>-
+<span lang="ar-SA">الجمع </span>+<br>- <span lang="ar-SA">الطرح
+</span>-<br>- <span lang="ar-SA">القسمة </span>/<br>- <span lang="ar-SA">الضرب
+</span>* <br>- <span lang="ar-SA">النسبة المؤية </span>%
+<span lang="ar-SA">أو باقي القسمة</span><br><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><span lang="ar-SA">أما
+إن كنت تريد أن تستعمل العمليات الأخرى
+فلا ينفع إستعمالها مع الأمر </span>expr <span lang="ar-SA">وإنما
+يمكن ذلك بواسطة باقي الأوامر الذي ذكرت
+سابقاً</span>. <span lang="ar-SA">أيضاً يفضل أن تنفذ
+العمليات الحسابية هذه من خلال أحد الطرق
+المذكورة، وليس جميعها ﻷنها ستشتت طريقة
+تفكيرك وتعاملك مع العمليات الحسابية،
+وستجد نفسك في كل مرة تائه في مشكلة وضع
+المعادلة نفسها</span>. <span lang="ar-SA">وأنصح هنا
+بإستعمال الأمر </span>declare <span lang="ar-SA">حيث
+سيسهل عليك الكثير</span>.</p>
+<p class="western" align=CENTER style="margin-bottom: 0in"><b>===================================<br></b><span lang="ar-SA"><b>للحصول
+على قائمة بكافة العمليات أذهب الى </b></span><b>man
+bash<br>===================================</b></p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><br><span lang="ar-SA"><b>تمرين</b></span>:
+<span lang="ar-SA">أنظر الى المخطط الإنسيابي
+التالي</span>:<br><img src="https://arabnix.com/papers/ar/shellscript-book_html_m235babf0.jpg" name="graphics6" align=BOTTOM width=462 height=563 border=0><br><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in">1- <span lang="ar-SA">أكتب
+شل سكربت يعكس عمل المخطط أعلاه</span>.<br>2-
+<span lang="ar-SA">قم بالتعديل على السكربت لكي
+تستطيع تطبيق جميع العمليات الحسابية
+مثلا</span>: <span lang="ar-SA">الطرح، القسمة،
+والضرب</span>.<br>3- <span lang="ar-SA">ماذا سيحصل لو
+قام المستخدم بإدخال كلمة بدلاً من رقم
+؟ وماذا سيحصل في حالة المستخدم مجرد ضغط
+على المفتاح </span>Enter <span lang="ar-SA">من دون
+إدخال معلومات ؟</span><br>4- <span lang="ar-SA">قارن
+الحل الذي عملته مع الحل في آخر الكتاب</span>.<br><br><br>
+</p>
+<p class="western" align=CENTER style="margin-bottom: 0in"><b>================================================<br></b><span lang="ar-SA"><b>نهاية
+الجزء الأول من
+الكتاب</b></span><b><br>================================================</b></p>
+<script data-cfasync="false" src="https://arabnix.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

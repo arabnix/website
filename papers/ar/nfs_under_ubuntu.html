@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+<title>السلام عليكم ورحمة الله وبركاته </title>
+<meta name="GENERATOR" content="OpenOffice.org 2.3  (Linux)">
+<meta name="AUTHOR" content="Ali">
+<meta name="CREATED" content="20071225;12180000">
+<meta name="CHANGEDBY" content="Ali">
+<meta name="CHANGED" content="20071225;12210000">
+<style type="text/css">
+	<!--
+		@page { size: 8.27in 11.69in; margin-right: 1.25in; margin-top: 1in; margin-bottom: 1in }
+		P { margin-bottom: 0.08in; direction: rtl; color: #000000; text-align: right; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	-->
+	</style>
+</head>
+<body lang="en-US" text="#000000" dir="RTL">
+<p class="western" align=CENTER style="margin-bottom: 0in"><span lang="ar-SA"><font color="#0000ff"><font size=5>السلام
+عليكم ورحمة الله وبركاته </font></font></span><font color="#0000ff"><font size=5>...</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br><br><span lang="ar-SA">طبعاً
+كما هو معروف الـ </span><font color="#ff0000">NFS</font>
+<span lang="ar-SA">هو عبارة عن </span><font color="#ff0000">Network
+File System</font> <span lang="ar-SA">ومن الإسم واضح هو
+لمشاركة الملفات على الشبكة</span>. <span lang="ar-SA">كيف
+يتم ذلك في بيئة </span>Ubuntu <span lang="ar-SA">؟ الأمر
+جداً بسيط وسهل، كل ما عليك عمله هو متابعة
+هذه التدوينة فقط </span>... <span lang="ar-SA">طيب
+ما هي المتطلبات لذلك؟ المتطلبات هي
+التالي</span>:<br><font color="#ff8c00">nfs-kernel-server</font>
+- <span lang="ar-SA">هذا هو السيرفر الخاص بالـ
+</span><font color="#ff0000">NFS</font><br><br><font color="#ff8c00">nfs-common</font>
+- <span lang="ar-SA">هذه الحزمة تتظمن بعض البرامج
+الخاصة بالـ </span><font color="#ff0000">NFS</font><br><br><font color="#ff8c00">portmap</font>
+- <span lang="ar-SA">هذه هي خدمة معينة لربط الخدمات
+التي تستعمل </span><font color="#006400">rpc</font> <span lang="ar-SA">من
+خلال </span><font color="#006400">port</font> <span lang="ar-SA">معيين
+حيث تقوم بإعطاء </span><font color="#006400">port</font>
+<span lang="ar-SA">معيين لخدمة معينة، ومن دون
+هذه الخدمة لن يعمل الـ </span><font color="#ff0000">NFS</font><br><br><span lang="ar-SA"><b>الآن
+لنقم بالتنصيب</b></span><b>:</b></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>apt-get install
+nfs-kernel-server portmap nfs-common</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br><span lang="ar-SA">الآن
+الملف الخاص بالإعدادت حق الـ </span><font color="#0000ff">NFS</font>
+<span lang="ar-SA">هو </span>/etc/exports <span lang="ar-SA">حيث
+يحتوي على الإعدادات الخاصة بالمجلدات
+التي تريد عمل مشاركة </span><font color="#0000ff">Share</font>
+<span lang="ar-SA">لها على الشبكة </span>... <span lang="ar-SA">طيب
+الحين لنفرض لدي المجلد التالي</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>/home/user/Movies</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">وأريد
+أن أقوم بمشاركته للمستخدمين الموجودين
+على الشبكة المحلية فقط </span>... <span lang="ar-SA">ماذا
+سنعمل؟ الجواب تابع معي</span>:<br><br><span lang="ar-SA"><b>أول
+حاجة سنقوم بها هي</b></span><b>:</b><br><span lang="ar-SA">نحرر
+ملف الإعدادات الخاص بالخدمة </span><font color="#0000ff">NFS</font>
+<span lang="ar-SA">من خلال الأمر التالي</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>vi /etc/exports</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">بعد
+ذلك نقوم بوضع السطر هذا</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>/home/user/Movies
+192.168.0.0/24(rw,sync)</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">لنوضح
+هنا ماذا يعني كل شيء في هذا السطر </span>...
+<span lang="ar-SA">لنأخذ كل شيء على
+حدى</span>:<br><font color="#ff0000">/home/user/Movies</font> <span lang="ar-SA">هذا
+هو المجلد المراد عمل مشاركة له</span><br><font color="#ff0000">192.168.0.0/24</font>
+<span lang="ar-SA">هذا يمثل الأي بي حق الشبكة
+الخاصة بي، وضعي للـ </span>/24 <span lang="ar-SA">تعني
+إني حددت المشاركة ستكون لكل من يقع ما
+بين </span>192.168.0.0 <span lang="ar-SA">و </span>192.168.0.255<br><font color="#ff0000">rw</font>
+<span lang="ar-SA">تعني السماح للقراءة </span><font color="#0000ff">read</font>
+<span lang="ar-SA">والكتابة </span><font color="#0000ff">write</font>
+<span lang="ar-SA">على المجلد الذي قمنا بعمل
+مشاركة له</span><br><font color="#ff0000">sync</font> <span lang="ar-SA">تعني
+إنها ستقوم بعمل الإتصال ونقل البيانات
+يتم بشكل تزامني </span><font color="#0000ff">Synchronous</font><br><br><span lang="ar-SA">مثال
+آخر</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>/home/user/Movies
+rul3z(ro,sync) n3m3siz(rw,sync)</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">هنا
+قمت بعمل مشاركة لنفس المجلد ولكن ليس
+الى شبكة معينة ولكن الى </span><font color="#0000ff">Hostname</font>
+<span lang="ar-SA">معيين</span>. <span lang="ar-SA">هذه
+الحالة تتطلب من السيرفر </span><font color="#0000ff">NFS</font>
+<span lang="ar-SA">قادر على التعرف على الـ
+</span><font color="#0000ff">Hostnames</font> <span lang="ar-SA">الموجودة
+على الشبكة وإﻻ لن تعمل ﻷنه لن يتعرف
+ماذا يعني </span><font color="#ff0000">rul3z</font> <span lang="ar-SA">أو
+</span><font color="#ff0000">n3m3siz</font> ...<br><br><span lang="ar-SA">الآن
+قم بحفظ الملف وغلقه وبعدها قم بتنفيذ
+التالي</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>/etc/init.d/nfs-kernel-server
+start</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">لو
+أخبرك بإن السيرفر يعمل من الأصل قم بتنفيذ
+التالي</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>/etc/init.d/nfs-kernel-server
+restart</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br><span lang="ar-SA">الآن
+أصبح السيرفر حق الـ </span><font color="#ff0000">NFS</font>
+<span lang="ar-SA">يعمل وكل شي تمام </span>... <span lang="ar-SA">باقي
+نعمل تجربة هل يعمل أم ﻻ</span>. <br><span lang="ar-SA">الآن
+لنقم على جهاز آخر بعمل التالي لغرض
+التجربة</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in">mkdir
+/mnt/Movies</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">حيث
+سنقوم بربط المجلد الموجود على الشبكة
+مع المجلد الموجود على الجهاز الحالي من
+خلال المجلد الذي عملناه في الأعلى</span>.
+<span lang="ar-SA">الآن لتنفيذ عملية الربط قم
+بالتالي</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>mount
+server-name/ip:/home/user/Movies /mnt/Movies</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br><span lang="ar-SA">كل
+ما عليك فعله هو تغيير </span><font color="#006400">server-name</font>
+<span lang="ar-SA">بإسم السيرفر أي الـ </span><font color="#006400">Hostname</font>
+<span lang="ar-SA">أو تغيير الـ </span><font color="#006400">server-ip</font>
+<span lang="ar-SA">بالأي بي حق السيرفر لكي يعمل
+الأمر أعلاه</span>. <span lang="ar-SA">طيب الحين
+كيف أصل للملفات؟ بسيطة جداً نحن ربطنا
+المجلد المشترك على الشبكة بنظام الملفات
+التي لدينا من خلال الملجد </span>/mnt/Moivies
+<span lang="ar-SA">ولهذا أكيد الوصول لهم من
+خلاله</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>cd /mnt/Movies</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br><span lang="ar-SA">طيب
+يا </span><font color="#0000ff"><a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1b593a755b6962">[email&#160;protected]</a></font> <span lang="ar-SA">لنفرض
+أنا ﻻ أعرف ما هي المجلدات التي تم عمل
+مشاركة لها على السيرفر كيف أعرف ذلك ؟
+قم بالتالي</span>:</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Courier New, monospace"><font size=2>showmount -a
+server-name/ip</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA">كل
+ما عليك فعله هو تغيير </span><font color="#006400">server-name</font>
+<span lang="ar-SA">بإسم السيرفر أي الـ </span><font color="#006400">Hostname</font>
+<span lang="ar-SA">أو تغيير الـ </span><font color="#006400">server-ip</font>
+<span lang="ar-SA">بالأي بي حق السيرفر لكي يعمل
+الأمر أعلاه</span>.<br><br><span lang="ar-SA">ألف مبروك
+الحين جهازك يعمل كـ </span><font color="#ff8c00">NFS
+Server</font> ... <span lang="ar-SA">لمزيد من المعلومات؟
+دائماً الـ </span><font color="#ff8c00">man pages</font>
+<span lang="ar-SA">فيها الكثير، والإستفسارات
+هنا محل ترحيب مستمر </span>...<br><br><span lang="ar-SA">خالص
+الود والتقدير للجميع </span>...<br><span lang="ar-SA">أخوكم
+</span><font color="#0000ff"><a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="82c0a3ecc2f0fb">[email&#160;protected]</a></font> ...</p>
+<script data-cfasync="false" src="https://arabnix.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

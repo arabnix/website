@@ -1,0 +1,679 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+<title></title>
+<meta name="GENERATOR" content="OpenOffice.org 2.3  (Linux)">
+<meta name="AUTHOR" content="B!n@ry">
+<meta name="CREATED" content="20071129;22175100">
+<meta name="CHANGEDBY" content="B!n@ry">
+<meta name="CHANGED" content="20071129;22253700">
+<style type="text/css">
+	<!--
+		@page { size: 8.5in 11in; margin: 0.79in }
+		P { margin-bottom: 0.08in }
+	-->
+	</style>
+</head>
+<body lang="en-US" dir="LTR">
+<p dir="RTL" align=CENTER style="margin-bottom: 0in"><strong><font face="Tahoma, sans-serif"><font size=4 style="font-size: 16pt">Linux
+Security Policy HowTo</font></font></strong></p>
+<p dir="RTL" align=CENTER style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=CENTER style="margin-bottom: 0in"><font face="Tahoma"><span lang="zxx"><strong><font color="#ff0000"><font face="Tahoma, sans-serif"><font size=4><b>السلام
+عليكم ورحمة الله وبركاته </b></font></font></font></strong></span></font><strong><font color="#ff0000"><font face="Tahoma, sans-serif"><font size=4><b>.</b></font></font></font></strong><strong><font color="#ff0000"><font face="Tahoma, sans-serif"><font size=4>.</font></font></font></strong></p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0.2in"><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">مراحل
+تطبيق الحمايه </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="Tahoma, sans-serif"><font size=3><font color="#0000ff"><b>1)
+Physical Security</b></font><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">كثيرا
+من مدراء السيرفرات لا يعيرون اهميه بالغه
+لهذا النوع من الحمايه ولهذا غالبا ما
+يقعون في مشاكل كثيره سأتناول بعض منها
+من واقع محلي والبعض الاخر من الدراسه
+والبحث اول امر هو غرفة السيرفر هل هو
+محمي ام لا ؟ بمعنى هل هناك ضوابط لدخوله
+ام هي مجرد يدخلها الرايح والجاي بالمصطلح
+العامي </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">ثانيا
+هل السيرفر يقع في بيئه مناسبه له للعمل
+لساعات طويله ؟ اي يجب وضعه في غرفه ذات
+درجة حراره تسمح له بالعمل دون توقف إن
+ارتفاع درجة حرارة الغرفه يؤدي الى وقف
+عمل السيرفر سواءا ذاتيا او قسريا ولذلك
+ينصح ان تكون الغرفه تحت درجة حرارة </span></font></font><font face="Tahoma, sans-serif"><font size=3>16-17
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">درجة
+مئويه </span></font></font><font face="Tahoma, sans-serif"><font size=3>..<br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وايضا
+مسأله اخرى وهي الخادم الاحتياطي ويفضل
+ان يكون هناك خادم في مكان خارجي </span></font></font><font face="Tahoma, sans-serif"><font size=3>...
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">يعني
+يفضل تكون مجهز امورك لاي مشكله قد تطري
+على الخادم الرئيسي مما يؤدي الى وقف
+العمل </span></font></font><font face="Tahoma, sans-serif"><font size=3>..<br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">طبعا
+كل هذا يعتمد على طبيعة واهمية العمل الذي
+لديك من هذه الامور والمشاكل التي قد تحدث
+الكوارث الطبيعيه كالحرائق والفياضانات
+وايضا مشاكل قطع العتاد </span></font></font><font face="Tahoma, sans-serif"><font size=3>hardware
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وغيرها</span></font></font><font face="Tahoma, sans-serif"><font size=3><br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">كل
+ما يتم ذكره يعتبر اقتراق لامن الخادم
+والمعلومات التي عليه </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">اي
+تلف او توقف يعتبر بحد ذاته تقصير في الامن
+والتي تقع ظمن مفهوم التقصير في ال
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>availability
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">ايضا
+وقبل ان انسى امرا مهما في </span></font></font><font face="Tahoma, sans-serif"><font size=3>physical
+sec </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وهو
+الحمايه على مستوى ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>BIOS
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">ووضع
+كلمات سريه للوصول الى اي اداتها وايضا
+وضع كلمات سريه على ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>BOOT
+loeder </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لكي
+لا تسمح للاخرين من تمرير خيارات معينه
+الى ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>kernel<br></font></font><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="Tahoma, sans-serif"><font size=3><font color="#0000ff"><b>2
+) User Security</b></font><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">هنا
+ايضا مسأله يغفل عنها الكثيرون بحيث يتم
+استعمال المستخدم </span></font></font><font face="Tahoma, sans-serif"><font size=3>root
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لتنفيذ
+جميع العمليات ومن جميع المدراء الموجودين
+في الشركه مثلا </span></font></font><font face="Tahoma, sans-serif"><font size=3>...<br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">يعني
+لو نفرض لدينا </span></font></font><font face="Tahoma, sans-serif"><font size=3>3
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">مدراء
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>admin
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">في
+مؤسسه واحد للشبه وآخر لقواعد البيانات
+والثالث هو الرئيس مثلا </span></font></font><font face="Tahoma, sans-serif"><font size=3>..<br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">الحين
+قام احدهم باستخدام المستخدم </span></font></font><font face="Tahoma, sans-serif"><font size=3>root
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لتنفيذ
+مسأله معينه وادت الى توقف عمل الخادم </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">كيف
+نعرف من هو المسؤول من هؤلاء الثلاثه ؟
+ستقول لي من ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>log
+file </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">اقول
+مضبوط عرفت المستخدم على الجهاز لكنك لم
+تعرف من هو ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>admin
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">الذي
+استعمل هذا المستخدم </span></font></font><font face="Tahoma, sans-serif"><font size=3>root
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وحصلت
+المشكله بسببه لذلك يفضل عمل مستخدمين
+ويحصل كل مستخدم على صلاحيات ليؤدي وظيفته
+فقط </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">يعني
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>admin
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">الشبكه
+له صلاحيات على اوامر الشبكه فقط وال
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>admin
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">الي
+على قواعد البيانات له صلاحيات على اوامر
+القواعد فقط </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وهكذا
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>..<br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">يمكنك
+ان تعمل هذا من خلال الامر </span></font></font><font face="Tahoma, sans-serif"><font size=3>sudo
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">مثلا
+الان ستسهل عليك مراقبة الجميع ومعرفة
+كلٍ ماذا عمل </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لانه
+حصلت معي مره في احدى المسؤسسات كانوا
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>admins
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">يدخلون
+ويعملون من المستخدم </span></font></font><font face="Tahoma, sans-serif"><font size=3>root
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">في
+نفس الوقت وكل واحد يخرب على عمل الثاني
+دون قصد </span></font></font><font face="Tahoma, sans-serif"><font size=3>..</font></font></p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><strong><font color="#0000ff"><font face="Tahoma, sans-serif"><font size=3><b>3
+) File &amp; Filesystem Security</b></font></font></font></strong></p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">عند
+الحديث عن الحمايه على مستوى ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>fs
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">فانه
+يجب علينا ان نكون مدركين لنوعية البيانات
+التي ستوضع عليه وايضا ماهي الخيارات
+المستعمله لل </span></font></font><font face="Tahoma, sans-serif"><font size=3>mount
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">عليه
+نأتي لنوضح اكثر </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">البيانات
+هي هي مهم جدا ؟</span></font></font><font face="Tahoma, sans-serif"><font size=3><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">ان
+كان الجواب نعم ممكن استعمال خواص التشفير
+ليقوم بتشفير جميع ما يكتب على هذا ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>fs
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لكن
+يجب ان تأخذ بنظر الاعتبار الكفاءة والسرعة
+في القراءة والكتابة ولن تكون عالية بسبب
+مسألة تشفير البيانات عند الكتابه وفك
+تشفيرها عند القراءة في هذا ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>fs
+.. </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">اما
+الخيارات المستعمله لعملية ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>mount
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">ايضا
+يجب ان يكون اختيارها بدقه يعني لنفرض
+لديك ملفات لا تريد مشاركتها داخل مؤسسه
+او جامعه ولا تريد ان يتم التلاعب بها من
+اي شخص فبالتأكيد ستقوم بوضع خيار </span></font></font><font face="Tahoma, sans-serif"><font size=3>ro
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">بدل
+من </span></font></font><font face="Tahoma, sans-serif"><font size=3>rw
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">على
+هذا ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>fs
+. </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">ايضا
+مسأله اخرى بالنسبه لل </span></font></font><font face="Tahoma, sans-serif"><font size=3>mount
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">و
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>umount
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لهذا
+ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>fs
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وغيرها
+من الامور المهمه ينصح بمراجعة </span></font></font><font face="Tahoma, sans-serif"><font size=3>man
+mount </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">و
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>man
+fs <br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">بالنسبه
+للحمايه على مستوى الملفات فهناك ثلاث
+مستويات </span></font></font><font face="Tahoma, sans-serif"><font size=3>:<br>1
+) </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">المستوى
+الاول وهو المستوى الذي تكون فيه الحمايه
+عاليه جدا بحيث تسمح لل </span></font></font><font face="Tahoma, sans-serif"><font size=3>owner</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">بان
+ياخذ من صلاحيات مطلقه وان لا تعطي صلاحيات
+اخرى لاي شخص </span></font></font><font face="Tahoma, sans-serif"><font size=3><br>2
+) </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">المستوى
+الثاني وتكون الحمايه فيه متوسطه وهذا
+هو المستوى الاساسي في اغلب الانظمه حيث
+يكون للمالك </span></font></font><font face="Tahoma, sans-serif"><font size=3>owner
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">كامل
+الصلاحيات وللاعضاء في نفس المجموعه
+القراءة والتنفيذ وكذلك بالنسبه للمستخدمين
+الآخرين الذين هم ليسوا المالكين ولا
+يقعون ظمن نفس مجموعة المالك</span></font></font><font face="Tahoma, sans-serif"><font size=3><br>3
+) </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">المستوى
+الثالث والذي يكون اضعف بكثير مما سبق
+بحيث يكون للجميع حق القراءة والكتابة
+والتنفيذ</span></font></font><font face="Tahoma, sans-serif"><font size=3><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">يمكنك
+الانتقال من مستوى الى آخر من خلال </span></font></font><font face="Tahoma, sans-serif"><font size=3>umask
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">ولكن
+عليك ان تختاره بصوره جيده لكي لا يقع في
+مشاكل لاحقا </span></font></font><font face="Tahoma, sans-serif"><font size=3>..<br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">هناك
+امور اخرى على مستوى الملفات بحيث في
+الانظمه الحديثه مثل </span></font></font><font face="Tahoma, sans-serif"><font size=3>ext3
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">تم
+اضافة محكمات اخرى على مستوى الملف والتي
+تسمى </span></font></font><font face="Tahoma, sans-serif"><font size=3>attributes
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">بحيث
+يمكنك استعمالها ايضا لغرض زيادة الحمايه
+مثلا</span></font></font></p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0.02in">
+<br><br>
+</p>
+<pre dir="RTL" style="margin-left: 0.18in; margin-right: 0.18in; border: 1px solid #000000; padding: 0.05in; text-align: left"><font face="Tahoma, sans-serif"><font size=3>chattr    +i    file</font></font></pre><p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in">
+<font face="Tahoma, sans-serif"><font size=3><span lang="zxx">هذه
+ستضيف خاصيه اسمها </span></font></font><font face="Tahoma, sans-serif"><font size=3>immutable
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">بحيث
+تمنع اي شخص من حذف او الكتابه على الملف
+نهائيا الا لو قمت برفع الخيار هذا عنه
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">ويوجد
+خيارات اخرى كثيره لا مجال لحصرها هنا
+ايضا قبل ان انسى يجب ان تراعي ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>stickybit
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وال
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>setGUID
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وال
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>SUID
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">بحيث
+تراعي اين ستقوم بوضعها ؟ وما هي البرامج
+مثلا التي سوف تمتلك صلاحيات </span></font></font><font face="Tahoma, sans-serif"><font size=3>SUDI
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">؟
+هذه امور مهمه جدا من خلالها بامكانك
+زيادة قوة الحمايه لديك ايضا يفضل استعمال
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>Integrity
+checker </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لكي
+تتاكد من سلامة البرامج </span></font></font><font face="Tahoma, sans-serif"><font size=3>binaries
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">التي
+لديك لانه ممكن يكون برنامج مثلا </span></font></font><font face="Tahoma, sans-serif"><font size=3>mount
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لديك
+يقوم بوظائف اخرى غير المخصص لها </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">طبعا
+هذه البرامج التي تساعدك هي </span></font></font><font face="Tahoma, sans-serif"><font size=3>tripwire
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وعلى
+حد علمي لم يعد مجاني مثل الاول لذلك ابحث
+عن برنامج </span></font></font><font face="Tahoma, sans-serif"><font size=3>opentripewire
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">في
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>sourceforge
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">سيقوم
+هذا البرنامج بمقارنة ملفاتك مع ملفات
+موجوده في قاعدة البيانات يتم المقارنه
+معها للتأكد من صحة هذه البرامج التي لديك
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>...<br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">قبل
+ان نختم هذا الجزء احب التنويه الى حصان
+طرواده </span></font></font><font face="Tahoma, sans-serif"><font size=3>trojan
+horse </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">حيث
+ممكن يكون المخترق قام بتوزيع برنامج
+معين على النت ويطلب استعماله وتنفيذه
+باستخدام صلاحيات </span></font></font><font face="Tahoma, sans-serif"><font size=3>root
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لكن
+فعليا هو ينفذ امور اخرى في الخفاء او
+الظهر ستقول لي كيف اكتشف ذلك ؟ اقول لك
+ابسط الطرق هي استعمال تواقيع ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>MDS
+checksum </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وال
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>GPG
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">التي
+تاتي مع ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>rpm
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">التي
+ستقوم بتنصيبها يعني بعباره اخرى لا تنزل
+برنامج على سيرفر مهم دون التاكد من
+التوقيع الخاص بهذا البرنامج </span></font></font><font face="Tahoma, sans-serif"><font size=3>...</font></font></p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0in">
+<strong><font color="#0000ff"><font face="Tahoma, sans-serif"><font size=3><b>4
+) Password Security &amp; Encryption</b></font></font></font></strong></p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">هذا
+الجزء متشعب وكبير جدا نظرا للتقنيات
+الكثيره المتوفره على النت ولهذا ساحاول
+الاختصار قدر الامكان</span></font></font><font face="Tahoma, sans-serif"><font size=3><br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx"><font color="#006400">اول</font>ا
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لو
+كان لديك معلومات ممه يتم ارسالها من خلال
+الشبكات المفتوحه </span></font></font><font face="Tahoma, sans-serif"><font size=3>Public
+Network </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">والذي
+هنا نقصد به الانترنت استعمل </span></font></font><font face="Tahoma, sans-serif"><font size=3>PGP
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وال
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>Public
+Key Eneryption </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">في
+التشفير </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وان
+كان ما ترسله على النت مهم جدا كأن يكون
+اموال الكترونيه اطلب توقيع من شركة وسيطه
+بحيث توقع على ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>public
+key </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">الخاص
+بك وال </span></font></font><font face="Tahoma, sans-serif"><font size=3>public
+key </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">الخاص
+بالطرف الاخر وهي ستكون </span></font></font><font face="Tahoma, sans-serif"><font size=3>Main
+Authority </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">بينكم
+مثال على هذه الشركات </span></font></font><font face="Tahoma, sans-serif"><font size=3>Verisign<br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx"><font color="#006400">ثانيا</font>
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">استعمل
+ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>ssl
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وال
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>https
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لزيادة
+الحمايه على الاتصالات الي تطلب </span></font></font><font face="Tahoma, sans-serif"><font size=3>verification
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">مثلا
+للدخول الى حساب بنكي ومن هذه الامور
+ويفضل ان تقوم بربطهم مع شركة ثالثه الوسيط
+كما ذكرنا في الاعلى وايضا استعمال </span></font></font><font face="Tahoma, sans-serif"><font size=3>MIME
+type </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">التي
+لا تفرض بعض الصغرات او تكون هي بحد ذاتها
+ثغره امنيه عليك </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وايضا
+لا تستعمل </span></font></font><font face="Tahoma, sans-serif"><font size=3>MIME
+type </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">غير
+معروف وغير تابع الى </span></font></font><font face="Tahoma, sans-serif"><font size=3>standard
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">معينه
+لانه سيجلب لك نفس المشكلة التي ذكرتها
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>..<br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx"><font color="#006400">ثالثا</font>
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">استعمل
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>secure
+shell </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">في
+الاتصال بالسيرفر من مكان آخر </span></font></font><font face="Tahoma, sans-serif"><font size=3>remotely
+.. </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">حيث
+يمكنك من خلال ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>ssh
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">ان
+توفر قناه امنيه الى حد كبير جدا عند
+اتصالك بالسيرفر </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وايضا
+يمكنك التحديد من مسموح المرور ومن لا من
+خلال التوقيع المستعمل </span></font></font><font face="Tahoma, sans-serif"><font size=3>Signiture
+<br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">رابعا
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">استعمال
+ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>PAM
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">الي
+تمثل </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+Pluggable Authentication Modules </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">حيث
+يمكنك التحكم بالكثير من وسائل الحماية
+على السيرفر من خلال هذه ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>Modules
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">ايضا
+عند تطوير نظام معين او برنامج لا حاجة
+لك لتطوير وسائل حماية له لانك ممكن ان
+تشغل له وسائل حمايه من خلال </span></font></font><font face="Tahoma, sans-serif"><font size=3>PAM<br></font></font><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><strong><font color="#0000ff"><font face="Tahoma, sans-serif"><font size=3>5
+) Kernel Security</font></font></font></strong></p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">يعتبر
+الكيرنل من الامور المهمه التي يجب ان
+تنتبه لها من حيث الامن لانه ما فائدة
+نظام محمي بشكل كبير لكن الكيرنل المستعمل
+فيه مشاكل وثغرات ؟؟ وكما تعلمون الكيرنل
+اساس لينوكس ولهذا هو مهم جدا ان يكون على
+درجه عاليه من الحمايه </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">تخيل
+بناء جميل جدا ولكن اساس هذا البناء هش
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">؟
+اكيد سينهار في لحظه معينه </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">هذه
+اللحظه في لينوكس خطيره جدا لانه اذا
+استطاعوا ايقاف الكيرنل فذلك يعني انهيار
+النظام بالكامل </span></font></font><font face="Tahoma, sans-serif"><font size=3>..<br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">الخطوات
+المتبعه لتقوية حماية الكيرنل لديك
+وبالتاكيد النظام هي </span></font></font><font face="Tahoma, sans-serif"><font size=3>:<br>1
+) </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">تحديث
+الكيرنل من فتره الى اخرى لانه </span></font></font><font face="Tahoma, sans-serif"><font size=3>90
+% </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">من
+التحديثات التي تطرأ على الكيرنل هي
+تحديثات امنيه</span></font></font><font face="Tahoma, sans-serif"><font size=3><br>2
+) </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">تشغيل
+الجدار الناري </span></font></font><font face="Tahoma, sans-serif"><font size=3>Firewall
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وإعداده
+بشكل صحيح لكي يقوم بالتصدي للهجمات
+الموجهة على ال </span></font></font><font face="Tahoma, sans-serif"><font size=3>Box<br>3
+) </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">إعداد
+خيارات الكيرنل بشكل جيد ومدروس من خلال
+</span></font></font><font face="Tahoma, sans-serif"><font size=3>sysctle
+.conf </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">مثال
+على ذلك </span></font></font><font face="Tahoma, sans-serif"><font size=3><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">عمل
+ايقاف لل </span></font></font><font face="Tahoma, sans-serif"><font size=3>ping
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">على
+السيرفر من خلال </span></font></font>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0.02in">
+<br><br>
+</p>
+<pre dir="RTL" style="margin-left: 0.18in; margin-right: 0.18in; border: 1px solid #000000; padding: 0.05in; text-align: left"><font face="Tahoma, sans-serif"><font size=3>echo &quot;1&quot; &gt;  /proc/sys/net/ipv4/icmp-ignore-all</font></font></pre><p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0in">
+<font face="Tahoma, sans-serif"><font size=3><span lang="zxx">او
+تشغيل </span></font></font><font face="Tahoma, sans-serif"><font size=3>tcp-syn****ies
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لمنع
+الهجمات من نوع </span></font></font><font face="Tahoma, sans-serif"><font size=3>DOS
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">الذي
+يستهلك المصادر التي لديك مما يجبر الكيرنل
+لعمل اعادة تشغيل للسيرفر لديك </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">هناك
+الكثير من الخيارات الأخرى التي ممكن
+تعمل لها اعداد على مستوى الكيرنل </span></font></font><font face="Tahoma, sans-serif"><font size=3>.....
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">لمزيد
+من المعلومات راجع </span></font></font><font face="Tahoma, sans-serif"><font size=3>google
+...<br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">مسأله
+اخيره احب ذكرها عندما نتحدث عن الحمايه
+على مستوى الكيرنل هو </span></font></font><font face="Tahoma, sans-serif"><font size=3>Kernel
+Devices </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">نعم
+هما جهازان</span></font></font></p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0.02in">
+<br><br>
+</p>
+<pre dir="RTL" style="margin-left: 0.18in; margin-right: 0.18in; border: 1px solid #000000; padding: 0.05in; text-align: left"> <font face="Tahoma, sans-serif"><font size=3>/dev/urandome</font></font></pre><p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0in">
+<font face="Tahoma, sans-serif"><font size=3><span lang="zxx">و </span></font></font>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0.02in">
+<br><br>
+</p>
+<pre dir="RTL" style="margin-left: 0.18in; margin-right: 0.18in; border: 1px solid #000000; padding: 0.05in; text-align: left"><font face="Tahoma, sans-serif"><font size=3>/dev/random</font></font></pre><p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in">
+<font face="Tahoma, sans-serif"><font size=3><span lang="zxx">حيث
+توفر هذه الاجهرزه </span></font></font><font face="Tahoma, sans-serif"><font size=3>Random
+Number's </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">في
+اي وقت تطلب منها ذلك </span></font></font><font face="Tahoma, sans-serif"><font size=3>...
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">يتم
+استعمالهما عند عمل مفاتيح من نوع </span></font></font><font face="Tahoma, sans-serif"><font size=3>PGP
+keys </font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">او
+تواقيع الخاصه بال </span></font></font><font face="Tahoma, sans-serif"><font size=3>ssh
+</font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">وغيرها
+الكثير من البرامج </span></font></font><font face="Tahoma, sans-serif"><font size=3>...<br><br></font></font><font face="Tahoma, sans-serif"><font size=3><span lang="zxx">هذا
+ما لدي على مستوى الكيرنل وانا متاكد ان
+هناك المزيد لكن عليكم بال </span></font></font><font face="Tahoma, sans-serif"><font size=3>..
+Google ...<br></font></font><br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0in">
+<strong><font color="#0000ff"><font face="Tahoma, sans-serif"><font size=3>6
+) Network Security</font></font></font></strong></p>
+<p dir="RTL" align=RIGHT style="margin-bottom: 0in"><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>اعتقد
+ان هذا من اكبر الجوانب الامنيه التي يصعب
+علي حصرها لكم </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>لكن
+سأحوال جاهدا ان اذكر لكم اهم الامور فيه
+والتوسع متروك لكم </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>على
+بركة الله </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..<br><br></font></font><font face="Tahoma"><span lang="zxx"><font color="#006400"><font face="Tahoma, sans-serif"><font size=3>اول</font></font></font><font face="Tahoma, sans-serif"><font size=3>ا
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>تشغيل
+الجدار النار لديك بشكل ممتاز من خلال
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>iptables
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>ويمكن
+الرجوع الى شرح الاخ </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>sAFA7_eLNeT
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>في
+هذا الامر على الرابط التاليه<a href="http://www.linuxac.org/showthread.php?t=61" target="_blank">
+هنا</a></font></font></span></font><font face="Tahoma, sans-serif"><font size=3><br><br></font></font><font face="Tahoma"><span lang="zxx"><font color="#006400"><font face="Tahoma, sans-serif"><font size=3>ثانيا</font></font></font><font face="Tahoma, sans-serif"><font size=3>
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>تشغيل
+ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>tcp-wrappers
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>وعمل
+امداد لها بصوره جيده بحيث تطبق قاعدة
+معينة اما انك تسمع للكل وتمنع البعض او
+انك تمنع الكل وتسمح للبعض من خلال ملفات
+</font></font></span></font>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0.02in">
+<br><br>
+</p>
+<pre dir="RTL" style="margin-left: 0.18in; margin-right: 0.18in; border: 1px solid #000000; padding: 0.05in; text-align: left"><font face="Tahoma, sans-serif"><font size=3>/etc/hosts.deny</font></font></pre><p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0in">
+<font face="Tahoma, sans-serif"><font size=3><span lang="zxx">او </span></font></font>
+</p>
+<pre dir="RTL" style="margin-left: 0.18in; margin-right: 0.18in; border: 1px solid #000000; padding: 0.05in; text-align: left"><font face="Tahoma, sans-serif"><font size=3>/etc/hosts.allow</font></font></pre><p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in">
+<font face="Tahoma, sans-serif"><font size=3><br></font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>طبعا
+هناك الكثير من الخدمات التي يمكن التحكم
+بها من هذه النقطه مثلها ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>FFp
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>وال
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>ssh
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>وال
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>pop3
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>وغيرها
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>...
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>وأيضا
+هناك شرح للأخ </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>sAFA7_eLNeT
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>له
+<a href="http://www.linuxac.org/showthread.php?t=188" target="_blank">هنا</a></font></font></span></font><font face="Tahoma, sans-serif"><font size=3><br><br></font></font><font face="Tahoma"><span lang="zxx"><font color="#006400"><font face="Tahoma, sans-serif"><font size=3>ثالثا</font></font></font><font face="Tahoma, sans-serif"><font size=3>
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>عمل
+الحمايه اللازمه على ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>DNS
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>التي
+لديك بحيث لا تسمح لجهاز خارجي من تسجيل
+نفسه على ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>DNS
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>الذي
+لديك </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>...<br><br></font></font><font face="Tahoma"><span lang="zxx"><font color="#006400"><font face="Tahoma, sans-serif"><font size=3>رابعا</font></font></font><font face="Tahoma, sans-serif"><font size=3>
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>عمل
+الحمايه اللازمة على مستوى ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>MTA
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>والي
+هو </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>(
+Mail Transport Agent ) </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>بحيث
+لا تسمح للناس بعمل </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>overlog
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>من
+سيرفرك وبالتالي ينتج مشاكل السبام
+الخارجه منه </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>...<br><br></font></font><font face="Tahoma"><span lang="zxx"><font color="#006400"><font face="Tahoma, sans-serif"><font size=3>خامسا</font></font></font><font face="Tahoma, sans-serif"><font size=3>
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>عمل
+حمايه على مستوى ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>Network
+file system </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>الي
+هو </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>NFS
+.. </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>بحيث
+تعمل الحمايه اللازمه لكي يتم عمل </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>mount
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>فقط
+للاشخاص المصرح لهم بذلك والبقيه لا </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>للمزيد
+راجع </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>NFSHowTo
+...<br><br></font></font><font face="Tahoma"><span lang="zxx"><font color="#006400"><font face="Tahoma, sans-serif"><font size=3>سادسا</font></font></font><font face="Tahoma, sans-serif"><font size=3>
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>عمل
+حماية على نظام </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>Network
+Information Service </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>الي
+هو </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>NIS
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>والذي
+كان يسمى </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>YP
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>من
+كلمة </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>Yallow
+Pages </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>بحيث
+لا يتم كشف المعلومات التي يقدمها هذا
+النظام للعالم الخارجي سوى لمن هم مصرحين
+بذلك </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>لانك
+كما تعلم هذا النظام عمل تصاريح الدهول
+الكاملة للسيرفر ان كان موجود ولذلك
+السيطرة عليه معناه كارثه </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>طبعا
+لم يعد </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>NIS
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>محمي
+كثيرا مثل السابق لذلك يفضل استعمال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>LDAP
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>بدلا
+منه </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..<br><br></font></font><font face="Tahoma"><span lang="zxx"><font color="#006400"><font face="Tahoma, sans-serif"><font size=3>سابعا</font></font></font><font face="Tahoma, sans-serif"><font size=3>
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>استعمل
+برامج مهمه لكشف العيوب التي لديك </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>مثلا
+نضرب مثال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>:<br></font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>قمت
+بتعيين </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>ports
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>لخدمات
+معينه كيف ستجربها ؟ استعمل برنامج مثل
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>nmap
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>لشكف
+ما خي ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>ports
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>المفتوحه
+وماهي المغلقه على سيرفرك </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>...
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>ويوجد
+الكثير من البرامج لكن بالنسبة لي هذا هو
+البرنامج رقم واحد </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>ما
+ذكرناه هو لمراقبة المنافذ </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>ports
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>الحين
+لكي تقوم بمراقبة وتحليل الشبكه لديك
+وماهي البرامج الخارجه وما هي الداخله
+على جهازك استعمل برامج التحليل </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>packets
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>او
+ما يسمى بالــــ </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>sniffers
+... </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>منها
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>dsniff
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>و
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>ethreal
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>وتفرج
+على المعلومات التي تدخل وتخرج من سيرفرك
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>...
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>لتقرأ
+أكثر على ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>sniffers
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>أيضا
+الأخ </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>sAFA7_eLNeT
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>الله
+يجزيه الخير له موضوع في ذلك <a href="http://www.linuxac.org/showthread.php?t=276" target="_blank">هنا</a></font></font></span></font><font face="Tahoma, sans-serif"><font size=3><br></font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>نقطه
+صحيح تذكرتها الحين </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>...
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>لا
+تقوم انت بعمل فحص المنافذ </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>port
+scanning </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>التي
+على سيرفرك من داخله </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>بل
+اطلب من صديق او اعملها انت من مكان خارجي
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+! ! </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>لا
+تسألني لماذا </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>أكتشف
+هذه المسأله انت بنفسك </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>...<br><br></font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>اعتقد
+كما ذكرت لكم مهما كتبت هنا فلم اكتب
+بالحقيقه شيء لكن ممكن يكون ما كتبته محل
+فائده للبعض وعدم الفائدة للاخرين </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..</font></font></p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in">
+<br><br>
+</p>
+<p dir="RTL" align=RIGHT style="margin-left: 0.18in; margin-right: 0.18in; margin-bottom: 0in">
+<font color="#0000ff"><font face="Tahoma, sans-serif"><font size=3>7
+) Before Going Public</font></font></font></p>
+<div id="post_message_3110" dir="LTR">
+<p dir="RTL" align=RIGHT style="margin-bottom: 0.2in"><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>الى
+حد الآن قمنا بالكثير من التحضيرات
+والفحوصات لكي نذهب </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>Online
+... </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>لكن
+هناك نقاط مهمه يفضل النظر اليها قبل ان
+تجعل سيرفرك مشبوك الى العالم الخارجي
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3>Plugged
+to the outworld </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>وهي
+كالتالي </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>:<br>1
+) </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>اختيار
+خطة مناسبة لعمل ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>Backup
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>وهذه
+صراحه متغيره من خدمه الى اخرى لهذا صعب
+احصائها هنا لكن الاضرار فيها ذكر مثال
+على ما اقصد </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>يعني
+لنفرض لديك شركة تقدم خدمات بنكية </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>هنا
+يفضل يكون الفتره التي يتم اخذ النسخه
+الاحتياطيه </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>Backup
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>قليله
+جدا لكثرة التغيرات المهمه التي تحصل
+على رصيد العميل </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>...
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>وطبعا
+هذا على حساب الاداء والمساحه لذلك انتبه
+الى ذلك </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..<br><br>2
+) </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>اوكي
+أخذت باك اب وصار عندك مشكلة اتيت ترجع
+الباك اب وجدته فيه مشكله </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>هنا
+كارثه ولهذا ينصح تجربته قبل ان تغيير
+نفسك لديك نسخه احتياطيه اصلا </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..<br><br>3
+) </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>عمل
+فحوصات دوريه على المستخدم لديك وعلى
+ملفات ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>log
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>الخاصه
+بالسيرفر والخدمات التي عليه ويمكنك ان
+تعمل تقارير من هذه الفحوصات يتم ارسالها
+لك على البريد من خلال إعدادات الخاصه
+بال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>syslogd
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>وايضا
+باستعمال ال </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>crond<br><br>4
+) </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>متابعة
+التحديثات الامنيه التي تصدر هي احدى
+اهم نقاط المهمه التي يجب متابعتها لانه
+كما تعلم مهما وصلت الى درجه من الحمايه
+العاليه فانه ممكن تصدر ثغره جديده انت
+لم تقوم بترقية الخدمة التي تنفذ عليها
+ويروح السيرفر عندك في داهيه </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+.. .. </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>طبعا
+ممكن تعمل برامج تتابع لك هذه الامور
+ولكن هذه من اختصاص السفاحين </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>..
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>هههههههههه
+</font></font></span></font><font face="Tahoma, sans-serif"><font size=3><br><br></font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>في
+الختام اتمنى ان ينال الموضوع رضاكم
+واعجابكم الموضوع مهدى لمجتمع لينوكس
+العربي بصوره عامه وللاخ </font></font></span></font><font color="#006400"><font face="Tahoma, sans-serif"><font size=3>amine00</font></font></font><font face="Tahoma, sans-serif"><font size=3>
+</font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>بصوره
+خاصه وآخيرا وليس اخرا إن شاء الله مهما
+وصلت من قوة الحماية فلن تصل الى </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>100
+% </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>ولا
+حتى </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>99
+% </font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3>هذا
+رأيي المتواضع والعالم كله يخضع لقانون
+مهم جدا وهو </font></font></span></font><font face="Tahoma, sans-serif"><font size=3>&quot;</font></font><font face="Tahoma"><span lang="zxx"><font color="#ff0000"><font face="Tahoma, sans-serif"><font size=3>الكمال
+لله سبحانه وتعالى</font></font></font></span></font><font face="Tahoma, sans-serif"><font size=3>&quot;
+...</font></font></p>
+<p dir="RTL" align=CENTER style="margin-bottom: 0.2in"><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3><font color="#0000ff"><b>اخوكم
+</b></font></font></font></span></font><font size=3><font face="Tahoma, sans-serif"><font color="#0000ff"><b>..
+</b></font></font></font><font face="Tahoma"><span lang="zxx"><font face="Tahoma, sans-serif"><font size=3><font color="#0000ff"><b>ابو
+محمد </b></font></font></font></span></font><font size=3><font face="Tahoma, sans-serif"><font color="#0000ff"><b>...</b></font></font></font></p>
+</div>
+</body>
+</html>

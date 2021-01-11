@@ -1,0 +1,755 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+<title>طرق الباك أب في لينوكس </title>
+<meta name="GENERATOR" content="OpenOffice.org 2.3  (Linux)">
+<meta name="AUTHOR" content="Ali">
+<meta name="CREATED" content="20080325;18300000">
+<meta name="CHANGEDBY" content="Ali">
+<meta name="CHANGED" content="20080325;18540000">
+<style type="text/css">
+	<!--
+		@page { size: 8.27in 11.69in; margin-right: 1.25in; margin-top: 1in; margin-bottom: 1in }
+		P { margin-bottom: 0.08in; direction: rtl; color: #000000; text-align: right; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	-->
+	</style>
+</head>
+<body lang="en-US" text="#000000" dir="RTL">
+<p class="western" align=CENTER style="margin-bottom: 0in"><span lang="ar-SA"><font color="#0000ff"><font face="Arial, sans-serif"><font size=4 style="font-size: 16pt"><b>السلام
+عليكم ورحمة الله وبركاته </b></font></font></font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=CENTER style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><font size=4><b>طرق
+الباك أب في لينوكس </b></font></font></span><font face="Arial, sans-serif"><font size=4><b>...
+</b></font></font>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><img src="https://arabnix.com/papers/ar/backup_html_m3a6c9c95.gif" align=BOTTOM height=1></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">أخواني
+الأعزاء هذا أول موضوع أكتبه في موقعنا
+كلنا الجديد </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وأحببت
+أن يكون عن الباك أب </font></span><font color="#0000ff"><font face="Arial, sans-serif">Backup</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أكيد
+الكثيرين يعرفون مثل هذه الأمور </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكن لمن
+ﻻ يعرف كيف يعمل باك آب لملفاته المهمة
+سيكون هذا الدرس البسيط جدا </font></span><font face="Arial, sans-serif">...<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">على
+بركة الله نبدأ الدرس</font></span><font face="Arial, sans-serif">:<br></font><span lang="ar-SA"><font face="Arial, sans-serif">الــ
+</font></span><font face="Arial, sans-serif">Backup </font><span lang="ar-SA"><font face="Arial, sans-serif">هي
+أن تأخذ نسخة إحتياطية من ملفاتك المهمة
+خوفا من التلف</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">هذا يمكن
+تعريف بسيط جدا للغاية قد ﻻ يشبع رغبات
+المحترفين</font></span><font face="Arial, sans-serif">. </font><span lang="ar-SA"><font face="Arial, sans-serif">على
+العموم </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">طرق
+الباك آب كثيرة وكثيرة جدا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أيضا يجب
+قبل أن تأخذ باك آب أن تحدد أين ستقوم بوضع
+هذا الباك آب ؟؟؟ هل على نفس الجهاز </font></span><font face="Arial, sans-serif">HD
+</font><span lang="ar-SA"><font face="Arial, sans-serif">؟ هل على
+سي دي </font></span><font face="Arial, sans-serif">CD </font><span lang="ar-SA"><font face="Arial, sans-serif">؟
+هل على دي في دي </font></span><font face="Arial, sans-serif">DVD
+</font><span lang="ar-SA"><font face="Arial, sans-serif">؟ أم على
+شريط </font></span><font face="Arial, sans-serif">Tape </font><span lang="ar-SA"><font face="Arial, sans-serif">؟
+أم سترسله الى ريموت سيرفر </font></span><font face="Arial, sans-serif">Remote
+Server</font><span lang="ar-SA"><font face="Arial, sans-serif">؟ كل
+هذه الأمور يجب أن تكون في الحسبان قبل
+أن تأخذ الباك آب أصلا</font></span><font face="Arial, sans-serif">...<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+ما سأذكره هنا في هذا الدرس هي الأوامر
+التالية</font></span><font face="Arial, sans-serif">:</font></p>
+<ul>
+<li><p class="western" align=RIGHT style="margin-top: 0.19in; margin-bottom: 0in">
+<font face="Arial, sans-serif"><b>tar</b></font></p>
+<li><p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><b>cpio</b></font></p>
+<li><p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><b>dump</b></font></p>
+<li><p class="western" align=RIGHT style="margin-bottom: 0.19in"><font face="Arial, sans-serif"><b>restore</b></font></p>
+</ul>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">نأتي
+للأمر الأول الي هو </font></span><font color="#006400"><font face="Arial, sans-serif"><b>tar</b></font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يعتبر
+من أقدم أومر الباك آب وظهر أيام يونكس
+بالتحديد ولم تكن وﻻدته على لينوكس أولا
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">أيضا
+كلمة </font></span><font face="Arial, sans-serif">tar </font><span lang="ar-SA"><font face="Arial, sans-serif">هي
+إختصارا ل </font></span><font face="Arial, sans-serif">Tape
+Archive </font><span lang="ar-SA"><font face="Arial, sans-serif">وذلك
+ﻷنه يأخذ الملفات التي تحددها له كمدخلات
+ويحولها الى سجل واحد أو في عالم الحاسوب
+ملف واحد </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+لنأخذ بعض الأمثلة عن الإستعمال</font></span><font face="Arial, sans-serif">:<br><br>1-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكي تأخذ
+نسخة إحتياطية من مجلد ال </font></span><font face="Arial, sans-serif">Home
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الخاص
+بك </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">أستعمل
+التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">tar cvf myhome.tar /home</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+سيقوم بأخذ نسخة من مجلدك ويضعه في ملف
+أسمه </font></span><font face="Arial, sans-serif">myhome.tar ...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعا
+الحرف </font></span><font face="Arial, sans-serif">c </font><span lang="ar-SA"><font face="Arial, sans-serif">يعني
+أخلق </font></span><font face="Arial, sans-serif">Create </font><span lang="ar-SA"><font face="Arial, sans-serif">لي
+أرشيف والحرف </font></span><font face="Arial, sans-serif">v
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يعني
+أعرض لي ماذا يجري </font></span><font face="Arial, sans-serif">Verbose
+Messages </font><span lang="ar-SA"><font face="Arial, sans-serif">والحرف
+</font></span><font face="Arial, sans-serif">f </font><span lang="ar-SA"><font face="Arial, sans-serif">يعني
+خذ الأسم الذي ذكرناه </font></span><font face="Arial, sans-serif">myhome.tar
+</font><span lang="ar-SA"><font face="Arial, sans-serif">على إنه
+أسم الملف الجديد أو أسم الأرشيف الجديد
+</font></span><font face="Arial, sans-serif">...<br><br>2- </font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+ممكن نأخذ نسخة إحتياطية من نفس المجلد
+من خلال </font></span><font color="#006400"><font face="Arial, sans-serif">tar</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وإضافة
+مسألة جميلة وهي ضغط الملف هذا من خلال
+إستعمال ميزة </font></span><font face="Arial, sans-serif">gzip
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أو </font></span><font face="Arial, sans-serif">bzip2
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+لكي نأخذ نفس الباك آب من مجلدك </font></span><font face="Arial, sans-serif">home
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مع ضغطه
+بميزة </font></span><font face="Arial, sans-serif">gzip </font><span lang="ar-SA"><font face="Arial, sans-serif">عليك
+بالتالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">tar czvf myhome.tar.gz /home</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">هذه
+أخذت نسخة إحتياط مع ضغطها بواسطة ال </font></span><font face="Arial, sans-serif">gzip
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والحرف
+</font></span><font face="Arial, sans-serif">z </font><span lang="ar-SA"><font face="Arial, sans-serif">هو
+الذي يدل على ذلك </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الحين
+لو تريد تضغط بإستعمال ميزة </font></span><font face="Arial, sans-serif">bzip2
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ضع بدل
+الحرف </font></span><font face="Arial, sans-serif">z </font><span lang="ar-SA"><font face="Arial, sans-serif">ضع
+الحرف </font></span><font face="Arial, sans-serif">j <br><br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+أخذت الباك آب وتريد أن ترجعه في حالة
+حصلت مشكلة لديك </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">كل ما
+عليك فعله هو التالي</font></span><font face="Arial, sans-serif">:<br>1-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الوقوف
+على المجلد الأب </font></span><font face="Arial, sans-serif">Parent
+</font><span lang="ar-SA"><font face="Arial, sans-serif">للمجلد
+الذي أخذت منه الباك آب </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يعني هنا
+في مثالنا نحن أخذنا باك أب للمجلد </font></span><font face="Arial, sans-serif">home/
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يعني يجب
+أن نكون على المجلد </font></span><font face="Arial, sans-serif">/
+</font><span lang="ar-SA"><font face="Arial, sans-serif">فقط لكي
+نستطيع أن نرجع المجلد بشكل صحيح </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ظرورية
+هذه الملاحظة الخاصة بالمجلد </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ﻷنه
+الأمر </font></span><font face="Arial, sans-serif">tar </font><span lang="ar-SA"><font face="Arial, sans-serif">ﻻ
+يعرف من أين تم أخذ الباك آب ولذلك عليك
+أن تحدد له ذلك </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكن هو
+يبقى محافظا لك على هيكلية الملفات داخل
+الأرشيف </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">يعني
+مثال</font></span><font face="Arial, sans-serif">: </font><span lang="ar-SA"><font face="Arial, sans-serif">بداخل
+مجلد ال </font></span><font face="Arial, sans-serif">home/ </font><span lang="ar-SA"><font face="Arial, sans-serif">كان
+لديك مجلد أسمه </font></span><font face="Arial, sans-serif">1
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ومجلد
+أسمه </font></span><font face="Arial, sans-serif">2 </font><span lang="ar-SA"><font face="Arial, sans-serif">وفايل
+أسمه </font></span><font face="Arial, sans-serif">3 </font><span lang="ar-SA"><font face="Arial, sans-serif">داخل
+مجلد </font></span><font face="Arial, sans-serif">1 </font><span lang="ar-SA"><font face="Arial, sans-serif">يبقى
+محافظا على هذه الترتيب </font></span><font face="Arial, sans-serif">...<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">2-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الآن لفك
+الأرشيف في حالة لم يكن مضغوط نستعمل
+الأمر </font></span><font color="#006400"><font face="Arial, sans-serif">tar</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بالطريقة
+التالية</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">tar xvf myhome.tar</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">لتوضيح
+الأمر فهو سيقوم بعمل فك للأرشيف داخل
+المجلد الذي أنت عليه </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والدليل
+على إنه سيقوم بفك الأرشيف هو إستعمالنا
+للحرف </font></span><font face="Arial, sans-serif">x </font><span lang="ar-SA"><font face="Arial, sans-serif">معه
+والذي يعني </font></span><font face="Arial, sans-serif">Extract
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">وباقي
+الأحرف المستعملة تؤدي نفس دور ما تم ذكره
+أثناء عملية الأرشفة </font></span><font face="Arial, sans-serif">...<br><br>3-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لو كان
+الملف الذي عندك مضغوط كل ما عليك فعله
+هو مثلا أن تتعرف على الأداة التي تم الضغط
+الأرشيف به من خلال مثلا تنفيذ الأمر
+التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">file myhome</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">طبعا
+هذا في حالة لم تجد ال </font></span><font face="Arial, sans-serif">extention
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مثل
+</font></span><font face="Arial, sans-serif">tar.gz. </font><span lang="ar-SA"><font face="Arial, sans-serif">الذي
+يدل على إنه من نوع أرشيف مضغوط بالأداة
+</font></span><font face="Arial, sans-serif">gzip ... </font><span lang="ar-SA"><font face="Arial, sans-serif">أما
+إن كان واضح لديك ما عليك إﻻ أن تعمل
+التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">tar xzvf myhome.tar.gz</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">نفس
+الشي سيقوم بفك الأرشيف في المكان الذي
+أنت واقف عليه </font></span><font face="Arial, sans-serif">+
+</font><span lang="ar-SA"><font face="Arial, sans-serif">إستعمالنا
+للحرف </font></span><font face="Arial, sans-serif">z </font><span lang="ar-SA"><font face="Arial, sans-serif">مع
+الحرف </font></span><font face="Arial, sans-serif">x </font><span lang="ar-SA"><font face="Arial, sans-serif">هو
+دليل على الفك للأرشيف والفك للضغط من
+خلال إستعمال ميزة </font></span><font face="Arial, sans-serif">gzip
+<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>ملاحظة
+مهمة</b></font></span><font face="Arial, sans-serif"><b>:</b></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">إن الأمر
+</font></span><font color="#006400"><font face="Arial, sans-serif">tar</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يعمل عكس
+الكثير من الأوامر في لينوكس وذلك ﻷنه
+نمتب الهدف </font></span><font face="Arial, sans-serif">Destination
+</font><span lang="ar-SA"><font face="Arial, sans-serif">قبل أن
+نكتب المصدر </font></span><font face="Arial, sans-serif">Source
+</font>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.25in; page-break-before: always">
+<span lang="ar-SA"><font face="Arial, sans-serif">الآن نأتي
+الى إستعمال الأمر </font></span><font color="#0000ff"><font face="Arial, sans-serif">cpio</font></font><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعا
+كلمة </font></span><font color="#0000ff"><font face="Arial, sans-serif">cpio</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">هي إختصار
+ل </font></span><font color="#0000ff"><font face="Arial, sans-serif">copy
+input / output</font></font><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">الآن</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">إن من
+أهم ميزة هذا الأمر على الأمر </font></span><font color="#006400"><font face="Arial, sans-serif">tar</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">هو
+إمكانيته لعمل أرشيف لملفات موزعة في
+أكثر من مجلد</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بينما
+الأمر </font></span><font color="#006400"><font face="Arial, sans-serif">tar</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">كان يعمل
+أرشيف للملفات التي تقع في نفس المجلد
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">إذن
+الأمر جميل صح ؟</font></span><font face="Arial, sans-serif"><br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">إحدى
+أكثر الطرق إستخداما بالنسبة لي وبالنسبة
+لأصحاب السيرفرات هي</font></span><font face="Arial, sans-serif">:
+</font><span lang="ar-SA"><font face="Arial, sans-serif">جمع ملفات
+ال </font></span><font face="Arial, sans-serif">conf. </font><span lang="ar-SA"><font face="Arial, sans-serif">الخاصة
+بإعدادات السيرفرات والخدمات الموجودة
+على جهازك أو سيرفرك</font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ويتم ذلك
+من خلال الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">find / -name '*.conf' | cpio -o &gt;
+myConf_Files.cpio</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><b>التفسير</b></font></span><font face="Arial, sans-serif"><b>:</b></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">قمنا
+بعمل بحث عن ملفات من نوع </font></span><font face="Arial, sans-serif">conf.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">في جميع
+النظام </font></span><font face="Arial, sans-serif">/ </font><span lang="ar-SA"><font face="Arial, sans-serif">وهذه
+الخطوة تتمثل في الشطر </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">find / -name '*.conf'</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">ومن
+ثم قمنا بتحويل او تمرير الناتج الى الأمر
+</font></span><font color="#0000ff"><font face="Arial, sans-serif">cpio</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الذي أخذ
+الناتج من الأمر السابق </font></span><font color="#ff0000"><font face="Arial, sans-serif">find</font></font><font face="Arial, sans-serif">
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">وقام
+بعمل أرشيف من خلال تمرير هذه المدخلات
+الى </font></span><font face="Arial, sans-serif">output </font><span lang="ar-SA"><font face="Arial, sans-serif">الذي
+تمثلت في </font></span><font face="Arial, sans-serif">o- </font><span lang="ar-SA"><font face="Arial, sans-serif">في
+المثال ومن ثم عملنا تحويل للناتج الى
+ملف أسمه </font></span><font face="Arial, sans-serif">myConf_Files.cpio
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الذي
+سيتم تخزين الباك آب للملفات التي أخترناها
+</font></span><font face="Arial, sans-serif">...<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+لفك هذا الأرشيف نقوم بالتالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">cpio -i &lt; myConf_Files.cpio</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><b>التفسير</b></font></span><font face="Arial, sans-serif"><b>:</b></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">سيقوم
+ها الأمر بأخذ المدخلات من خلال التحويل
+اليه </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">وسيقوم
+الأمر </font></span><font color="#006400"><font face="Arial, sans-serif">cpio</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بفك
+الأرشيف الى الملفات كما تم أخذها </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وهذه
+العملية تتمثل في الجزء </font></span><font face="Arial, sans-serif">cpio
+-i </font><span lang="ar-SA"><font face="Arial, sans-serif">والتي
+تعني </font></span><font face="Arial, sans-serif">input <br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">أيضا
+يمكنك أخذ نسخة إحتياطية من مجلدك وإرساله
+الى القرص الصلب من نوع سكازي أو قرص من
+نوع </font></span><font face="Arial, sans-serif">USB Disk ... </font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعا إذا
+كانت مساحة ال </font></span><font face="Arial, sans-serif">USB
+Disk </font><span lang="ar-SA"><font face="Arial, sans-serif">تكفي
+مجلدك </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">يتم
+ذلك من خلال الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">find /home/ali | cpio -o &gt;
+/dev/sda1</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+لإرجاع المعلومات من القرص ال </font></span><font face="Arial, sans-serif">USB
+Disk </font><span lang="ar-SA"><font face="Arial, sans-serif">نستعمل
+الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">cpio -i &lt; /dev/sda1</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in; page-break-before: always">
+<span lang="ar-SA"><font color="#0000ff"><font face="Arial, sans-serif"><b>طريقة
+إستعمال الأمر</b></font></font><font color="#0000ff"><font face="Arial, sans-serif"><b>
+</b></font></font></span><font color="#0000ff"><font face="Arial, sans-serif"><b>dump
+</b></font></font><font face="Arial, sans-serif"><b><br></b></font><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الأمر
+</font></span><font color="#ff0000"><font face="Arial, sans-serif">dump</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يجعل
+مسألة أخذ نسخة إحتياطية لمجلد أو بارتيشن
+بشكل دوري أمر سهل جدا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وهذا ما
+سنراه في الشرح هذا</font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعا
+يفضل تشغيل هذه الأوامر وأنت لك صلاحيات
+المستخدم </font></span><font face="Arial, sans-serif">root
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكي تتجنب
+مشاكل الصلاحيات التي قد تحصل عندما تعمل
+نسخة إحتياطية لمجلدات معينة </font></span><font face="Arial, sans-serif">...
+<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+أول شيء نقوم به هو أخذ نسخة إحتياطية
+كاملة </font></span><font face="Arial, sans-serif">Full Backup
+</font><span lang="ar-SA"><font face="Arial, sans-serif">للمجلد
+أو البارتشن الذي ستعمل له باك آب بصورة
+دورية </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">هنا
+في شرحي هذا سأقوم بأخذ نسخة إحتياطية
+لمجلدي الخاص وأضعه على </font></span><font face="Arial, sans-serif">USB
+Disk </font><span lang="ar-SA"><font face="Arial, sans-serif">كبير
+الحجم يكفيني لأخذ نسخة إحتياطية عليه
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">يعني
+الحين لعمل نسخة إحتياطية لمجلدي الخاص
+نقوم بتنفذ الأمر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">dump 0f /dev/sda1 /home/ali</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><b>التفسير</b></font></span><font face="Arial, sans-serif"><b>:
+</b></font><span lang="ar-SA"><font face="Arial, sans-serif">سيقوم
+هذا الأمر بأخذ نسخة إحتياطية كاملة
+للمجلد المحدد والذي هو هنا مجلدي الخاص
+</font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">/home/ali</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">طبعا
+الأمر </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">dump 0f</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">هو
+من حدد نوع الباك آب</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والذي
+هو </font></span><font face="Arial, sans-serif">Full Backup </font><span lang="ar-SA"><font face="Arial, sans-serif">هنا
+من خلال الرقم </font></span><font face="Arial, sans-serif">0.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الآن بعد
+فترة اسبوع تقوم بأخذ نسخة إحتياطية أخرى
+من خلال الامر التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">dump 1f /dev/sda1 /home/ali</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">بحيث
+ال </font></span><font face="Arial, sans-serif">1f </font><span lang="ar-SA"><font face="Arial, sans-serif">تعني
+أخذ باك آب ثاني للمجلد</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكن ما
+سيقوم به هو أخذ نسخة إحتياطية للملفات
+المعدلة أو المضافة حديثا للمجلد فقط</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ونقصد
+المجلد </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">/home/ali</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">ولهذا
+سيكون حجمها أصغر من حجم النسخة الإحتياطية
+في أغلب الأحوال وتعتمد على حسب التغييرات
+التي عملتها أنت وحسب الإضافات أيضا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يعني</font></span><font face="Arial, sans-serif">:
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لو رحت
+وضعت لي دي في دي في المجلد حديثا أكيد
+سيكون أكبر من النسخة الأولى كلها دون
+أدنى شك </font></span><font face="Arial, sans-serif">:p <br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+بعد أسبوع آخر تريد أخذ باك آب تقوم بعمل
+التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">dump 2f /dev/sda1 /home/ali</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+سيقوم بأخذ نسخة إحتياطية للملفات المحدثة
+أو المضافة حديثا بالمقارنة مع النسخة
+الإحتياطية التي أخذناها في الإسبوع
+الماضي والذي عملناها من خلال الأمر </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">dump 1f</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"> <span lang="ar-SA"><font face="Arial, sans-serif">الحين
+لو تريد أخذ نسخة أخرى ما عليك سوى ان
+تغيير الرقم الى </font></span><font face="Arial, sans-serif">3
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وبعد
+أسبوع </font></span><font face="Arial, sans-serif">4 </font><span lang="ar-SA"><font face="Arial, sans-serif">وهكذا
+</font></span><font face="Arial, sans-serif">...<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>ملاحظة</b></font></span><font face="Arial, sans-serif"><b>:-<br></b></font><font face="Arial, sans-serif">1-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مسألة
+أخذ باك آب كل أسبوع ليست شرط </font></span><font face="Arial, sans-serif">!!!!
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يعني
+ممكن كل يوم ممكن كل شهر ممكن كل سنة </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">حسب أنت
+وإحتياجاتك وإحتياجات العمل الذي تقوم
+به </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">يعني
+لو بياناتك مهمة جدا أكيد راح تعمل لها
+باك اب يومي كما يحصل في البنوك </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لو مثلي
+ومثلك مستخدمين عاديين في البيت ممكن كل
+شهر جيد </font></span><font face="Arial, sans-serif">:D <br><br>2-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكي تعمل
+طريقة نسخ إحتياطي بشكل يجب أن تراعي بعض
+الأمور</font></span><font face="Arial, sans-serif">:<br>2-1- </font><span lang="ar-SA"><font face="Arial, sans-serif">أن
+تعمل نسخة أحتياطية كاملة </font></span><font face="Arial, sans-serif">Full
+Backup </font><span lang="ar-SA"><font face="Arial, sans-serif">من
+خلال الأمر</font></span><font face="Arial, sans-serif">: </font>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">dump 0f /dev/sda /destination</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">2-2-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">عندما
+تأخذ باك آب جديد تراعي إنك تستعمل رقم
+أعلى من الرقم السابق وهذه في حالة كان
+نوع الباك آب </font></span><font face="Arial, sans-serif">Incremental
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">يعني
+لو كان الأمر السابق </font></span><font face="Arial, sans-serif">3f
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يكون
+الرقم الحالي </font></span><font face="Arial, sans-serif">4f
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وهكذا
+</font></span><font face="Arial, sans-serif">...<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+مسألة آخرى على السريع</font></span><font face="Arial, sans-serif">:<br></font><span lang="ar-SA"><font face="Arial, sans-serif">لو
+تريد عمل نسخة إحتياطية لقرص صلب أي
+</font></span><font face="Arial, sans-serif">filesystem </font><span lang="ar-SA"><font face="Arial, sans-serif">أو
+</font></span><font face="Arial, sans-serif">partition </font><span lang="ar-SA"><font face="Arial, sans-serif">يفضل
+إستعمال الخيارات التالية</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">dump 0uf /dev/sda1 /</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">بحيث
+سيقوم الخيار </font></span><font face="Arial, sans-serif">u
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بعمل
+تحديث على ملف </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">/etc/dumpdates</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الذي
+سيفيدك عندما تعمل تحديثات ﻻحقة أو تأخذ
+نسخ أحتياطية ﻻحقة حيث سيستخدمه الأمر
+</font></span><font color="#ff0000"><font face="Arial, sans-serif">dump</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لفحص
+التغييرات التي حصلت منذ آخر نسخ إحتياطي
+</font></span><font face="Arial, sans-serif">...<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الى
+هنا نأتي الى نهاية الأمر </font></span><font color="#ff0000"><font face="Arial, sans-serif">dump</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ولقاءنا
+القادم مع الأمر </font></span><font color="#006400"><font face="Arial, sans-serif">restore</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بعد قليل
+</font></span><font face="Arial, sans-serif">...</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font color="#ff0000"><font face="Arial, sans-serif"><b>ملاحظة
+مهمة جدا</b></font></font></span><font color="#ff0000"><font face="Arial, sans-serif"><b>:</b></font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font color="#0000ff"><font face="Arial, sans-serif">إذا
+كنت ستعمل باك آب لمجلدك الخاص كما في
+المثال ونسخه على بارتيشن </font></font></span><font color="#0000ff"><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يجب أن
+يكون البارتيشن فارغ </font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وإﻻ
+سيحصل فقدان لجميع ما عليه بسبب كتابة
+برنامج ال </font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">dump
+</font><span lang="ar-SA"><font face="Arial, sans-serif">عليه
+مباشرة دون النظر الى المحتويات </font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ولهذا
+يجب أن يكون فارغ </font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكن لو
+ﻻ يوجد لديك بارتيشن فارغ </font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">فكل ما
+عليك فعله هو النسخ الى ملف وليس الى
+بارتيشن </font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعا مع
+العلم البارتيشن هو نوع من أنواع الملفات
+بحد ذاتها </font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكن أليكم
+الطريقة</font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">:</font></font></P>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font color="#0000ff"><font face="Arial, sans-serif">dump 0f myBackup
+/home/ali</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font color="#0000ff"><font face="Arial, sans-serif">حيث
+سيتم تخزين الباك آب في هذا الملف الذي
+أسمه </font></font></span><font color="#0000ff"><font face="Arial, sans-serif">myBackup
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">وللتأكد
+من ذلك أستعمل الأمر </font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">file
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وأسم
+الملف وسترى إنه من نوع </font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">dump
+<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">أرجوا
+ان يعذرني كل من طبق الدرس ولم يكن في
+وقتها هذا الجزء من الشرح موجود </font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وخاصة
+الأخ أبو فيص</font></font><font color="#0000ff"><font face="Arial, sans-serif"><span lang="ar-JO">ل</span></font></font></SPAN><font color="#0000ff"><font face="Arial, sans-serif">.</font></font></P>
+<p class="western" align=RIGHT style="margin-bottom: 0in; page-break-before: always">
+<span lang="ar-SA"><font color="#0000ff"><font face="Arial, sans-serif"><b>طريقة
+إستعمال الأمر</b></font></font><font color="#0000ff"><font face="Arial, sans-serif"><b>
+</b></font></font></span><font color="#0000ff"><font face="Arial, sans-serif"><b>restore
+</b></font></font><font face="Arial, sans-serif"><br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">يمكن
+من خلال الأمر </font></span><font color="#ff0000"><font face="Arial, sans-serif">restore</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أن نعمل
+إسترجاع الى جميع بيانات والمفات التي
+تم عملها على شكل نسخة إحتياطية من خلال
+الأمر </font></span><font color="#ff0000"><font face="Arial, sans-serif">dump</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">كما رأينا
+في ردي السابق</font></span><font face="Arial, sans-serif">.
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وأيضا
+يمكن أن نقوم بإسترجاع بيانات معينة
+ومحددة من هذه النسخ الإحتياطية</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يعني ليس
+شرط إسترجاعها كلها</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بل حسب
+الحاجة
+<img src="https://arabnix.com/papers/ar/backup_html_m28fcfca0.png" name="graphics1" align=BOTTOM width=16 height=16 border=0></font></span><font face="Arial, sans-serif"><br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">أيضا
+يمكن من خلال هذا الأمر </font></span><font color="#ff0000"><font face="Arial, sans-serif">restore</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أن نعرض
+محتويات نسخة إحتياطية أخذناها على ال
+</font></span><font face="Arial, sans-serif">USB Disk </font><span lang="ar-SA"><font face="Arial, sans-serif">من
+خلال الأمر التالي</font></span><font face="Arial, sans-serif">:
+</font>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">restore -tf /dev/sda1</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+لنفرض تريد الدخول الى داخل هذه النسخة
+الإحتياطية والتجول فيها </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مثلا قد
+يكون للبحث عن ملف معين </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يمكن ذلك
+من خلال تطبيق الأمر أوﻻ التالي</font></span><font face="Arial, sans-serif">:
+</font>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">restore -if /dev/sda1</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+الأمر سيدخلنا الى داخل النسخة الإحتياطية
+ويفتح لي </font></span><font face="Arial, sans-serif">prompt
+</font><span lang="ar-SA"><font face="Arial, sans-serif">خاصة
+بالأمر </font></span><font color="#ff0000"><font face="Arial, sans-serif">restore</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أستطيع
+أن أدخل عليها أوامر بسيطة مثل </font></span><font face="Arial, sans-serif">ls
+</font><span lang="ar-SA"><font face="Arial, sans-serif">و </font></span><font face="Arial, sans-serif">cd
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وغيرها
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">يمكن
+أن ترى قائمة الأوامر المسموح بها من خلال
+كتابة الأمر </font></span><font face="Arial, sans-serif">help
+</font><span lang="ar-SA"><font face="Arial, sans-serif">على الـ
+</font></span><font face="Arial, sans-serif">prompt </font><span lang="ar-SA"><font face="Arial, sans-serif">الخاصة
+بالأمر </font></span><font color="#ff0000"><font face="Arial, sans-serif">restore</font></font><font face="Arial, sans-serif">
+<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">أيضا
+ملاحظة مهمة هنا</font></span><font face="Arial, sans-serif">,
+</font><span lang="ar-SA"><font face="Arial, sans-serif">قبل أن
+تقوم بعمل </font></span><font color="#ff0000"><font face="Arial, sans-serif">rsstore</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مثلا
+للمجلد الذي أخذنا له نسخة إحتياطية في
+ردي السابق حين شرحنا الأمر </font></span><font color="#ff0000"><font face="Arial, sans-serif">dump</font></font><font face="Arial, sans-serif">
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">يجب
+أن تكون على مسار أعلى من المسار المراد
+إرجاع المجلد أليه </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يعني لو
+كان المجلد الذي نريد نرجعه هو </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">/home/ali</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">يجب
+أن نكون نحن على ا</font><font face="Arial, sans-serif"><span lang="ar-JO">لـ</span></font></span></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">/home</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"> <span lang="ar-SA"><font face="Arial, sans-serif">وهكذا
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">الحين
+لعمل فك لهذه النسخة الإحتياطية نعمل
+التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">restore -xf /dev/sda1</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">ﻻ
+تنسى أن تكون واقف على الملجد الصح </font></span><font face="Arial, sans-serif">;)
+<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>ملاحظات
+أخيرة</b></font></span><font face="Arial, sans-serif"><b>:<br></b></font><font face="Arial, sans-serif">1-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بعض
+المرات قد يسألك الأمر </font></span><font color="#ff0000"><font face="Arial, sans-serif">restore</font></font><font face="Arial, sans-serif">
+</font><span lang="ar-SA"><font face="Arial, sans-serif">عن
+الصلاحيات وعن وصاحب هذه الملفات يعني
+ال </font></span><font face="Arial, sans-serif">owner </font><span lang="ar-SA"><font face="Arial, sans-serif">وال
+</font></span><font face="Arial, sans-serif">mode </font><span lang="ar-SA"><font face="Arial, sans-serif">لهم
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">لكي
+يرجع لك الملفات الى صورتها الصحيحة </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">فما عليك
+سوى تعريفا له </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وأكيد
+تعرف كيف صح ؟ </font></span><font face="Arial, sans-serif">:p
+<br><br>2- </font><span lang="ar-SA"><font face="Arial, sans-serif">يوجد
+خيارات أخرى للأوامر صعب إحصائها في موضوع
+بسيط ومتواضع مثل هذا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ولهذا
+أنصحكم بالرجوع دائما الى ال </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">اقتباس</font></span><font face="Arial, sans-serif">:</font></p>
+<table dir="LTR" width=572 border=1 bordercolor="#c0c0c0" cellpadding=6 cellspacing=3>
+<col width=552>
+<tr>
+<td width=552>
+<p class="western" align=LEFT><font face="Arial, sans-serif">man
+pages </font>
+</p>
+</td>
+</tr>
+</table>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">لهذه
+الأوامر </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">يعني
+مثلا </font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">man restore</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><span lang="ar-JO">وهكذا
+</span></font></span><font face="Arial, sans-serif">...</font><font face="Arial, sans-serif"><br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الى
+هنا تنتهي هذه السلسلة البسيطة من الشروحات
+حول أوامر الباك آب </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أرجوا
+ان تكون قد أعجبتكم وأن تكون محل فائدة
+لكم جميعا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وأي تعليق
+أنا حاضر للرد عليه إن شاء الل</font><font face="Arial, sans-serif"><span lang="ar-JO">ه
+</span></font></span><font face="Arial, sans-serif">...</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><font size=4><span lang="ar-JO"><b>أخوكم
+</b></span></font></font></span><font face="Arial, sans-serif"><font size=4><b><a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="93d1b2fdd3e1ea">[email&#160;protected]</a>
+...</b></font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<script data-cfasync="false" src="https://arabnix.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

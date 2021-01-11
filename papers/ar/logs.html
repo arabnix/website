@@ -1,0 +1,630 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="CONTENT-TYPE" content="text/html; charset=utf-8">
+<title>دليل ملفات الــ Log </title>
+<meta name="GENERATOR" content="OpenOffice.org 2.3  (Linux)">
+<meta name="AUTHOR" content="Ali">
+<meta name="CREATED" content="20080325;23450000">
+<meta name="CHANGEDBY" content="Ali">
+<meta name="CHANGED" content="20080325;23570000">
+<style type="text/css">
+	<!--
+		@page { size: 8.27in 11.69in; margin-right: 1.25in; margin-top: 1in; margin-bottom: 1in }
+		P { margin-bottom: 0.08in; direction: rtl; color: #000000; text-align: right; widows: 2; orphans: 2 }
+		P.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: en-US }
+		P.cjk { font-family: "Times New Roman", serif; font-size: 12pt }
+		P.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+		A:link { color: #0000ff }
+	-->
+	</style>
+</head>
+<body lang="en-US" text="#000000" link="#0000ff" dir="RTL">
+<p class="western" align=CENTER style="margin-bottom: 0in"><span lang="ar-SA"><font color="#ff0000"><font face="Arial, sans-serif"><font size=4 style="font-size: 16pt"><b>السلام
+عليكم ورحمة الله وبركاته </b></font></font></font></span><font color="#ff0000"><font face="Arial, sans-serif"><font size=4 style="font-size: 16pt"><b>...</b></font></font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font color="#0000ff"><font face="Arial, sans-serif"><font size=4><b>دليل
+ملفات الــ </b></font></font></font></span><font color="#0000ff"><font face="Arial, sans-serif"><font size=4><b>Log</b></font></font></font><font color="#0000ff"><font face="Arial, sans-serif"><font size=4>
+</font></font></font>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><img src="https://arabnix.com/papers/ar/logs_html_m3a6c9c95.gif" align=BOTTOM height=1><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">موضوعي
+لهذا اليوم أجده مهم للمحترفين وللمستخدمين
+العاديين </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">ولم
+أجد أحد صراحة تكلم عنه سابقا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ولا حتى
+فكر في السؤال عنه ولهذا ما سأتناول في
+هذا الموضوع تصنيف ملفات الـ </font></span><font face="Arial, sans-serif">Log
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وكيفية
+التعامل معها وفهم محتويات كل واحد منها
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">وأيضا
+الطريقة التي يكتب النظام ملاحظاته في
+هذه الملفات </font></span><font face="Arial, sans-serif">...
+<br><br></font><span lang="ar-SA"><font color="#008080"><font face="Arial, sans-serif"><b>أولا</b></font></font></span><font color="#008080"><font face="Arial, sans-serif"><b>:
+</b></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>ما
+هو ملف الـ </b></font></font></SPAN><font color="#008080"><font face="Arial, sans-serif"><b>Log
+</b></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>؟</b></font></font></SPAN><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">هو
+عبارة عن ملف يتم تدوين في الملاحظات حول
+العمليات التي يجريها النظام </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مثل تشغيل
+الخدمات كالـ </font></span><font face="Arial, sans-serif">ftp
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وتسجيل
+حالات الدخول والخروج للنظام </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وغيرها
+من الأمور التي سنذكرها لاحقا </font></span><font face="Arial, sans-serif">...<br><br></font><span lang="ar-SA"><font color="#008080"><font face="Arial, sans-serif"><b>ثانيا</b></font></font></span><font color="#008080"><font face="Arial, sans-serif"><b>:
+</b></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>ما
+هو المجلد الرئيسي لهذه الملفات ؟</b></font></font></SPAN><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">المجلد
+الرئيسي لها هو </font></span><font face="Arial, sans-serif">var/log/<br><br></font><span lang="ar-SA"><font color="#008080"><font face="Arial, sans-serif"><b>ثالثا</b></font></font></span><font color="#008080"><font face="Arial, sans-serif"><b>:
+</b></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>ما
+هي الملفات الرئيسية التي بداخل هذا
+المجلد ؟</b></font></font></SPAN></P>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br>boot.msg<br>firewall<br>lastlog<br>mail<br>messages<br>wtmp</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">والمجلدات
+التي في داخله كثيرة </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أهمها
+هي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br>YaST2<br>cups<br>samba<br>squid</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">وغيرها
+الكثير لكن هذه أهمها أو أهم ما سأقوم
+بشرحه </font></span><font face="Arial, sans-serif">...<br><br><br></font><span lang="ar-SA"><font color="#008080"><font face="Arial, sans-serif"><b>رابعا</b></font></font></span><font color="#008080"><font face="Arial, sans-serif"><b>:
+</b></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>لقد
+سردت لنا الكثير من الملفات والمجلدات
+فما هو عمل كل واحد منهم ؟</b></font></font></SPAN><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">نعم
+سأذكر كل ملف ومجلد وماذا ممكن أن تجد
+بداخله</font></span><font face="Arial, sans-serif">...<br><br>1-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ملف الــ
+</font></span><font color="#0000ff"><font face="Arial, sans-serif">boot.msg</font></font></P>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+هو الملف الذي يتم تخزين فيه جميع الأمور
+التي حصلت أثناء عملية الإقلاع للنظام
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">من
+لحظة ما يتحمل الكيرنل وباقي الأمور التي
+تحصل عند الإقلاع من تعريف القطع المثبته
+لديك </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">ولكن
+بسبب ظهورها بسرعة على الشاشة أثناء
+الإقلاع فلا تحصل على فرصة الى معرفة ماذا
+حصل </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">خاصة
+إذا دخلت النظام ولم تجد مثلا جهاز قام
+بالعمل بشكل صحيح </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">فكيك
+ستعرف إنه الكيرنل تعرف عليه أصلا ؟ من
+هنا </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">أي
+هذا الملف يسجل جميع عملايات الإقلاع
+وجميع عمليات التي يقوم بها الكيرنل </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أيضا
+يمكنك أن تعرض محتويات هذا الملف من خلال
+الأمر </font></span><font face="Arial, sans-serif">dmesg <br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">2-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ملف الــ
+</font></span><font color="#0000ff"><font face="Arial, sans-serif">firewall</font></font><font face="Arial, sans-serif"><br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+الملف يتم تسجيل فيه عمليات التي تحصل
+على الفايروول </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ما هي
+المنافذ المفتوحة والمغلقة وماذا يحصل
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">وهو
+موجود مع نظام سوزي </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ﻻ أعلم
+إن كان موجود مع توزيعة أخرى </font></span><font face="Arial, sans-serif">...<br><br>3-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ملف الــ
+</font></span><font color="#0000ff"><font face="Arial, sans-serif">lastlog</font></font><font face="Arial, sans-serif"><br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">ويتم
+تسجيل فيه من المستخدمين الذين لديك ومن
+فيهم قام بالدخول على النظام ومتى دخل
+عليه </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">كل
+هذه الأمور مسجلة فيه </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ولأن هذا
+الملف هو ليس عبارة عن ملف </font></span><font face="Arial, sans-serif">ASCII
+</font><span lang="ar-SA"><font face="Arial, sans-serif">عادي بل
+هو عبارة عن </font></span><font face="Arial, sans-serif">Binary
+</font><span lang="ar-SA"><font face="Arial, sans-serif">هههههه
+أنا </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">مجرد
+مزحة </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">وبما
+إنه نوعه </font></span><font face="Arial, sans-serif">Binary
+</font><span lang="ar-SA"><font face="Arial, sans-serif">إذن ﻻ
+يمكن فتحه مثل الملفات الأخرى بأدوات
+العادية لكن يجب عرضه من خلال الأمر
+</font></span><font face="Arial, sans-serif">lastlog ... </font><span lang="ar-SA"><font face="Arial, sans-serif">أكيد
+سيسأل سائل </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لماذا
+أقول لكي يصعب التعديل على من الذي دخل
+على الموضوع من خلال تحريره بأي محرر </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">إذن
+</font></span><font face="Arial, sans-serif">Binary </font><span lang="ar-SA"><font face="Arial, sans-serif">فوائده
+كثيرة هههههههههه </font></span><font face="Arial, sans-serif">...<br><br>4-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ملف الــ
+</font></span><font color="#0000ff"><font face="Arial, sans-serif">mail</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+الملف يتم تسجيل الأمور التي يقوم نظام
+الميل </font></span><font face="Arial, sans-serif">mail </font><span lang="ar-SA"><font face="Arial, sans-serif">على
+جهازك </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">جميع
+الأمور المتعلقة بالميل تسجل هنا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">سواءا
+إرسال إستقبال كلها هنا أو في ملحقاتها
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">مثل
+</font></span><font face="Arial, sans-serif">mail.err </font><span lang="ar-SA"><font face="Arial, sans-serif">الي
+يسجل فيه الأخطاء وهكذا </font></span><font face="Arial, sans-serif">...<br><br>5-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ملف الــ
+</font></span><font color="#0000ff"><font face="Arial, sans-serif">wtmp</font></font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">يتم
+تسجيل فيه كل مستخدم متى قام بالدخول الى
+النظام ومتى خرج </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ومن أين
+دخل على النظام وما هي المدة التي أستغرقها
+داخل النظام </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ولأنه
+الملف أيضا ليس نوعه </font></span><font face="Arial, sans-serif">ASCII
+TEXT </font><span lang="ar-SA"><font face="Arial, sans-serif">فلذلك
+يجب أن تعرض محتواه من خلال الأمر التالي</font></span><font face="Arial, sans-serif">:
+last </font><font face="Arial, sans-serif"><br><br>6- </font><span lang="ar-SA"><font face="Arial, sans-serif">ملف
+الــ </font></span><font color="#0000ff"><font face="Arial, sans-serif">messages</font></font><font face="Arial, sans-serif"><br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+هو اهم ملف تقريبا في النظام </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ﻷنه أغلب
+الأحداث تسجل فيه </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">تشغيل
+خدمات </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">خدمات
+فيها مشاكل ﻻ تعمل </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الحصول
+على </font></span><font face="Arial, sans-serif">IP ... </font><span lang="ar-SA"><font face="Arial, sans-serif">الأفعال
+التي يقوم بها المستخدم على النظام </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الأفعال
+التي يقوم بها النظام نفسه </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">في تشغيل
+خدمات معينة </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">في غلقها
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">في
+كل شيء تقريبا تجدها هنا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">طبعا هذا
+الملف هو مجرد </font></span><font face="Arial, sans-serif">ASCII
+TEXT </font><span lang="ar-SA"><font face="Arial, sans-serif">ولهذا
+ممكن تعرضه في أي برنامج للعرض التي
+سأذكرهم لاحقا </font></span><font face="Arial, sans-serif">...<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">للمن
+لديه خبرة في هذا الملف </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">فهو من
+أكثر الملفات التي تحبها الأداة </font></span><font face="Arial, sans-serif">Guru-Antilog
+</font><span lang="ar-SA"><font face="Arial, sans-serif">حق أخونا
+</font></span><font face="Arial, sans-serif">sAFA7_eLNeT </font><span lang="ar-SA"><font face="Arial, sans-serif">الشهيرة
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">تجدها
+</font><a href="http://linux-fr34k.com/blog/?page_id=27" target="_blank"><font color="#0000ff"><u><font face="Arial, sans-serif">هنا</font></u></font></a><font face="Arial, sans-serif">
+</font></span><font face="Arial, sans-serif">...<br><br><br></font><span lang="ar-SA"><u><font face="Arial, sans-serif"><b>نأتي
+الى المجلدات</b></font></u></span><font face="Arial, sans-serif"><u><b>:</b></u></font><font face="Arial, sans-serif"><u><br></u></font><font face="Arial, sans-serif">1-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مجلد
+الــ </font></span><font color="#0000ff"><font face="Arial, sans-serif">YaST2</font></font><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">وفيه
+يتم تسجيل جميع الأمور التي تحصل من خلال
+الأداة </font></span><font face="Arial, sans-serif">yast ... </font><span lang="ar-SA"><font face="Arial, sans-serif">كل
+ما تعمله الأداة مسجل هنا </font></span><font face="Arial, sans-serif">...<br>2-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مجلد
+الــ </font></span><font color="#0000ff"><font face="Arial, sans-serif">cups</font></font><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">وفيه
+يتم تسجيل جميع الأمور التي تخص تعريف
+الطابعات والطباعة لديك </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">سواءا
+على شبكة أو كانت مربوطة مباشرة كلها تسجل
+هنا </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">فهي
+المكان الرئيسي لتسجيل جميع الأفعال التي
+تحصل مع الخدمة </font></span><font face="Arial, sans-serif">cupsd</font><font face="Arial, sans-serif">.</font><font face="Arial, sans-serif"><br>3-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مجلد
+الــ </font></span><font color="#0000ff"><font face="Arial, sans-serif">samba</font></font><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">هنا
+يتم تسجيل جميع الأفعال التي تحصل مع
+الخدمة السامبا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">التي
+تستعمل في مشاركة الملفات بين انظمة
+التشغيل وغيرها من الأمور الكثيرة التي
+تقدمها هذه الخدمة </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">كل ما
+يخصها تجده هنا </font></span><font face="Arial, sans-serif">...<br>4-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">مجلد
+الــ </font></span><font color="#0000ff"><font face="Arial, sans-serif">squid</font></font><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+المجلد يتم تسجيل فيه جميع الأفعال التي
+تقوم بها خدمة الـ </font></span><font face="Arial, sans-serif">squid
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">فيها
+عدة ملفات </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">منها
+لتسجيل الأخطاء ومنها لتسجيل المواقع
+التي يتم زيارتها من قبل المستخدمين على
+الشبكة المربوطة بسيرفر الــ </font></span><font face="Arial, sans-serif">squid
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">وأيضا
+الكثير من الأمور الأخرى </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بإمكانك
+الدخول اليه والتفرج بنفسك </font></span><font face="Arial, sans-serif">...<br><br></font><span lang="ar-SA"><font color="#008080"><font face="Arial, sans-serif"><b>خامسا</b></font></font></span><font color="#008080"><font face="Arial, sans-serif"><b>:
+</b></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>ما
+هي أهم أدوات عرض اللوج ؟</b></font></font></SPAN><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">كما
+أتضح لنا في الأعلى إنه البعض منها ﻻ يمكن
+عرضه من خلال أدوات التصفح العادية وتحتاج
+الى أدوات خاصة مثل الـ </font></span><font face="Arial, sans-serif">last
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والـ
+</font></span><font face="Arial, sans-serif">lastlog ... </font><span lang="ar-SA"><font face="Arial, sans-serif">أما
+الملفات الأخرى فيمكنك عرضها من خلال
+التالي</font></span><font face="Arial, sans-serif">:<br></font><br>
+</P>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">1-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الأمر
+</font></span><font face="Arial, sans-serif">less </font><span lang="ar-SA"><font face="Arial, sans-serif">ويمكنك
+إستعماله كما يلي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">less /var/log/messages</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">2-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الأمر
+</font></span><font face="Arial, sans-serif">more </font><span lang="ar-SA"><font face="Arial, sans-serif">ويمكنك
+إستعماله بنفس الطريقة التي مع الأمر
+</font></span><font face="Arial, sans-serif">less</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">more /var/log/messages</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">3-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الأمر
+الذي هو جدا مهم وهو </font></span><font face="Arial, sans-serif">tail
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">هذا
+الأمر يقوم بعرض آخر ملف معيين </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وفي
+حالتنا سنحدد له أن يعرض آخر ملف اللوج
+وهذا ما نحتاجه غالبا بالضبط </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">خاصة لما
+تريد تشغل خدمة معينة مثلا الــ </font></span><font face="Arial, sans-serif">httpd
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">وتظهر
+لك مشاكل </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وتريد
+تقرأ آخر اللوج لأنه أكيد المشكلة في
+الاخير تم تدوينها ﻷنها حصلت الحين </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وقتها
+ننفذ التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">tail /var/log/messages</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+هذا بصفة أساسية سيعرض لك فقط آخر </font></span><font face="Arial, sans-serif">10
+</font><span lang="ar-SA"><font face="Arial, sans-serif">سطور </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لماذا ﻻ
+نجلعه يعرض آخر </font></span><font face="Arial, sans-serif">25
+</font><span lang="ar-SA"><font face="Arial, sans-serif">سطر ؟
+إذن نعمل التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">tail -n25 /var/log/messages</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">طيب
+الحين لنفرض نريد أن نراقب هذا الملف
+بصورة </font></span><font face="Arial, sans-serif">Live </font><span lang="ar-SA"><font face="Arial, sans-serif">أو
+كل شي يحصل في الـ </font></span><font face="Arial, sans-serif">run
+time </font><span lang="ar-SA"><font face="Arial, sans-serif">نراه
+في نفس اللحظة نعمل ماذا ؟ أعمل التالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">tail -f /var/log/messages</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">تحب
+تزيد عدد السطور فقط أضف الـ </font></span><font face="Arial, sans-serif">n25-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">على الأمر
+وسيعرض لك </font></span><font face="Arial, sans-serif">25
+</font><span lang="ar-SA"><font face="Arial, sans-serif">سطر،
+ماذا لو </font></span><font face="Arial, sans-serif">50 </font><span lang="ar-SA"><font face="Arial, sans-serif">سطر
+؟ ههههه</font></span><font face="Arial, sans-serif"><br><br><br></font><span lang="ar-SA"><font color="#008080"><font face="Arial, sans-serif"><b>سادسا</b></font></font></span><font color="#008080"><font face="Arial, sans-serif"><b>:
+</b></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>كيف
+نقرأ محتوى أحد ملفات الــ </b></font></font></SPAN><font color="#008080"><font face="Arial, sans-serif"><b>Log
+</b></font><span lang="ar-SA"><font face="Arial, sans-serif"><b>؟</b></font></font></SPAN><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font face="Arial, sans-serif">أوكي
+هذا صراحة السؤال ليس سهلا وليس صعبا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ولكن
+غالبا أصحاب الخلفية البرمجية يمكنهم
+فهم المحتوى بسهولة وذلك ﻷنه المحتوى
+أيضا عبارة عن أكواد </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكن أكواد
+لم تكتبها أن بل كتبها لك النظام ولهذا
+فهي مفهومة لهم </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكن هذا
+ﻻ يعني إنه الذين ليس لديهم خلفية برمجية
+لن يفهموا منه شيئا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ﻻ بالعكس
+أيضا يمكنهم فهم ذلك كل ما عليهم هو
+المتابعة معي </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وطبعا
+المبرمجين تابعوا معي أيضا </font></span><font face="Arial, sans-serif">...<br><br></font><br>
+</P>
+<p class="western" align=RIGHT style="margin-bottom: 0in; page-break-before: always">
+<span lang="ar-SA"><font face="Arial, sans-serif">لنفرض
+قمنابالتالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">binary:/var/log # tail
+/var/log/messages</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 14:10:04 binary dhclient:
+DHCPREQUEST on eth0 to 10.0.0.1 port 67</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 14:10:04 binary dhclient:
+DHCPACK from 10.0.0.1</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 14:10:04 binary dhclient: bound
+to 10.0.0.4 -- renewal in 1483 seconds</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">.<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+لنأتي لنفصل كل ما في هذه السطور </font></span><font face="Arial, sans-serif">...</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br></font><span lang="ar-SA"><font color="#8b0000"><font face="Arial, sans-serif"><b>السطر
+الأول</b></font></font></span><font color="#8b0000"><font face="Arial, sans-serif"><b>:</b></font></font><font face="Arial, sans-serif"><b><br></b></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><b>أوﻻ</b></font><font face="Arial, sans-serif">
+ماذا تعني </font></span><font face="Arial, sans-serif">Dec 25
+14:10:04 </font><span lang="ar-SA"><font face="Arial, sans-serif">؟
+تعني التاريخ الذي بدأت فيه العملية </font></span><font face="Arial, sans-serif">...<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><b>ثانيا</b></font><font face="Arial, sans-serif">
+ماذا يعني </font></span><font face="Arial, sans-serif">binary
+</font><span lang="ar-SA"><font face="Arial, sans-serif">؟ هذا هو
+أسم الجهاز على الشبكة أي الـ </font></span><font face="Arial, sans-serif">Hostname
+...<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><b>ثالثا</b></font><font face="Arial, sans-serif">
+</font></span><font face="Arial, sans-serif">dhclient </font><span lang="ar-SA"><font face="Arial, sans-serif">ما
+هي ؟ هذه خدمة </font></span><font face="Arial, sans-serif">service
+</font><span lang="ar-SA"><font face="Arial, sans-serif">موجودة
+على النظام تقوم بعملية طلب الـ </font></span><font face="Arial, sans-serif">IP
+</font><span lang="ar-SA"><font face="Arial, sans-serif">من الـ
+</font></span><font face="Arial, sans-serif">DHCP Server </font><span lang="ar-SA"><font face="Arial, sans-serif">لكي
+يقوم بتثبيته على الجهاز </font></span><font face="Arial, sans-serif">...<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><b>رابعا</b></font><font face="Arial, sans-serif">
+</font></span><font face="Arial, sans-serif">DHCPREQUEST </font><span lang="ar-SA"><font face="Arial, sans-serif">هذه
+هي نوع الـ </font></span><font face="Arial, sans-serif">packet
+</font><span lang="ar-SA"><font face="Arial, sans-serif">المرسلة
+من قبل </font></span><font face="Arial, sans-serif">dhclient
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والتي
+تطلب فيها </font></span><font face="Arial, sans-serif">IP </font><span lang="ar-SA"><font face="Arial, sans-serif">من
+الـ </font></span><font face="Arial, sans-serif">DHCP Server
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الموجودة
+على الشبكة </font></span><font face="Arial, sans-serif">...<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><b>خامسا</b></font><font face="Arial, sans-serif">
+</font></span><font face="Arial, sans-serif">on eth0 </font><span lang="ar-SA"><font face="Arial, sans-serif">تعني
+العملية تمت على كارت الشبكة الي أسمه
+</font></span><font face="Arial, sans-serif">eth0 <br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><b>سادسا</b></font><font face="Arial, sans-serif">
+</font></span><font face="Arial, sans-serif">to 10.0.0.1 </font><span lang="ar-SA"><font face="Arial, sans-serif">هي
+الجهة التي تم إرسال الـ </font></span><font face="Arial, sans-serif">packet
+</font><span lang="ar-SA"><font face="Arial, sans-serif">من برنامج
+</font></span><font face="Arial, sans-serif">dhclient </font><span lang="ar-SA"><font face="Arial, sans-serif">اليه
+من خلال المنفذ </font></span><font face="Arial, sans-serif">eth0<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><b>سابعا</b></font><font face="Arial, sans-serif">
+</font></span><font face="Arial, sans-serif">port 67 </font><span lang="ar-SA"><font face="Arial, sans-serif">أي
+بإستعمال المنفذ </font></span><font face="Arial, sans-serif">port
+</font><span lang="ar-SA"><font face="Arial, sans-serif">هذا </font></span><font face="Arial, sans-serif">...<br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">فالنعيد
+مرة ثانية ما شرحناه </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">السطر
+الأول يعني إرسال </font></span><font face="Arial, sans-serif">packet
+</font><span lang="ar-SA"><font face="Arial, sans-serif">من نوع
+</font></span><font face="Arial, sans-serif">DHCPREQUEST </font><span lang="ar-SA"><font face="Arial, sans-serif">من
+خلال كارت الشبكة </font></span><font face="Arial, sans-serif">eth0
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الى
+الجهاز الي رقم الـ </font></span><font face="Arial, sans-serif">IP
+</font><span lang="ar-SA"><font face="Arial, sans-serif">له
+</font></span><font face="Arial, sans-serif">10.0.0.1 </font><span lang="ar-SA"><font face="Arial, sans-serif">من
+خلال المنفذ </font></span><font face="Arial, sans-serif">port
+67 </font><span lang="ar-SA"><font face="Arial, sans-serif">في
+الساعة </font></span><font face="Arial, sans-serif">14:10:04 </font><span lang="ar-SA"><font face="Arial, sans-serif">في
+اليوم </font></span><font face="Arial, sans-serif">25 </font><span lang="ar-SA"><font face="Arial, sans-serif">من
+شهر </font></span><font face="Arial, sans-serif">12 ... </font><span lang="ar-SA"><font face="Arial, sans-serif">هل
+هذا صعب ؟ ﻻ أعتقد ذلك </font></span><font face="Arial, sans-serif">...<br><br></font><span lang="ar-SA"><font color="#8b0000"><font face="Arial, sans-serif"><b>السطر
+الثاني</b></font></font></span><font color="#8b0000"><font face="Arial, sans-serif"><b>:</b></font></font><font face="Arial, sans-serif"><b><br></b></font><span lang="ar-SA"><font face="Arial, sans-serif">سأبدأه
+من عند </font></span><font face="Arial, sans-serif">DHCPACK </font><span lang="ar-SA"><font face="Arial, sans-serif">وذلك
+ﻷنه جميع ما سبق هو نفس الي في السطر الذي
+سبقه </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">طيب
+الـ </font></span><font face="Arial, sans-serif">DHCPACK </font><span lang="ar-SA"><font face="Arial, sans-serif">ما
+هي ؟ هي نوع من أنواع الـ </font></span><font face="Arial, sans-serif">packets
+</font><span lang="ar-SA"><font face="Arial, sans-serif">التي
+يرجعها الـ </font></span><font face="Arial, sans-serif">DHCP
+Server </font><span lang="ar-SA"><font face="Arial, sans-serif">الى
+البرنامج </font></span><font face="Arial, sans-serif">dhclient
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">أما
+</font></span><font face="Arial, sans-serif">from 10.0.0.1 </font><span lang="ar-SA"><font face="Arial, sans-serif">فتعني
+إنه الـ </font></span><font face="Arial, sans-serif">packet </font><span lang="ar-SA"><font face="Arial, sans-serif">هذه
+جاءت من الجهاز الذي يحمل هذا الـ </font></span><font face="Arial, sans-serif">IP
+<br><br></font><span lang="ar-SA"><font color="#8b0000"><font face="Arial, sans-serif"><b>السطر
+الثالث</b></font></font></span><font color="#8b0000"><font face="Arial, sans-serif"><b>:</b></font></font><font face="Arial, sans-serif"><b><br></b></font><span lang="ar-SA"><font face="Arial, sans-serif">أيضا
+</font></span><font face="Arial, sans-serif">bound to 10.0.0.4 </font><span lang="ar-SA"><font face="Arial, sans-serif">تعني
+تم ربط جهازك بالـ </font></span><font face="Arial, sans-serif">IP
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الذي
+رجعه لك الـ </font></span><font face="Arial, sans-serif">DHCP
+Server </font><span lang="ar-SA"><font face="Arial, sans-serif">والذي
+هو </font></span><font face="Arial, sans-serif">10.0.0.4 ...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والعبارة
+هذه </font></span><font face="Arial, sans-serif">-- renewal in
+1483 seconds. </font><span lang="ar-SA"><font face="Arial, sans-serif">تعني
+إنه سيرجع يطلب </font></span><font face="Arial, sans-serif">IP
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بعد </font></span><font face="Arial, sans-serif">1483
+</font><span lang="ar-SA"><font face="Arial, sans-serif">من الثواني
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">والذي
+هو تقريبا </font></span><font face="Arial, sans-serif">25
+</font><span lang="ar-SA"><font face="Arial, sans-serif">دقيقة
+</font></span><font face="Arial, sans-serif">... <br><br><br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in; page-break-before: always">
+<span lang="ar-SA"><font face="Arial, sans-serif">هل هناك مشكلة
+الحين في قراءة ملف أو</font><font face="Arial, sans-serif">
+</font></span><font face="Arial, sans-serif">Log </font><span lang="ar-SA"><font face="Arial, sans-serif">معيين
+؟ أكيد المسألة ستختلف من ملف الى آخر </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وذلك ﻷنه
+المحتوى سيكون حسب ما خصص ذلك الملف له
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">ومسألة
+شرح جميع السطور في كل الملفات وأشكالها
+صعب جدا ويمكن تأخذ مننا شهور لكثرتها
+وكثرت ما تحتويه </font></span><font face="Arial, sans-serif">....
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لكن أفهم
+كيف يبنى ملف الـ </font></span><font face="Arial, sans-serif">Log
+</font><span lang="ar-SA"><font face="Arial, sans-serif">بغض النظر
+عن نوعه فكلمه تابعين للقاعدة التالية</font></span><font face="Arial, sans-serif">:<br><br>1-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">يبدأ
+بتاريخ ووقت التنفيذ</font></span><font face="Arial, sans-serif"><br></font><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif">2-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أسم
+الجهاز </font></span><font face="Arial, sans-serif">hostname
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الذي تم
+الدخول اليه أو بعض المرات أسم عام للخدمة
+التي طلبت التنفيذ مثل</font></span><font face="Arial, sans-serif">:
+linux kernel </font><span lang="ar-SA"><font face="Arial, sans-serif">والتي
+تعني إنه الكيرنل هو من قام بها </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وبعض
+الملفات ممكن يكون أسم المستخدم </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">تختلف
+حسب نوع التدوينه </font></span><font face="Arial, sans-serif">...</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br>3-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الخدمة
+التي قامت بالعمل أو بتنفيذ شيء معيين
+</font></span><font face="Arial, sans-serif">...</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><br>4-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">نوع الحدث
+الذي تم </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">إرسال
+بيانات </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">تنفيذ
+أو تشغيل خدمة معينة مثلا</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">binary:/var/log # /etc/init.d/named
+start</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Starting name server BIND</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Warning: File, /etc/named.conf.include
+not found. Creating it.
+done</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">حيث
+قمت بتشغيل خدمة الـ </font></span><font face="Arial, sans-serif">named
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والتي
+هي الـ </font></span><font face="Arial, sans-serif">DNS ... </font><span lang="ar-SA"><font face="Arial, sans-serif">وقال
+لي إنها أشتغلت تمام وقامت بإنشاء الملف
+</font></span>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">/etc/named.conf.include</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif">من
+تلقاء نفسها لعدم وجوده بالسابق </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">الآن
+لنفتح آخر الـ </font></span><font face="Arial, sans-serif">Log
+</font><span lang="ar-SA"><font face="Arial, sans-serif">لنرى
+ماذا كتب هناك </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">نرى
+كالتالي</font></span><font face="Arial, sans-serif">:</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+starting BIND 9.3.2 -t /var/lib/named -u named</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+found 1 CPU, using 1 worker thread</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+loading configuration from '/etc/named.conf'</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+listening on IPv6 interfaces, port 53</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+listening on IPv4 interface lo, 127.0.0.1#53</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+listening on IPv4 interface eth0, 10.0.0.4#53</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+command channel listening on 127.0.0.1#953</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+command channel listening on ::1#953</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+zone 0.0.127.in-addr.arpa/IN: loaded serial 42</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+zone localhost/IN: loaded serial 42</font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">Dec 25 23:33:57 binary named[15638]:
+running</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><font face="Arial, sans-serif"><span lang="ar-SA">طبعا
+يخبرني إنه تم عملية التشغل للخدمة وقام
+بتحميل الإعدادات من ملف</span></font></p>
+<p dir="LTR" class="western" align=LEFT style="margin-bottom: 0in; border: 2.60pt double #c0c0c0; padding: 0.07in">
+<font face="Arial, sans-serif">/etc/named.conf</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><span lang="ar-SA"><font face="Arial, sans-serif">وحاليا
+يتصنت على كل من الشبكة الداخلة </font></span><font face="Arial, sans-serif">lo
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والشبكة
+من خلال </font></span><font face="Arial, sans-serif">eth0 ...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وإنه قام
+بتشغيل الزون للـ </font></span><font face="Arial, sans-serif">local
+domain ... </font><span lang="ar-SA"><font face="Arial, sans-serif">وبالختام
+أخبرني إنه كل شي يعمل الحين من خلال كلمة
+</font></span><font face="Arial, sans-serif">running <br></font><br><br>
+</p>
+<p class="western" align=RIGHT style="margin-bottom: 0.17in"><font face="Arial, sans-serif">5-
+</font><span lang="ar-SA"><font face="Arial, sans-serif">العمل
+الذي قامت به الخدمة المذكورة </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">والذي
+يكون بعد الرمز </font></span><font face="Arial, sans-serif">&quot;:&quot;
+...<br><br></font><span lang="ar-SA"><font face="Arial, sans-serif">في
+الختام الموضوع صراحة طويل طويل جدا </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وصعب أن
+أقوم بتغطيته لوحدي </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ولهذا
+أتمنى لو يشارك الجميع في إكمال هذه الدليل
+الذي سيكون إن شاء الله مرجع جيد للعرب
+في التعامل مع ملفات الـ </font></span><font face="Arial, sans-serif">Log
+... </font><span lang="ar-SA"><font face="Arial, sans-serif">الموجودة
+على جهازك والتي تسهل عليك الكثير من
+الأمور </font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">خاصة
+عند حصول مشكلة عندك على الجهاز </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أو في
+حالات الإختراق والأمور الخاصة بالحماية
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">كلها
+تكون مسجلة في الـ </font></span><font face="Arial, sans-serif">Log
+</font><span lang="ar-SA"><font face="Arial, sans-serif">إلا إذا
+تدخل برنامج مثل برنامج أخونه سفاح وقام
+بحذف هذه الملفات </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">هنا أقول
+لك هناك حل آخر وهو أنك تعمل التسجيل يكون
+</font></span><font face="Arial, sans-serif">remotely </font><span lang="ar-SA"><font face="Arial, sans-serif">أي
+على سيرفر خارجي </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">وليس على
+نفس السيرفر أو الجهاز الذي نتكلم عليه
+</font></span><font face="Arial, sans-serif">... </font><span lang="ar-SA"><font face="Arial, sans-serif">مجرد
+معرفتك لأنواع ملفات تسجيل الـ </font></span><font face="Arial, sans-serif">log
+</font><span lang="ar-SA"><font face="Arial, sans-serif">ستسهل
+عليك أين تبحث وبعد ذلك قمت بشرح أنا كيف
+تبحث وكيف تقرأ المحتوى </font></span><font face="Arial, sans-serif">...
+</font><span lang="ar-SA"><font face="Arial, sans-serif">أرجوا
+أن يكون الموضوع قد نال على رضاكم </font></span><font face="Arial, sans-serif">...</font></p>
+<p class="western" align=RIGHT style="margin-bottom: 0in"><span lang="ar-SA"><font face="Arial, sans-serif"><font size=4><b>أخوكم
+</b></font></font></span><font face="Arial, sans-serif"><font size=4><b><a href="https://arabnix.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2f093dcf2c0cb">[email&#160;protected]</a></b></font></font><font face="Arial, sans-serif"><font size=4><b>
+...</b></font></font></p>
+<script data-cfasync="false" src="https://arabnix.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>
