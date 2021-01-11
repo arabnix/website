@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Training &#8211; ArabNIX – Limitless Business Innovation</title>
-	<atom:link href="https://arabnix.com/category/training/feed/" rel="self" type="application/rss+xml" />
-	<link>https://arabnix.com/</link>
+	<atom:link href="https://www.arabnix.com/category/training/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.arabnix.com/</link>
 	<description>Limitless Business Innovation</description>
 	<lastBuildDate>Fri, 28 Sep 2012 02:13:26 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,14 +21,14 @@
 	<generator>https://wordpress.org/?v=5.6</generator>
 	<item>
 		<title>SLES10 Course &#8230;</title>
-		<link>https://arabnix.com/2009/09/01/sles10-course/</link>
+		<link>https://www.arabnix.com/2009/09/01/sles10-course/</link>
 		
 		<dc:creator><![CDATA[editor]]></dc:creator>
 		<pubDate>Tue, 01 Sep 2009 02:12:39 +0000</pubDate>
 				<category><![CDATA[ArabNIX]]></category>
 		<category><![CDATA[News]]></category>
 		<category><![CDATA[Training]]></category>
-		<guid isPermaLink="false">https://arabnix.com/?p=53</guid>
+		<guid isPermaLink="false">https://www.arabnix.com/?p=53</guid>
 
 					<description><![CDATA[ArabNIX, Training Nov. 01, 2009, was proud to deliver a SuSE Linux Enterprise Server 10 (SLES10) training course for the Computer and Communications Systems (C.C.S.) company located in Amman/Jordan for &#8230;]]></description>
 		
